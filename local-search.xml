@@ -4,6 +4,27 @@
   
   
   <entry>
+    <title>生成抽点名单</title>
+    <link href="/2022/10/16/%E7%94%9F%E6%88%90%E6%8A%BD%E7%82%B9%E5%90%8D%E5%8D%95/"/>
+    <url>/2022/10/16/%E7%94%9F%E6%88%90%E6%8A%BD%E7%82%B9%E5%90%8D%E5%8D%95/</url>
+    
+    <content type="html"><![CDATA[<h3 id="要求"><a href="#要求" class="headerlink" title="要求"></a>要求</h3><p><strong>背景</strong><br>栋哥对大家第一次结对编程作业的原型设计感到很满意，为了尽快让同学们使用上软件，于是栋哥花一晚上时间开发了一个点名小程序。但是在上线运行过后，发现了一些问题：</p><p>大多数老师习惯在每次上课后或下课前的一小段时间内进行点名。<br>如果采用全点的方式，在这段时间里，后端服务器需要处理大量的请求，拥塞导致响应速度变慢，给点名小程序带来极差的使用体验。<br>采用随机抽点的方式，能够有效减少并发量，但是无法保证点名的质量，难以有效抓出没有到教室的同学。<br>所以栋哥急需大家设计一个算法来解决这个问题，要求能够最小化向后端发送的请求次数，最大化抓出缺勤同学的数量。</p><p><strong>具体要求</strong><br>定义5门课程，每个课程班级人数为90人，一学期共20次课。每门课程均有5-8位同学缺席了该学期80%的课，此外每次课程均还有0-3位同学由于各种原因缺席。</p><p><strong>参数定义：</strong><br>请求次数：定义在一次点名中，获取一位同学是否到达课堂的情况为一次请求。<br>有效点名：一位同学缺席该课程的一次课，算法在这次课上抽点到该同学，视为一次有效点名，一次课可包含多次有效点名。</p><p><strong>评价标准：</strong><br><img src="/img/%E7%94%9F%E6%88%90%E6%8A%BD%E7%82%B9%E5%90%8D%E5%8D%95/%E8%AF%84%E4%BB%B7%E6%A0%87%E5%87%86.png"></p><p><strong>输入</strong><br>五门课程的全部人员到勤信息</p><p><strong>输出</strong><br>E、五门课程的抽点方案</p><p><strong>要求</strong><br>最大化E，该标准将作为确定本次作业作业得分的主要依据之一<br>输入的数据，另外编写生成程序随机实现。<br>为输入输出设计标准化、通用化、可扩展的接口，能为该智能匹配程序模块后期可能的整合入系统提供便利。<br>输入输出的格式，如采用文本文件或数据库的方式输入，可自由讨论确定。<br>可为智能抽点算法额外的添加一些合理的辅助搜索信息，如绩点等，可自由讨论确定。<br>代码具有规范性。<br>实现的程序语言不做限制性要求。</p><h3 id="一、输入输出处理问题"><a href="#一、输入输出处理问题" class="headerlink" title="一、输入输出处理问题"></a>一、输入输出处理问题</h3><p>我们计划使用excel表格作为输入形式，需要自学如何实现文件读写。</p><h3 id="二、算法设计"><a href="#二、算法设计" class="headerlink" title="二、算法设计"></a>二、算法设计</h3><p>在考虑如何最大化E值上并尽量覆盖全体学生，我们经讨论后，思路为：<br>a.依据学生个人E值和个人总请求次数作为划分标准，将学生分为两类；<br>b.按不同比例从两类学生中抽点学生。</p><h3 id="三、使用过程"><a href="#三、使用过程" class="headerlink" title="三、使用过程"></a>三、使用过程</h3><h4 id="（一）环境搭建"><a href="#（一）环境搭建" class="headerlink" title="（一）环境搭建"></a>（一）环境搭建</h4><p>请自行搭建java环境</p><h4 id="（二）数据生成"><a href="#（二）数据生成" class="headerlink" title="（二）数据生成"></a>（二）数据生成</h4><p>将项目克隆到本地，找到CreateData.jar 文件（一般情况下在此路径：second_teamwork–&gt;RandInfo–&gt; CreateDate.jar）。<br><img src="/img/%E7%94%9F%E6%88%90%E6%8A%BD%E7%82%B9%E5%90%8D%E5%8D%95/%E6%88%AA%E5%B1%8F1.png"><br>双击运行或在此目录下打开命令窗口输入 <code>java -jar CreateData.jar </code>。运行之后在D盘生成了5个班级信息表，如果运行后没有效果或者报错，请将此目录下的5个班级信息表（class1.xls ~ class5.xls）复制到D盘中。<br><img src="/img/%E7%94%9F%E6%88%90%E6%8A%BD%E7%82%B9%E5%90%8D%E5%8D%95/%E6%88%AA%E5%B1%8F2.png"><br><img src="/img/%E7%94%9F%E6%88%90%E6%8A%BD%E7%82%B9%E5%90%8D%E5%8D%95/%E6%88%AA%E5%B1%8F4.png"></p><h4 id="（三）抽点方案"><a href="#（三）抽点方案" class="headerlink" title="（三）抽点方案"></a>（三）抽点方案</h4><p>运行CreateData.jar文件后，在项目中找到CreateList.jar文件（一般情况下在此路径：second_teamwork–&gt;CreateList–&gt; CreateList.jar）。<br><img src="/img/%E7%94%9F%E6%88%90%E6%8A%BD%E7%82%B9%E5%90%8D%E5%8D%95/%E6%88%AA%E5%B1%8F3.png"><br>在此目录下打开命令窗口输入<code> java -jar CreateList.jar</code>,即可输出名单。<br><img src="/img/%E7%94%9F%E6%88%90%E6%8A%BD%E7%82%B9%E5%90%8D%E5%8D%95/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.png"></p><h3 id="三、Github仓库地址及commit记录。"><a href="#三、Github仓库地址及commit记录。" class="headerlink" title="三、Github仓库地址及commit记录。"></a>三、Github仓库地址及commit记录。</h3><p><a href="https://github.com/casual-qian/second_teamwork">地址</a><br><img src="/img/%E7%94%9F%E6%88%90%E6%8A%BD%E7%82%B9%E5%90%8D%E5%8D%95/commit%E8%AE%B0%E5%BD%95.png"></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>作业</tag>
+      
+      <tag>软件工程</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>初始MySQL</title>
     <link href="/2022/10/15/%E5%88%9D%E8%AF%86MySQL/"/>
     <url>/2022/10/15/%E5%88%9D%E8%AF%86MySQL/</url>
@@ -77,9 +98,9 @@
       
       <tag>作业</tag>
       
-      <tag>学习笔记</tag>
-      
       <tag>软件工程</tag>
+      
+      <tag>学习笔记</tag>
       
     </tags>
     
