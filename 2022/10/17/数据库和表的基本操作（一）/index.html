@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://casual-qian.github.io/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89/MySQL%E5%9B%BE%E7%89%87.png">
 <meta property="article:published_time" content="2022-10-17T09:01:00.000Z">
-<meta property="article:modified_time" content="2022-10-19T15:09:46.000Z">
+<meta property="article:modified_time" content="2022-10-20T04:49:41.029Z">
 <meta property="article:author" content="casual_qian">
 <meta property="article:tag" content="作业">
 <meta property="article:tag" content="数据库">
@@ -270,10 +270,16 @@
 <p>语法规则为：<code>ALTER TABLE 旧表名 RENAME 新表名;</code> 。<br>举个例子，我们先用<code>SHOW TABLES</code>看看我们的数据库中有什么表吧。<br><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89/%E5%9B%BE5.png" srcset="/img/loading.gif" lazyload><br>可以看到，我们目前已经有了两张表，分别叫<code>Products</code>和<code>tb_emp</code>。</p>
 <p>接下来，我们使用<code>ALTER TABLE</code>为<code>Products</code>改名。<br><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89/%E5%9B%BE6.gif" srcset="/img/loading.gif" lazyload></p>
 <p>改名成功！<code>Products</code>成功变成了<code>Mall_products</code>。<br>接下来你们可以自行体验一下了！</p>
-<h3 id="编程要求"><a href="#编程要求" class="headerlink" title="编程要求"></a>编程要求</h3><p>根据提示，在右侧编辑器补充代码：</p>
-<p>把数据表<code>tb_emp</code>改名为<code>jd_emp</code>；</p>
-<p>查看该数据库下数据表的列表；</p>
-<p>查看数据表<code>jd_emp</code>的基本结构。</p>
+<h3 id="编程要求"><a href="#编程要求" class="headerlink" title="编程要求"></a>编程要求</h3><ul>
+<li><p>根据提示，在右侧编辑器补充代码：</p>
+</li>
+<li><p>把数据表<code>tb_emp</code>改名为<code>jd_emp</code>；</p>
+</li>
+<li><p>查看该数据库下数据表的列表；</p>
+</li>
+<li><p>查看数据表<code>jd_emp</code>的基本结构。</p>
+</li>
+</ul>
 <p><strong>测试说明</strong><br>我会对你编写的代码进行测试，最终结果会如下图所示：<br><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89/%E5%9B%BE7.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="我的代码"><a href="#我的代码" class="headerlink" title="我的代码"></a>我的代码</h3><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs clean">USE Company;<br>#请在此处添加实现代码<br>########## Begin ##########<br><br>########## modify the table name ##########<br>alter table tb_emp rename jd_emp;<br><br><br>########## show tables <span class="hljs-keyword">in</span> this database ##########<br>show tables;<br><br><br>########## describe the table ##########<br>describe jd_emp;<br><br><br>########## End ##########<br></code></pre></td></tr></table></figure>
 <h2 id="修改字段名与字段数据类型"><a href="#修改字段名与字段数据类型" class="headerlink" title="修改字段名与字段数据类型"></a>修改字段名与字段数据类型</h2><h3 id="任务描述-1"><a href="#任务描述-1" class="headerlink" title="任务描述"></a>任务描述</h3><p>本关任务：修改表中的字段名，并修改字段的数据类型。</p>
@@ -281,18 +287,15 @@
 <h4 id="修改字段名"><a href="#修改字段名" class="headerlink" title="修改字段名"></a>修改字段名</h4><p>有时，在我们建好一张表后会突然发现，哎呀！字段名貌似写错了！怎么办？要删了表再重新建一个新表吗？还是要删了这个字段再新建一个新的字段？<br>都不用，<code>MySQL</code> 中修改字段名称也有专门的语句，接近于自然语言，很好记忆。</p>
 <p>语法规则为： <code>ALTER TABLE 表名 CHANGE 旧字段名 新字段名 新数据类型;</code> 。<br>举个例子：<br>现在我们要把表<code>Mall_products</code>中的字段<code>prod_id</code>改名为<code>ID</code>。表结构如下：<br><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89/2-1.png" srcset="/img/loading.gif" lazyload></p>
 <p>输入命令：<code>ALTER TABLE Mall_products CHANGE prod_id ID varchar(20);</code>。执行过程如下所示。简单吧！<br><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89/2-2.gif" srcset="/img/loading.gif" lazyload></p>
-<p>小提示： 如果不需要修改字段的数据类型，可以把新字段的数据类型设置为和原来一样，但是！千万不要空着它！</p>
+<p><strong>小提示</strong>： 如果不需要修改字段的数据类型，可以把新字段的数据类型设置为和原来一样，但是！千万不要空着它！</p>
 <h4 id="修改字段数据类型"><a href="#修改字段数据类型" class="headerlink" title="修改字段数据类型"></a>修改字段数据类型</h4><p>随着存储的数据越来越多，数据库新人可能会发现，哎呀，当初预留的数据类型已经不能满足要求了，或者当初预留的字符太少了，怎么办？怎么修改？规则来了。</p>
 <p>语法规则为： <code>ALTER TABLE 表名 MODIFY 字段名 数据类型;</code> 。<br>举个例子：<br>现在我们要把表<code>Mall_products</code>中的字段<code>ID</code>的数据类型改为<code>varchar(30)</code>。表结构如下：<br><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89/2-3.png" srcset="/img/loading.gif" lazyload></p>
 <p>输入命令：<code>ALTER TABLE Mall_products MODIFY ID varchar(30);</code>。执行过程如下所示。<br><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89/2-4.gif" srcset="/img/loading.gif" lazyload></p>
-<p><code>ID</code>的数据类型<code>varchar(20)</code>成功变成了<code>varchar(30)</code>。</p>
-<p>接下来你们可以自行体验一下了！</p>
+<p><code>ID</code>的数据类型<code>varchar(20)</code>成功变成了<code>varchar(30)</code>。<br>接下来你们可以自行体验一下了！</p>
 <h3 id="编程要求-1"><a href="#编程要求-1" class="headerlink" title="编程要求"></a>编程要求</h3><p>根据提示，在右侧编辑器补充代码:</p>
 <ul>
-<li><p>把数据表<code>tb_emp</code>的字段Id改名为<code>prod_id</code>，数据类型不变；</p>
-</li>
-<li><p>把数据表<code>tb_emp</code>字段<code>Name</code>的数据类型改为<code>varchar(30)</code>。</p>
-</li>
+<li>把数据表<code>tb_emp</code>的字段Id改名为<code>prod_id</code>，数据类型不变；</li>
+<li>把数据表<code>tb_emp</code>字段<code>Name</code>的数据类型改为<code>varchar(30)</code>。</li>
 </ul>
 <p>数据表结构如下:<br><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89/2-5.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="测试说明"><a href="#测试说明" class="headerlink" title="测试说明"></a>测试说明</h3><p>我会对你编写的代码进行测试，最终结果会如下图所示：<br><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89/2-6.png" srcset="/img/loading.gif" lazyload></p>
@@ -320,14 +323,11 @@
 <h4 id="删除字段"><a href="#删除字段" class="headerlink" title="删除字段"></a>删除字段</h4><p>有添加的需求就会有删除的需求。删除一个字段就是将数据表中的某个字段从表中移除。</p>
 <p>语法规则为： <code>ALTER TABLE 表名 DROP 字段名;</code> 。<br>举个例子：<br>现在我们要把字段<code>prod_price</code>从表<code>Mall_products</code>中删除。表结构如上图结果所示。</p>
 <p>输入命令：<br><code>ALTER TABLE Mall_products DROP prod_price;</code><br>执行结果如下所示：<br><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89/3-5.png" srcset="/img/loading.gif" lazyload></p>
-<p>字段<code>prod_price</code>成功删除！</p>
-<p>接下来你们可以自行体验一下了！</p>
+<p>字段<code>prod_price</code>成功删除！<br>接下来你们可以自行体验一下了！</p>
 <h3 id="编程要求-2"><a href="#编程要求-2" class="headerlink" title="编程要求"></a>编程要求</h3><p>根据提示，在右侧编辑器补充代码:</p>
 <ul>
-<li><p>在数据表<code>tb_emp</code>的<code>Name</code>字段后添加字段<code>Country</code>，数据格式为<code>varchar(20)</code>；</p>
-</li>
-<li><p>删除数据表<code>tb_emp</code>中的字段<code>Salary</code>。</p>
-</li>
+<li>在数据表<code>tb_emp</code>的<code>Name</code>字段后添加字段<code>Country</code>，数据格式为<code>varchar(20)</code>；</li>
+<li>删除数据表<code>tb_emp</code>中的字段<code>Salary</code>。</li>
 </ul>
 <p>数据表结构如下:<br><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89/3-6.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="测试说明-1"><a href="#测试说明-1" class="headerlink" title="测试说明"></a>测试说明</h3><p>我会对你编写的代码进行测试，最终结果会如下图所示：<br><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89/3-7.png" srcset="/img/loading.gif" lazyload></p>
@@ -346,8 +346,7 @@
 <p><strong>举个例子</strong><br>现在我们要把字段<code>prod_price</code>调整到字段<code>prod_country</code>的后面。<code>Mall_products</code>表结构如下所示：<br><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89/4-3.png" srcset="/img/loading.gif" lazyload></p>
 <p>输入命令：<br><code>ALTER TABLE Mall_products MODIFY prod_price FLOAT AFTER prod_country;</code></p>
 <p>执行过程如下所示：<br><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89/4-4.gif" srcset="/img/loading.gif" lazyload></p>
-<p>调整成功！</p>
-<p>接下来你们可以自行体验一下了！</p>
+<p>调整成功！<br>接下来你们可以自行体验一下了！</p>
 <h3 id="编程要求-3"><a href="#编程要求-3" class="headerlink" title="编程要求"></a>编程要求</h3><p>根据提示，在右侧编辑器补充代码:</p>
 <p>将数据表<code>tb_emp</code>的<code>Name</code>字段移至第一列，数据格式不变；</p>
 <p>将<code>DeptId</code>字段移至<code>Salary</code>字段的后边，数据格式不变。</p>
@@ -365,15 +364,14 @@
 <p>M<code>all_products2</code>表结构如下图所示：<br><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89/5-3.png" srcset="/img/loading.gif" lazyload></p>
 <p>下面开始删除外键约束，语句如下：<br><code>ALTER TABLE Mall_products2 DROP FOREIGN KEY prod_country;</code></p>
 <p>使用<code>SHOW CREATE TABLE</code>查看表 <code>M</code>all_products2&#96; 的结构，结果如下：<br><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89/5-4.png" srcset="/img/loading.gif" lazyload></p>
-<p>我们可以看到，<code>FOREIGN KEY</code>不见了，外键约束删除成功！</p>
-<p>接下来你们可以自行体验一下了！</p>
-<p>编程要求<br>我们已经为你建立了主表<code>tb_dept</code>和子表<code>tb_emp</code>，在表<code>tb_emp</code>上添加了名称为<code>emp_dept</code>的外键约束，外键名称为<code>DeptId</code>，依赖于表<code>tb_dept</code>的主键<code>Id</code>，下面那是两张表的结构展示：<br><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89/5-5.png" srcset="/img/loading.gif" lazyload><br><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89/5-6.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们可以看到，<code>FOREIGN KEY</code>不见了，外键约束删除成功！<br>接下来你们可以自行体验一下了！</p>
+<h3 id="编程要求-4"><a href="#编程要求-4" class="headerlink" title="编程要求"></a>编程要求</h3><p>我们已经为你建立了主表<code>tb_dept</code>和子表<code>tb_emp</code>，在表<code>tb_emp</code>上添加了名称为<code>emp_dept</code>的外键约束，外键名称为<code>DeptId</code>，依赖于表<code>tb_dept</code>的主键<code>Id</code>，下面那是两张表的结构展示：<br><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89/5-5.png" srcset="/img/loading.gif" lazyload><br><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89/5-6.png" srcset="/img/loading.gif" lazyload></p>
 <p>请你根据提示，在右侧编辑器<code>Begin-End</code>中补充代码:</p>
 <ul>
 <li>删除数据表<code>tb_emp</code>的外键约束<code>emp_dept</code>。</li>
 </ul>
 <h3 id="测试说明-3"><a href="#测试说明-3" class="headerlink" title="测试说明"></a>测试说明</h3><p>我会对你编写的代码进行测试，最终结果会如下图所示：<br><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89/5-7.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="我的代码-4"><a href="#我的代码-4" class="headerlink" title="我的代码"></a>我的代码</h3><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs clean">USE Company;<br><br>#请在此处添加实现代码<br>########## Begin ##########<br><br>########## delete the <span class="hljs-keyword">foreign</span> key ##########<br>alter table tb_emp drop <span class="hljs-keyword">foreign</span> key emp_dept;<br><br><br>########## End ##########<br>SHOW CREATE TABLE tb_emp \G;<br></code></pre></td></tr></table></figure>
+<h3 id="我的代码-4"><a href="#我的代码-4" class="headerlink" title="我的代码"></a>我的代码</h3><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs clean">USE Company;<br><br>#请在此处添加实现代码<br>########## Begin ##########<br><br>########## delete the <span class="hljs-keyword">foreign</span> key ##########<br>alter table tb_emp drop <span class="hljs-keyword">foreign</span> key emp_dept;<br><br>########## End ##########<br>SHOW CREATE TABLE tb_emp \G;<br></code></pre></td></tr></table></figure>
                 
               </div>
             
