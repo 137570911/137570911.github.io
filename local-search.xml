@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>处理器管理</title>
+    <link href="/2022/11/07/%E5%A4%84%E7%90%86%E5%99%A8%E7%AE%A1%E7%90%86/"/>
+    <url>/2022/11/07/%E5%A4%84%E7%90%86%E5%99%A8%E7%AE%A1%E7%90%86/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>处理器是计算机系统最重要的资源，计算机系统的功能是通过处理器运行程序指令来体现的，计算机系统的工作方式主要是由处理器的工作方式决定的，因此，处理器的管理成为操作系统的核心功能。</p><p>本章主要内容如下：<br>第三章 处理器管理</p><ul><li>一、系统的工作流程</li><li>二、进程概念</li><li>三、进程的动态性</li><li>四、进程管理的主要功能</li><li>五、进程控制</li><li>六、进程同步</li><li>七、进程通信</li><li>八、线程</li></ul><div class="row">    <embed src="/pdf/处理器管理.pdf" width="100%" height="550" type="application/pdf"></div><p><strong>注：本PDF仅用于本人复习及查找，请勿大量外传。</strong></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>操作系统</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>分页和索引</title>
     <link href="/2022/11/06/%E5%88%86%E9%A1%B5%E5%92%8C%E7%B4%A2%E5%BC%95/"/>
     <url>/2022/11/06/%E5%88%86%E9%A1%B5%E5%92%8C%E7%B4%A2%E5%BC%95/</url>
@@ -65,7 +84,7 @@
     <link href="/2022/11/04/%E5%BC%95%E8%AE%BA%E5%8F%8A%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%8E%A5%E5%8F%A3/"/>
     <url>/2022/11/04/%E5%BC%95%E8%AE%BA%E5%8F%8A%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%8E%A5%E5%8F%A3/</url>
     
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>计算机硬件系统上配置的第一个大型软件，称为计算机操作系统。<br>下面将主要讲述引论及操作系统的接口，主要内容如下：<br>第一章 引论</p><ul><li>一、操作系统的定义——————4</li><li>二、操作系统的形成——————7</li><li>三、OS的基本类型——————11</li><li>四、OS的研究内容——————15</li></ul><p>第二章 操作系统的接口</p><ul><li>一、操作系统内核——————16</li><li>二、操作系统的启动——————17</li><li>三、操作系统的用户接口——————25</li></ul><div class="row">    <embed src="引论及操作系统的接口.pdf" width="100%" height="550" type="application/pdf"></div><p>注：本PDF仅用于本人复习及查找，请勿大量外传。</p>        <div id="aplayer-WfsnVUKt" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-WfsnVUKt"),            narrow: false,            autoplay: false,            showlrc: false,            music: {              title: "将军",              author: "周杰伦",              url: "周杰伦-将军.flac",              pic: "",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script><script>console.error("SyntaxError: Unexpected token / in JSON at position 48");</script>]]></content>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>计算机硬件系统上配置的第一个大型软件，称为计算机操作系统。<br>下面将主要讲述引论及操作系统的接口，主要内容如下：<br>第一章 引论</p><ul><li>一、操作系统的定义</li><li>二、操作系统的形成</li><li>三、OS的基本类型</li><li>四、OS的研究内容</li></ul><p>第二章 操作系统的接口</p><ul><li>一、操作系统内核</li><li>二、操作系统的启动</li><li>三、操作系统的用户接口</li></ul><div class="row">    <embed src="/pdf/引论及操作系统的接口.pdf" width="100%" height="550" type="application/pdf"></div><p><strong>注：本PDF仅用于本人复习及查找，请勿大量外传。</strong></p>        <div id="aplayer-UetFddrT" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-UetFddrT"),            narrow: false,            autoplay: false,            showlrc: false,            music: {              title: "将军",              author: "周杰伦",              url: "/music/周杰伦-将军.flac",              pic: "",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script><script>console.error("SyntaxError: Unexpected token / in JSON at position 48");</script>]]></content>
     
     
     <categories>
