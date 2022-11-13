@@ -16,23 +16,23 @@
   <meta name="author" content="casual_qian">
   <meta name="keywords" content="">
   
-    <meta name="description" content="网络编程的基础是计算机网络，本章简要讲述网络程序设计中设计的计算机网络方面的基础知识，包括各种网络术语、网络拓扑结构、网络协议等。网络程序通信模型是网络程序设计的基础，决定了网络功能在每个通信节点的部署。">
+    <meta name="description" content="根据选题报告中的需求分析和设计，完成原型设计和UML设计。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="网络程序设计基础和网络程序通信模型">
-<meta property="og:url" content="https://casual-qian.github.io/2022/11/11/%E7%BD%91%E7%BB%9C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80%E5%92%8C%E7%BD%91%E7%BB%9C%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E6%A8%A1%E5%9E%8B/index.html">
+<meta property="og:title" content="原型设计和UML设计">
+<meta property="og:url" content="https://casual-qian.github.io/2022/11/13/%E5%8E%9F%E5%9E%8B%E8%AE%BE%E8%AE%A1%E5%92%8CUML%E8%AE%BE%E8%AE%A1/index.html">
 <meta property="og:site_name" content="casual_qian">
-<meta property="og:description" content="网络编程的基础是计算机网络，本章简要讲述网络程序设计中设计的计算机网络方面的基础知识，包括各种网络术语、网络拓扑结构、网络协议等。网络程序通信模型是网络程序设计的基础，决定了网络功能在每个通信节点的部署。">
+<meta property="og:description" content="根据选题报告中的需求分析和设计，完成原型设计和UML设计。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://casual-qian.github.io/img/%E7%BD%91%E7%BB%9C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80%E5%92%8C%E7%BD%91%E7%BB%9C%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E6%A8%A1%E5%9E%8B/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B.jpg">
-<meta property="article:published_time" content="2022-11-11T02:01:00.000Z">
-<meta property="article:modified_time" content="2022-11-11T02:09:40.834Z">
+<meta property="og:image" content="https://casual-qian.github.io/img/%E5%8E%9F%E5%9E%8B%E8%AE%BE%E8%AE%A1%E5%92%8CUML%E8%AE%BE%E8%AE%A1/teamwork.png">
+<meta property="article:published_time" content="2022-11-13T15:40:00.000Z">
+<meta property="article:modified_time" content="2022-11-13T16:01:46.425Z">
 <meta property="article:author" content="casual_qian">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://casual-qian.github.io/img/%E7%BD%91%E7%BB%9C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80%E5%92%8C%E7%BD%91%E7%BB%9C%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E6%A8%A1%E5%9E%8B/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B.jpg">
+<meta name="twitter:image" content="https://casual-qian.github.io/img/%E5%8E%9F%E5%9E%8B%E8%AE%BE%E8%AE%A1%E5%92%8CUML%E8%AE%BE%E8%AE%A1/teamwork.png">
   
   
   
-  <title>网络程序设计基础和网络程序通信模型 - casual_qian</title>
+  <title>原型设计和UML设计 - casual_qian</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -92,9 +92,7 @@
 
 
   
-<meta name="generator" content="Hexo 6.3.0"><link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
-<script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
-</head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 
 <body>
@@ -178,13 +176,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/%E7%BD%91%E7%BB%9C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80%E5%92%8C%E7%BD%91%E7%BB%9C%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E6%A8%A1%E5%9E%8B/banner.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/%E5%8E%9F%E5%9E%8B%E8%AE%BE%E8%AE%A1%E5%92%8CUML%E8%AE%BE%E8%AE%A1/banner.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="网络程序设计基础和网络程序通信模型"></span>
+            <span id="subtitle" data-typed-text="原型设计和UML设计"></span>
           
         </div>
 
@@ -195,8 +193,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-11-11 10:01" pubdate>
-          2022年11月11日 上午
+        <time datetime="2022-11-13 23:40" pubdate>
+          2022年11月13日 晚上
         </time>
       </span>
     
@@ -207,7 +205,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          507 字
+          2.2k 字
         
       </span>
     
@@ -247,63 +245,184 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">网络程序设计基础和网络程序通信模型</h1>
+            <h1 style="display: none">原型设计和UML设计</h1>
             
             
               <div class="markdown-body">
                 
-                <p>网络编程的基础是计算机网络，本章简要讲述网络程序设计中设计的计算机网络方面的基础知识，包括各种网络术语、网络拓扑结构、网络协议等。<br>网络程序通信模型是网络程序设计的基础，决定了网络功能在每个通信节点的部署。</p>
-<p>主要内容如下：<br>网络程序设计基础</p>
-<ul>
-<li>端口号</li>
-<li>网络编程方法纵览</li>
-</ul>
-<p>网咯程序设计通信模型</p>
-<ul>
-<li>网络应用软件与网络通信之间的关系</li>
-<li>汇聚点问题</li>
-<li>客户&#x2F;服务器模型<ul>
-<li>基本概念</li>
-<li>客户&#x2F;服务器关系</li>
-<li>服务器软件的特点和分类</li>
-</ul>
-</li>
-<li>B&#x2F;S模型</li>
-<li>P2P模型</li>
-</ul>
+                <h2 id="一、原型设计展示"><a href="#一、原型设计展示" class="headerlink" title="一、原型设计展示"></a>一、原型设计展示</h2><h3 id="1-原型展示在线链接"><a href="#1-原型展示在线链接" class="headerlink" title="1. 原型展示在线链接"></a>1. 原型展示在线链接</h3><p><a target="_blank" rel="noopener" href="https://modao.cc/app/26kY53Vfrkgsvulxwa4Sva">原型展示链接</a></p>
+<h3 id="2-原型界面主要特点"><a href="#2-原型界面主要特点" class="headerlink" title="2. 原型界面主要特点"></a>2. 原型界面主要特点</h3><p>通过交互式地图使校友对新校园有一个总览式的了解，在每一个地标性建筑可以通过点击建筑本身弹出介绍与大事记，使校友切实地熟悉校园。<br><img src="/img/%E5%8E%9F%E5%9E%8B%E8%AE%BE%E8%AE%A1%E5%92%8CUML%E8%AE%BE%E8%AE%A1/1.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们主要通过姓名、年级、生日和专业进行校友认证。查找以前的数据存入数据库进行匹配，管理员进行审核，审核通过后校友们就可以愉快地通过我们的小程序联系上其他感兴趣的校友了。<br><img src="https://img-blog.csdnimg.cn/19641706df2c4fe79c3e1cb9980216af.png" srcset="/img/loading.gif" lazyload></p>
+<p>如下图，认证后可以查看其他感兴趣的校友的信息，以便与他们取得联系。<br><img src="https://img-blog.csdnimg.cn/fff2cd39d411444ca7345bd393b0311d.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="二、后端设计展示"><a href="#二、后端设计展示" class="headerlink" title="二、后端设计展示"></a>二、后端设计展示</h2><h3 id="1-UML设计"><a href="#1-UML设计" class="headerlink" title="1. UML设计"></a>1. UML设计</h3><h4 id="1-1-需求分析（用例图）"><a href="#1-1-需求分析（用例图）" class="headerlink" title="1.1 需求分析（用例图）"></a>1.1 需求分析（用例图）</h4><p>用户使用时可以浏览校园资讯，查看活动并进行报名。在福大地图中，可以查看各种建筑及景点的介绍，还可以在对应经典中留下自己的留言，也可以选择虚拟形象后在该地点完成虚拟合影。用户填写必要的信息认证后可认证为校友，可以寻找校友并查看校友信息，以便与校友交流。<br>管理员使用时可以添加和删除校园资讯、添加和删除活动信息、审核用户信息和校友认证信息、审核及管理校友们在不同各种景点留下的留言。<br><img src="https://img-blog.csdnimg.cn/a60b98c4b91a42d9ba75b989d7890703.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="1-2-业务流程（活动图）"><a href="#1-2-业务流程（活动图）" class="headerlink" title="1.2 业务流程（活动图）"></a>1.2 业务流程（活动图）</h4><p>用户使用时，先需要登录软件，然后分别有浏览资讯，查看地图，寻找校友和个人空间四个主要活动。</p>
+<p>资讯分为新闻和活动，用户在活动中还可以进行活动报名。</p>
+<p>用户查看地图后可以在地图中可以查看各种景点的简介和风景照，可以在各种景点中留下自己的留言。也可以进行虚拟合影，选择自己的虚拟形象后进行虚拟合影。</p>
+<p>用户使用寻找校友的功能前需要进行认证，在个人空间中有提供认证通道。用户填写完必要的信息后，系统后端进行审核通过即可使用校友功能，查看其他校友的个人信息及联系方式。</p>
+<p>四个活动互不干扰，用户在使用软件期间可以不限次数的重复使用这些功能。<br><img src="https://img-blog.csdnimg.cn/7c6effd2bcfb494fb4633e79ea9593e1.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="1-3-系统结构（类图）"><a href="#1-3-系统结构（类图）" class="headerlink" title="1.3 系统结构（类图）"></a>1.3 系统结构（类图）</h4><p>系统主要由用户类、管理员类构成。</p>
+<p>用户类可以使用地点类、资讯类、活动信息类的方法，进行虚拟合影、留言、查看资讯、活动报名等。</p>
+<p>校友类继承自用户类，用户经过校友认证后转变为校友。校友额外有匹配校友和查看校友详细信息的方法，以及校友认证所需的一些额外属性。</p>
+<p>管理员类用于管理小程序的各种功能。里面有管理活动、管理资讯、管理留言、管理用户信息的方法。<br><img src="https://img-blog.csdnimg.cn/380405a827854e83b803620c8eea4ab5.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="1-4-算法模块（时序图）"><a href="#1-4-算法模块（时序图）" class="headerlink" title="1.4 算法模块（时序图）"></a>1.4 算法模块（时序图）</h4><p>用户在小程序中输入想找的校友信息，校友信息被传送至服务器，服务器根据数据库及算法计算出用户想认识的校友并返回到用户的小程序界面。</p>
+<p>用户在小程序的资讯中点击想浏览的资讯，在小程序前端中直接跳转到链接对应页面。管理员可以在通过服务器发布和修改资讯，更新资讯内容。</p>
+<p>用户在小程序的活动中点击感兴趣的活动，可以跳转至活动介绍，感兴趣可以进入报名页面。管理员可以通过服务器发布和修改活动。</p>
+<p>用户在小程序地图对应的地点中进行留言，留言传送至服务器后端等待管理员审核，管理员审核通过后会将留言展示在地图旁边的留言板上。</p>
+<p>用户在小程序界面输入必要的认证信息，将认证信息传送至服务器等待管理员审核，管理员审核通过后将信息保存至后端并返回录入成功。失败则返回失败。<br><img src="https://img-blog.csdnimg.cn/61df415194b34ceb8b7fc5b4f70da667.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-数据库设计"><a href="#2-数据库设计" class="headerlink" title="2.数据库设计"></a>2.数据库设计</h3><h4 id="2-1-E-R图"><a href="#2-1-E-R图" class="headerlink" title="2.1 E-R图"></a>2.1 E-R图</h4><p>数据库中主要有地图、管理员、资讯、用户、学生五个实体，实体间的联系和实体的属性如下图E-R图所示。我们的后台管理原型通过该E-R图的方式展示。<br><img src="https://img-blog.csdnimg.cn/821691fc09c34575986fc055539b1cc1.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-2-关系数据模型"><a href="#2-2-关系数据模型" class="headerlink" title="2.2 关系数据模型"></a>2.2 关系数据模型</h4><p><strong>User</strong></p>
+<table>
+<thead>
+<tr>
+<th>field</th>
+<th>type</th>
+<th>constraint</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>WXID</td>
+<td>int</td>
+<td>primaryKey</td>
+</tr>
+<tr>
+<td>WXName</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>Phone</td>
+<td>int</td>
+<td></td>
+</tr>
+<tr>
+<td>E-mail</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>Profession</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>Address</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>Sex</td>
+<td>bool</td>
+<td></td>
+</tr>
+<tr>
+<td>Sno</td>
+<td>int</td>
+<td></td>
+</tr>
+</tbody></table>
+<p><strong>Map</strong></p>
+<table>
+<thead>
+<tr>
+<th>field</th>
+<th>type</th>
+<th>constraint</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>MapID</td>
+<td>int</td>
+<td>primaryKey</td>
+</tr>
+<tr>
+<td>MapName</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>Intrduction</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>Picture</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>Message</td>
+<td>string</td>
+<td></td>
+</tr>
+</tbody></table>
+<p><strong>Information</strong></p>
+<table>
+<thead>
+<tr>
+<th>field</th>
+<th>type</th>
+<th>constraint</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>InfoID</td>
+<td>int</td>
+<td>primaryKey</td>
+</tr>
+<tr>
+<td>Tiete</td>
+<td>string</td>
+<td></td>
+</tr>
+</tbody></table>
+<p><strong>Students</strong></p>
+<table>
+<thead>
+<tr>
+<th>field</th>
+<th>type</th>
+<th>constraint</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Sno</td>
+<td>int</td>
+<td>primaryKey</td>
+</tr>
+<tr>
+<td>Sex</td>
+<td>bool</td>
+<td></td>
+</tr>
+<tr>
+<td>Sname</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>Sage</td>
+<td>int</td>
+<td></td>
+</tr>
+<tr>
+<td>WXID</td>
+<td>int</td>
+<td></td>
+</tr>
+<tr>
+<td>Sdate</td>
+<td>string</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="三、团队协作记录"><a href="#三、团队协作记录" class="headerlink" title="三、团队协作记录"></a>三、团队协作记录</h2><h4 id="3-1-团队协作照片"><a href="#3-1-团队协作照片" class="headerlink" title="3.1 团队协作照片"></a>3.1 团队协作照片</h4><p><img src="/img/%E5%8E%9F%E5%9E%8B%E8%AE%BE%E8%AE%A1%E5%92%8CUML%E8%AE%BE%E8%AE%A1/2.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="3-2-Leangoo协作记录"><a href="#3-2-Leangoo协作记录" class="headerlink" title="3.2 Leangoo协作记录"></a>3.2 Leangoo协作记录</h4><p><img src="/img/%E5%8E%9F%E5%9E%8B%E8%AE%BE%E8%AE%A1%E5%92%8CUML%E8%AE%BE%E8%AE%A1/3.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/%E5%8E%9F%E5%9E%8B%E8%AE%BE%E8%AE%A1%E5%92%8CUML%E8%AE%BE%E8%AE%A1/4.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/%E5%8E%9F%E5%9E%8B%E8%AE%BE%E8%AE%A1%E5%92%8CUML%E8%AE%BE%E8%AE%A1/5.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="3-3-协作记录小结"><a href="#3-3-协作记录小结" class="headerlink" title="3.3 协作记录小结"></a>3.3 协作记录小结</h4><p>本次组队项目最重要的一个地方，正是在于对该院庆小程序的需求分析。在每个页面分任务的开始，最重要的即是先对照开题设计的文档进行阅读，了解小程序所规定的主要能需求，以此来导向和约束我们接下来对项目框架的设计和实现。如果没有前期对需求精细阅读和深入分析，那么在结构设计和代码实现中就容易走弯路，甚至可能需要重构。</p>
+<p>与此同时，在代码的编写过程中，我们也需要不断对目前所实现的功能同需求分析所确的用户故事的需求进行比较和检查，以保证功能实现的正确性，而测试驱动的编程方法助我们减少了可能出现的对需求的理解偏差。</p>
+<p>任务的及时分配与随时调整也是这次给我们带来很多感触的地方，在设计初期就要确定确好每个人的分工，并将每个人的工作量达到饱和，尽可能让工作量均匀分配，不让其部分同学过于辛苦，也不让部分同学过于清闲，且前端与后端的对接要做到非常及时，多模块的设计其实具有先后次序，需要过渡地较为合理，因此我们这次组队编程使用leangoo作为我们敏捷开发的工作分配与指导工具，组长随时根据进度调整leangoo上的务分配，每个人也能很明确地领到自己的任务，正所谓“工欲善其事，必先利其器”。</p>
 
-
-	<div class="row">
-    <embed src="/pdf/网络程序设计基础和网络程序通信模型.pdf" width="100%" height="550" type="application/pdf">
-	</div>
-
-
-
-
-
-
-<p><strong>注：本PDF仅用于本人复习及查找，请勿大量外传。</strong></p>
-
-        <div id="aplayer-LSSZSbgC" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
-            <pre class="aplayer-lrc-content"></pre>
-        </div>
-        <script>
-          var ap = new APlayer({
-            element: document.getElementById("aplayer-LSSZSbgC"),
-            narrow: false,
-            autoplay: false,
-            showlrc: false,
-            music: {
-              title: "大笨钟",
-              author: "周杰伦",
-              url: "/music/周杰伦-大笨钟.flac",
-              pic: "/music/图片/十二新作.jpg",
-              lrc: ""
-            }
-          });
-          window.aplayers || (window.aplayers = []);
-          window.aplayers.push(ap);
-        </script>
                 
               </div>
             
@@ -321,7 +440,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Windows%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" class="category-chain-item">Windows网络编程</a>
+  <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" class="category-chain-item">软件工程</a>
   
   
 
@@ -343,18 +462,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/11/11/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" title="文件系统">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">文件系统</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/11/11/%E7%BD%91%E7%BB%9C%E6%95%B0%E6%8D%AE%E7%9A%84%E5%86%85%E5%AE%B9%E5%92%8C%E5%BD%A2%E6%80%81/" title="网络程序设计基础和网络程序通信模型">
-                        <span class="hidden-mobile">网络程序设计基础和网络程序通信模型</span>
+                      <a href="/2022/11/11/%E5%88%A0%E9%99%A4%E9%87%8D%E5%A4%8D%E6%95%B0%E6%8D%AE/" title="删除重复数据">
+                        <span class="hidden-mobile">删除重复数据</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
