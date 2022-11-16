@@ -23,12 +23,12 @@
 <meta property="og:site_name" content="casual_qian">
 <meta property="og:description" content="视图、索引、存储过程和事务 是 MySQL 中非常重要的几个概念，也是数据库应用开发者必须掌握的知识。视图用于延伸表的边界，索引用于提高数据库查找效率，存储过程用于分装业务逻辑，事务用于提升数据库应用的健壮性。本文的主要内容是掌握存储过程的基础知识。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://casual-qian.github.io/img/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/MySQL%E5%9B%BE%E7%89%87.png">
+<meta property="og:image" content="https://casual-qian.github.io/img/MySQL/MySQL%E5%9B%BE%E7%89%87.png">
 <meta property="article:published_time" content="2022-11-15T10:00:00.000Z">
-<meta property="article:modified_time" content="2022-11-15T09:43:04.364Z">
+<meta property="article:modified_time" content="2022-11-16T03:00:20.888Z">
 <meta property="article:author" content="casual_qian">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://casual-qian.github.io/img/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/MySQL%E5%9B%BE%E7%89%87.png">
+<meta name="twitter:image" content="https://casual-qian.github.io/img/MySQL/MySQL%E5%9B%BE%E7%89%87.png">
   
   
   
@@ -176,7 +176,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/banner.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/MySQL/banner.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -268,7 +268,7 @@
 <figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs oxygene">DELIMITER <span class="hljs-comment">//</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">PROCEDURE</span> <span class="hljs-title function_">proc1</span><span class="hljs-params">()</span><br><span class="hljs-title function_">BEGIN</span><br><span class="hljs-title function_">SELECT</span> * <span class="hljs-title function_">FROM</span> <span class="hljs-title function_">user</span>;<br><span class="hljs-keyword">END</span> <span class="hljs-comment">//</span><br>DELIMITER <span class="hljs-punctuation">;</span><br></code></pre></td></tr></table></figure>
 <p><strong>注意</strong>：<code>/</code>也可以换成其他符号，例如<code>$</code>;</p>
 <ul>
-<li><p>执行存储过程：<code>call 存储过程名</code><br><img src="/img/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/1-1.png" srcset="/img/loading.gif" lazyload></p>
+<li><p>执行存储过程：<code>call 存储过程名</code><br><img src="/img/MySQL/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/1-1.png" srcset="/img/loading.gif" lazyload></p>
 </li>
 <li><p>创建带有参数的存储过程<br>存储过程的参数有三种：</p>
 <ul>
@@ -278,12 +278,12 @@
 </ul>
 </li>
 </ul>
-<p><code>IN</code>参数示例：<br><img src="/img/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/1-2.png" srcset="/img/loading.gif" lazyload></p>
-<p><code>OUT</code>参数示例：<br><img src="/img/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/1-3.png" srcset="/img/loading.gif" lazyload></p>
-<p><code>INOUT</code>参数示例：<br><img src="/img/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/1-4.png" srcset="/img/loading.gif" lazyload></p>
+<p><code>IN</code>参数示例：<br><img src="/img/MySQL/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/1-2.png" srcset="/img/loading.gif" lazyload></p>
+<p><code>OUT</code>参数示例：<br><img src="/img/MySQL/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/1-3.png" srcset="/img/loading.gif" lazyload></p>
+<p><code>INOUT</code>参数示例：<br><img src="/img/MySQL/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/1-4.png" srcset="/img/loading.gif" lazyload></p>
 <h4 id="存储过程的查询和删除"><a href="#存储过程的查询和删除" class="headerlink" title="存储过程的查询和删除"></a>存储过程的查询和删除</h4><p>我们如何在数据库中查询我们已经创建过的存储过程呢：<br><code>SHOW PROCEDURE STATUS WHERE db=&#39;数据库名&#39;;</code></p>
-<p>查看存储过程的详细定义信息：<br><code>SHOW CREATE PROCEDURE 数据库.存储过程名;</code><br><img src="/img/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/1-5.png" srcset="/img/loading.gif" lazyload></p>
-<p>当我们不再需要某个存储过程时，我们可以使用：<br><code>DROP PROCEDURE [IF EXISTS] 数据库名.存储过程名;</code><br><img src="/img/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/1-6.png" srcset="/img/loading.gif" lazyload></p>
+<p>查看存储过程的详细定义信息：<br><code>SHOW CREATE PROCEDURE 数据库.存储过程名;</code><br><img src="/img/MySQL/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/1-5.png" srcset="/img/loading.gif" lazyload></p>
+<p>当我们不再需要某个存储过程时，我们可以使用：<br><code>DROP PROCEDURE [IF EXISTS] 数据库名.存储过程名;</code><br><img src="/img/MySQL/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/1-6.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="编程要求"><a href="#编程要求" class="headerlink" title="编程要求"></a>编程要求</h3><p>根据提示，在右侧编辑器补充代码，创建存储过程<code>GetCustomerLevel(in p_customNumber int(11),out p_customerLevel varchar(10))</code>，通过查询<code>customers</code>表中客户的信用额度，来决定客户级别，并将客户编号和对应等级输出，具体输出内容参考测试集。</p>
 <p><code>customers</code>表数据结构：</p>
 <table>
@@ -355,6 +355,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2022/11/16/%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/" title="设备管理">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">设备管理</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">

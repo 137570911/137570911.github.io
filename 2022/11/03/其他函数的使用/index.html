@@ -23,12 +23,12 @@
 <meta property="og:site_name" content="casual_qian">
 <meta property="og:description" content="介绍 MySQL中其他函数的使用，主要有以下几大类型：字符函数，数学函数，日期时间函数，流程控制类函数，自定义函数。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://casual-qian.github.io/img/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/MySQL%E5%9B%BE%E7%89%87.png">
+<meta property="og:image" content="https://casual-qian.github.io/img/MySQL/MySQL%E5%9B%BE%E7%89%87.png">
 <meta property="article:published_time" content="2022-11-03T15:30:00.000Z">
-<meta property="article:modified_time" content="2022-11-05T01:59:06.584Z">
+<meta property="article:modified_time" content="2022-11-16T02:51:19.668Z">
 <meta property="article:author" content="casual_qian">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://casual-qian.github.io/img/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/MySQL%E5%9B%BE%E7%89%87.png">
+<meta name="twitter:image" content="https://casual-qian.github.io/img/MySQL/MySQL%E5%9B%BE%E7%89%87.png">
   
   
   
@@ -176,7 +176,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/banner.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/MySQL/banner.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -329,17 +329,17 @@
 <td>模式匹配</td>
 </tr>
 </tbody></table>
-<h4 id="CONCAT-与CONCAT-WS"><a href="#CONCAT-与CONCAT-WS" class="headerlink" title="CONCAT()与CONCAT_WS()"></a>CONCAT()与CONCAT_WS()</h4><p>他们的作用都是将字符进行连接，但是他们之间也有一点小区别。下面是使用<code>CONCAT()</code>将<code>My</code>和<code>SQL</code>字符进行连接：<br><img src="/img/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/1-1.png" srcset="/img/loading.gif" lazyload></p>
-<p><code>CONCAT_WS()</code>代表使用<strong>指定字符</strong>进行连接，最少需要三个参数，第一个参数为指定连接符：<br><img src="/img/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/1-2.png" srcset="/img/loading.gif" lazyload></p>
-<h4 id="LEFT-与RIGHT"><a href="#LEFT-与RIGHT" class="headerlink" title="LEFT()与RIGHT()"></a>LEFT()与RIGHT()</h4><p>他们是进行左右侧的字符获取，需要两个参数，第一个参数告诉他从哪个字符串中获取，第二个参数是获取的长度：<br><img src="/img/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/1-3.png" srcset="/img/loading.gif" lazyload></p>
-<h4 id="LTRIM-、RTRIM-与-TRIM"><a href="#LTRIM-、RTRIM-与-TRIM" class="headerlink" title="LTRIM()、RTRIM() 与 TRIM()"></a>LTRIM()、RTRIM() 与 TRIM()</h4><p>这三个函数都是可以去掉字符串中含有的空格，我们先使用LENGTH()函数来统计含有空格的字符串的长度，分别去掉其中字符<strong>前导、后导和全部</strong>的空格，下面我们来看一下他们的区别：<br><img src="/img/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/1-4.png" srcset="/img/loading.gif" lazyload></p>
-<p>另外<code>TRIM()</code>函数出除了能删除空格以外，还能删除字符串中自定字符：<br><img src="/img/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/1-5.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="CONCAT-与CONCAT-WS"><a href="#CONCAT-与CONCAT-WS" class="headerlink" title="CONCAT()与CONCAT_WS()"></a>CONCAT()与CONCAT_WS()</h4><p>他们的作用都是将字符进行连接，但是他们之间也有一点小区别。下面是使用<code>CONCAT()</code>将<code>My</code>和<code>SQL</code>字符进行连接：<br><img src="/img/MySQL/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/1-1.png" srcset="/img/loading.gif" lazyload></p>
+<p><code>CONCAT_WS()</code>代表使用<strong>指定字符</strong>进行连接，最少需要三个参数，第一个参数为指定连接符：<br><img src="/img/MySQL/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/1-2.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="LEFT-与RIGHT"><a href="#LEFT-与RIGHT" class="headerlink" title="LEFT()与RIGHT()"></a>LEFT()与RIGHT()</h4><p>他们是进行左右侧的字符获取，需要两个参数，第一个参数告诉他从哪个字符串中获取，第二个参数是获取的长度：<br><img src="/img/MySQL/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/1-3.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="LTRIM-、RTRIM-与-TRIM"><a href="#LTRIM-、RTRIM-与-TRIM" class="headerlink" title="LTRIM()、RTRIM() 与 TRIM()"></a>LTRIM()、RTRIM() 与 TRIM()</h4><p>这三个函数都是可以去掉字符串中含有的空格，我们先使用LENGTH()函数来统计含有空格的字符串的长度，分别去掉其中字符<strong>前导、后导和全部</strong>的空格，下面我们来看一下他们的区别：<br><img src="/img/MySQL/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/1-4.png" srcset="/img/loading.gif" lazyload></p>
+<p>另外<code>TRIM()</code>函数出除了能删除空格以外，还能删除字符串中自定字符：<br><img src="/img/MySQL/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/1-5.png" srcset="/img/loading.gif" lazyload></p>
 <p>上面操作就是将<code>??MySQL???</code>中的前导<code>?</code>删除，若要删除后导的<code>?</code>，只需将<code>LEADING</code>替换成<code>TRAILING</code>，若要将其中的<code>?</code>都删掉，替换成<code>BOTH</code>关键字即可。</p>
 <h4 id="SUBSTRING-、SUBSTRING-INDEX-与REPLACE"><a href="#SUBSTRING-、SUBSTRING-INDEX-与REPLACE" class="headerlink" title="SUBSTRING()、SUBSTRING_INDEX()与REPLACE()"></a>SUBSTRING()、SUBSTRING_INDEX()与REPLACE()</h4><p><strong>REPLACE()函数</strong><br>思考：那如果在<code>MySQL</code>中间也出现了?号，还能使用上面的函数进行删除吗？</p>
-<p>答疑：很显然使用之前学到过的函数是不能将中间部分的?删除，那么我们如何将中间的?去掉呢？就是使用<code>REPLACE()</code>函数进行字符串的替换。<br><img src="/img/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/1-6.png" srcset="/img/loading.gif" lazyload></p>
-<p>表示将字符串中的?全部替换成<code>&#39;&#39;</code>，但使用时并不表示只能一个字符替换一个字符，可以一对多形式或多对一形式：<br><img src="/img/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/1-7.png" srcset="/img/loading.gif" lazyload></p>
-<p><strong>SUBSTRING()函数</strong><br><code>SUBSTRING()</code>函数是用于字符串的截取：<br><img src="/img/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/1-8.png" srcset="/img/loading.gif" lazyload><br>表示从第一位（注意第一位为<code>1</code>而非<code>0</code>）开始截取<code>MySQL</code>的二位字符。</p>
-<p>**SUBSTRING_INDEX()**函数<br><code>SUBSTRING_INDEX()</code>函数是用于通过特殊符号将字符串分隔的：<br><img src="/img/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/1-9.png" srcset="/img/loading.gif" lazyload></p>
+<p>答疑：很显然使用之前学到过的函数是不能将中间部分的?删除，那么我们如何将中间的?去掉呢？就是使用<code>REPLACE()</code>函数进行字符串的替换。<br><img src="/img/MySQL/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/1-6.png" srcset="/img/loading.gif" lazyload></p>
+<p>表示将字符串中的?全部替换成<code>&#39;&#39;</code>，但使用时并不表示只能一个字符替换一个字符，可以一对多形式或多对一形式：<br><img src="/img/MySQL/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/1-7.png" srcset="/img/loading.gif" lazyload></p>
+<p><strong>SUBSTRING()函数</strong><br><code>SUBSTRING()</code>函数是用于字符串的截取：<br><img src="/img/MySQL/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/1-8.png" srcset="/img/loading.gif" lazyload><br>表示从第一位（注意第一位为<code>1</code>而非<code>0</code>）开始截取<code>MySQL</code>的二位字符。</p>
+<p>**SUBSTRING_INDEX()**函数<br><code>SUBSTRING_INDEX()</code>函数是用于通过特殊符号将字符串分隔的：<br><img src="/img/MySQL/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/1-9.png" srcset="/img/loading.gif" lazyload></p>
 <p>表示将字符串<code>www.educoder.net</code>通过.进行分隔，可从前后取字符串。</p>
 <h3 id="编程要求"><a href="#编程要求" class="headerlink" title="编程要求"></a>编程要求</h3><p>请仔细阅读右侧代码，根据方法内的提示，在<code>Begin - End</code>区域内进行代码补充，具体任务如下：</p>
 <ul>
@@ -379,7 +379,7 @@
 <h3 id="我的代码"><a href="#我的代码" class="headerlink" title="我的代码"></a>我的代码</h3><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs clean">#请在此添加实现代码<br>########## Begin ##########<br>select concat ( upper(left(Name,<span class="hljs-number">1</span>)) , lower(right(Name,<span class="hljs-number">2</span>) )) <span class="hljs-keyword">as</span> Name <span class="hljs-keyword">from</span> employee ;<br>########## End ##########<br><br></code></pre></td></tr></table></figure>
 <h2 id="数学函数"><a href="#数学函数" class="headerlink" title="数学函数"></a>数学函数</h2><h3 id="任务描述-1"><a href="#任务描述-1" class="headerlink" title="任务描述"></a>任务描述</h3><p>本关任务：根据公式修改学生的最终成绩。</p>
 <h3 id="相关知识-1"><a href="#相关知识-1" class="headerlink" title="相关知识"></a>相关知识</h3><p>本章节我们主要介绍<strong>数值运算符</strong>和<strong>比较运算符</strong>与函数的使用。</p>
-<h4 id="数值运算符"><a href="#数值运算符" class="headerlink" title="数值运算符"></a>数值运算符</h4><p>我们常说的“加减乘除”就是数值运算符，例如：<br><img src="/img/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/2-1.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="数值运算符"><a href="#数值运算符" class="headerlink" title="数值运算符"></a>数值运算符</h4><p>我们常说的“加减乘除”就是数值运算符，例如：<br><img src="/img/MySQL/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/2-1.png" srcset="/img/loading.gif" lazyload></p>
 <p>下面是常与数值结合使用的函数：</p>
 <table>
 <thead>
@@ -429,19 +429,19 @@
 <td>取余数(取模)</td>
 </tr>
 </tbody></table>
-<p><strong>CEIL()和FLOOR()</strong><br>这两个函数都是对值进行取整，<code>CEIL()</code>函数是<strong>向上取整</strong>，<code>FLOOR()</code>是<strong>向下取整</strong>：<br><img src="/img/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/2-2.png" srcset="/img/loading.gif" lazyload></p>
+<p><strong>CEIL()和FLOOR()</strong><br>这两个函数都是对值进行取整，<code>CEIL()</code>函数是<strong>向上取整</strong>，<code>FLOOR()</code>是<strong>向下取整</strong>：<br><img src="/img/MySQL/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/2-2.png" srcset="/img/loading.gif" lazyload></p>
 <p><strong>DIV和MOD</strong><br>我们可以直接对数值使用<code>/</code>（除法）或<code>%（</code>取余），但仅此是计算远远不及我们的需求。</p>
-<p>因此还提供了<code>DIV</code>整数除法函数：<br><img src="/img/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/2-3.png" srcset="/img/loading.gif" lazyload></p>
-<p>但<code>MOD</code>取模函数与<code>%</code>计算是<strong>等价</strong>的：<br><img src="/img/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/2-4.png" srcset="/img/loading.gif" lazyload></p>
+<p>因此还提供了<code>DIV</code>整数除法函数：<br><img src="/img/MySQL/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/2-3.png" srcset="/img/loading.gif" lazyload></p>
+<p>但<code>MOD</code>取模函数与<code>%</code>计算是<strong>等价</strong>的：<br><img src="/img/MySQL/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/2-4.png" srcset="/img/loading.gif" lazyload></p>
 <p><strong>ROUND()、POWER()、SQRT()和TRUNCATE()</strong></p>
 <ul>
-<li><p><code>ROUND()</code>函数：四舍五入， 下面示例为：<br><img src="/img/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/2-5.png" srcset="/img/loading.gif" lazyload></p>
+<li><p><code>ROUND()</code>函数：四舍五入， 下面示例为：<br><img src="/img/MySQL/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/2-5.png" srcset="/img/loading.gif" lazyload></p>
 </li>
-<li><p><code>POWER()</code>函数：幂运算， 下面示例为<code>2^3=8</code>：<br><img src="/img/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/2-6.png" srcset="/img/loading.gif" lazyload></p>
+<li><p><code>POWER()</code>函数：幂运算， 下面示例为<code>2^3=8</code>：<br><img src="/img/MySQL/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/2-6.png" srcset="/img/loading.gif" lazyload></p>
 </li>
-<li><p>SQRT()函数：平方根运算， 下面示例为：<br><img src="/img/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/2-7.png" srcset="/img/loading.gif" lazyload><br><img src="/img/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/2-8.png" srcset="/img/loading.gif" lazyload></p>
+<li><p>SQRT()函数：平方根运算， 下面示例为：<br><img src="/img/MySQL/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/2-7.png" srcset="/img/loading.gif" lazyload><br><img src="/img/MySQL/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/2-8.png" srcset="/img/loading.gif" lazyload></p>
 </li>
-<li><p><code>TRUNCATE()</code>函数：数字截取，只做截取，不发生四舍五入， 下面示例为：<br><img src="/img/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/2-9.png" srcset="/img/loading.gif" lazyload></p>
+<li><p><code>TRUNCATE()</code>函数：数字截取，只做截取，不发生四舍五入， 下面示例为：<br><img src="/img/MySQL/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/2-9.png" srcset="/img/loading.gif" lazyload></p>
 </li>
 </ul>
 <h4 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h4><p>除了数值运算符，<code>MySQL</code>中还有比较运算符：</p>
@@ -466,16 +466,16 @@
 </tr>
 </tbody></table>
 <ul>
-<li><p><code>BETWEEN...AND...</code>：指定一个范围，只要选择的数字在这个范围内则为<code>1</code>否则为<code>0</code>；<br><img src="/img/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/2-10.png" srcset="/img/loading.gif" lazyload></p>
+<li><p><code>BETWEEN...AND...</code>：指定一个范围，只要选择的数字在这个范围内则为<code>1</code>否则为<code>0</code>；<br><img src="/img/MySQL/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/2-10.png" srcset="/img/loading.gif" lazyload></p>
 </li>
-<li><p><code>IN()</code>：指定列出值，只要选择的数字存在其中则为<code>1</code>否则为<code>0</code>；<br><img src="/img/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/2-11.png" srcset="/img/loading.gif" lazyload></p>
+<li><p><code>IN()</code>：指定列出值，只要选择的数字存在其中则为<code>1</code>否则为<code>0</code>；<br><img src="/img/MySQL/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/2-11.png" srcset="/img/loading.gif" lazyload></p>
 </li>
-<li><p><code>IS NULL</code>：判断字段是否为空。<br><img src="/img/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/2-12.png" srcset="/img/loading.gif" lazyload></p>
+<li><p><code>IS NULL</code>：判断字段是否为空。<br><img src="/img/MySQL/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/2-12.png" srcset="/img/loading.gif" lazyload></p>
 </li>
 </ul>
 <h3 id="编程要求-1"><a href="#编程要求-1" class="headerlink" title="编程要求"></a>编程要求</h3><p>请仔细阅读右侧代码，根据方法内的提示，在<code>Begin - End</code>区域内进行代码补充，具体任务如下：</p>
 <ul>
-<li>根据下面表达式修改学生的最终成绩，结果使用四舍五入保留两位小数：<br><img src="/img/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/2-13.png" srcset="/img/loading.gif" lazyload></li>
+<li>根据下面表达式修改学生的最终成绩，结果使用四舍五入保留两位小数：<br><img src="/img/MySQL/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/2-13.png" srcset="/img/loading.gif" lazyload></li>
 </ul>
 <p><code>Score</code>表结构如下：</p>
 <table>
@@ -549,18 +549,18 @@
 </tbody></table>
 <p><strong>NOW()、CURDATE()和CURTIME()</strong></p>
 <ul>
-<li><p><code>NOW()</code>返回当前日期和时间；<br><img src="/img/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/3-1.png" srcset="/img/loading.gif" lazyload></p>
+<li><p><code>NOW()</code>返回当前日期和时间；<br><img src="/img/MySQL/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/3-1.png" srcset="/img/loading.gif" lazyload></p>
 </li>
-<li><p><code>CURDATE()</code>则单独返回当前日期，<code>CURTIME()</code>则返回当前时间。<br><img src="/img/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/3-2.png" srcset="/img/loading.gif" lazyload></p>
+<li><p><code>CURDATE()</code>则单独返回当前日期，<code>CURTIME()</code>则返回当前时间。<br><img src="/img/MySQL/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/3-2.png" srcset="/img/loading.gif" lazyload></p>
 </li>
 </ul>
 <p><strong>DATE_ADD()、DATEDIFF()和DATE_FORMAT()</strong></p>
 <ul>
-<li><p><code>DATE_ADD()</code>从函数名称来看会想当然的认为是时间的添加，但其实可以添加也可以减少，因此我们将其说明为<strong>日期的变化</strong>，第一个参数为指定时间，第二个参数为增加（减少）的单位值（<code>YEAR</code>、<code>MONTHS</code>、<code>WEEK</code>、<code>DAY</code>）；<br><img src="/img/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/3-3.png" srcset="/img/loading.gif" lazyload></p>
+<li><p><code>DATE_ADD()</code>从函数名称来看会想当然的认为是时间的添加，但其实可以添加也可以减少，因此我们将其说明为<strong>日期的变化</strong>，第一个参数为指定时间，第二个参数为增加（减少）的单位值（<code>YEAR</code>、<code>MONTHS</code>、<code>WEEK</code>、<code>DAY</code>）；<br><img src="/img/MySQL/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/3-3.png" srcset="/img/loading.gif" lazyload></p>
 </li>
-<li><p><code>DATEDIFF()</code>函数则返回二个日期之间的差值；<br><img src="/img/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/3-4.png" srcset="/img/loading.gif" lazyload></p>
+<li><p><code>DATEDIFF()</code>函数则返回二个日期之间的差值；<br><img src="/img/MySQL/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/3-4.png" srcset="/img/loading.gif" lazyload></p>
 </li>
-<li><p><code>DATE_FORMAT()</code>函数为日期格式化，也就是将我们常见的日期格式转换成另一种格式。<br><img src="/img/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/3-5.png" srcset="/img/loading.gif" lazyload></p>
+<li><p><code>DATE_FORMAT()</code>函数为日期格式化，也就是将我们常见的日期格式转换成另一种格式。<br><img src="/img/MySQL/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/3-5.png" srcset="/img/loading.gif" lazyload></p>
 </li>
 </ul>
 <p>以下是在<code>format</code>字符串中常用的说明符，更多的说明符可在 <code>MySQL</code> 官方文档中进行查看：</p>
@@ -604,7 +604,7 @@
 <td>年，4 位</td>
 </tr>
 </tbody></table>
-<p><strong>YEAR()和MONTH()</strong><br><img src="/img/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/3-6.png" srcset="/img/loading.gif" lazyload></p>
+<p><strong>YEAR()和MONTH()</strong><br><img src="/img/MySQL/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/3-6.png" srcset="/img/loading.gif" lazyload></p>
 <h4 id="流程控制类函数"><a href="#流程控制类函数" class="headerlink" title="流程控制类函数"></a>流程控制类函数</h4><table>
 <thead>
 <tr>
@@ -626,11 +626,11 @@
 </tr>
 </tbody></table>
 <ul>
-<li><p><code>IF()</code>函数：<code>IF(a,b,c)</code> 如果<code>a</code>为真返回<code>b</code>，否则返回<code>c</code>；<br><img src="/img/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/3-7.png" srcset="/img/loading.gif" lazyload></p>
+<li><p><code>IF()</code>函数：<code>IF(a,b,c)</code> 如果<code>a</code>为真返回<code>b</code>，否则返回<code>c</code>；<br><img src="/img/MySQL/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/3-7.png" srcset="/img/loading.gif" lazyload></p>
 </li>
-<li><p><code>IFNULL()</code>函数：<code>IFNULL(a,b)</code> 如果<code>a</code>不为<code>null</code>返回<code>a</code>，否则返回<code>b</code>；<br><img src="/img/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/3-8.png" srcset="/img/loading.gif" lazyload></p>
+<li><p><code>IFNULL()</code>函数：<code>IFNULL(a,b)</code> 如果<code>a</code>不为<code>null</code>返回<code>a</code>，否则返回<code>b</code>；<br><img src="/img/MySQL/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/3-8.png" srcset="/img/loading.gif" lazyload></p>
 </li>
-<li><p><code>CASE</code>：<code>CASE WHEN a then b end</code> 判断如果<code>a</code>为真返回<code>b</code>。<br><img src="/img/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/3-9.png" srcset="/img/loading.gif" lazyload></p>
+<li><p><code>CASE</code>：<code>CASE WHEN a then b end</code> 判断如果<code>a</code>为真返回<code>b</code>。<br><img src="/img/MySQL/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/3-9.png" srcset="/img/loading.gif" lazyload></p>
 </li>
 </ul>
 <h3 id="编程要求-2"><a href="#编程要求-2" class="headerlink" title="编程要求"></a>编程要求</h3><p>请仔细阅读右侧代码，根据方法内的提示，在<code>Begin - End</code>区域内进行代码补充，具体任务如下：</p>
@@ -720,14 +720,14 @@
 <li>函数体由合法的<code>SQL</code>语句构成；</li>
 <li>函数体可以是简单的<code>SELECT</code>或<code>INSERT</code>语句；</li>
 <li>函数体如果为复合结构则使用<code>begin...end</code>语句；</li>
-<li>复合结构可以包含声明，循环，控制结构。<br><strong>自定义无参函数</strong><br>例如我们在上一章节中学习了系统自带的<code>NOW()</code>函数，他的输出形式是固定的，但是现在我想把输出用汉语表示，我们可以使用<code>DATA_FORMAT()</code>函数：<br><img src="/img/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/4-1.png" srcset="/img/loading.gif" lazyload></li>
+<li>复合结构可以包含声明，循环，控制结构。<br><strong>自定义无参函数</strong><br>例如我们在上一章节中学习了系统自带的<code>NOW()</code>函数，他的输出形式是固定的，但是现在我想把输出用汉语表示，我们可以使用<code>DATA_FORMAT()</code>函数：<br><img src="/img/MySQL/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/4-1.png" srcset="/img/loading.gif" lazyload></li>
 </ol>
 <p>但是如果我要经常使用到这个功能，难道要每次都来写吗？ 这样显然很麻烦，现在我们就将这个过程来封装成一个自定义函数，分析可知函数中只需含一句查询 <code>SQL</code> ，因此我们首次采用省略<code>delimiter</code>和<code>begin...end</code>的写法：</p>
 <figure class="highlight cos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cos">CREATE FUNCTION f1() RETURNS VARCHAR(<span class="hljs-number">30</span>)<br><span class="hljs-keyword">RETURN</span> DATE_FORMAT(NOW(),&#x27;<span class="hljs-built_in">%Y</span>年<span class="hljs-built_in">%m</span>月<span class="hljs-built_in">%d</span>日 <span class="hljs-built_in">%H</span>点:<span class="hljs-built_in">%i</span>分:<span class="hljs-built_in">%s</span>秒&#x27;)<span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure>
-<p>这样我们每次想要使用功能的时候就可以直接查询了，便捷了很多，例如：<br><img src="/img/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/4-2.png" srcset="/img/loading.gif" lazyload></p>
+<p>这样我们每次想要使用功能的时候就可以直接查询了，便捷了很多，例如：<br><img src="/img/MySQL/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/4-2.png" srcset="/img/loading.gif" lazyload></p>
 <p><strong>自定义带参数的函数</strong><br>上面的自定义函数为无参类型的，现在我们来定义一个计<strong>算两个数的和</strong>的函数：</p>
 <figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">delimiter</span> //<br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">FUNCTION</span> f2(a <span class="hljs-type">int</span>, b <span class="hljs-type">int</span>) <span class="hljs-keyword">RETURNS</span> <span class="hljs-type">int</span><br><span class="hljs-keyword">begin</span><br>    <span class="hljs-keyword">return</span> a + b;<br><span class="hljs-keyword">end</span><br>//<br><span class="hljs-keyword">delimiter</span> ;<br></code></pre></td></tr></table></figure>
-<p><img src="/img/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/4-3.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/MySQL/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/4-3.png" srcset="/img/loading.gif" lazyload></p>
 <p><strong>删除自定义函数</strong><br>当我们不再需要自定义的函数时，我们可以使用删除 <code>SQL</code> 将其删除：</p>
 <figure class="highlight ceylon"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ceylon">drop <span class="hljs-keyword">function</span> [<span class="hljs-keyword">if</span> <span class="hljs-keyword">exists</span>] <span class="hljs-keyword">function</span><span class="hljs-number">_n</span>ame;<br></code></pre></td></tr></table></figure>
 <h4 id="自定义函数中定义变量"><a href="#自定义函数中定义变量" class="headerlink" title="自定义函数中定义变量"></a>自定义函数中定义变量</h4><p><strong>定义全局变量</strong><br>赋值的操作符：<code>=</code>或<code>:=</code>。<br>作用域：针对于当前会话（连接）有效，同于会话变量的作用域，应用在任何地方，也就是<code>begin...end</code>里面或<code>begin...end</code>外边。</p>

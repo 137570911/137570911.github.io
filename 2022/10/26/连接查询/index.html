@@ -23,12 +23,12 @@
 <meta property="og:site_name" content="casual_qian">
 <meta property="og:description" content="当我们同时需要两张表的信息时，我们该怎么写查询语句呢？这时我们就可以使用连接查询，将两张表“连接”起来，让返回的查询结果中包含两张表的数据，连接查询包括内连接和外链接查询。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://casual-qian.github.io/img/%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2/MySQL%E5%9B%BE%E7%89%87.png">
+<meta property="og:image" content="https://casual-qian.github.io/img/MySQL/MySQL%E5%9B%BE%E7%89%87.png">
 <meta property="article:published_time" content="2022-10-26T08:50:00.000Z">
-<meta property="article:modified_time" content="2022-11-01T09:32:13.222Z">
+<meta property="article:modified_time" content="2022-11-16T02:54:10.177Z">
 <meta property="article:author" content="casual_qian">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://casual-qian.github.io/img/%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2/MySQL%E5%9B%BE%E7%89%87.png">
+<meta name="twitter:image" content="https://casual-qian.github.io/img/MySQL/MySQL%E5%9B%BE%E7%89%87.png">
   
   
   
@@ -176,7 +176,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2/banner.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/MySQL/banner.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -327,7 +327,7 @@
 </ul>
 <p>1.确定所连接的表，</p>
 <p>2.确定所要查询的字段，</p>
-<p>3.确定连接条件与连接方式。<br><img src="/img/%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2/1-1.png" srcset="/img/loading.gif" lazyload></p>
+<p>3.确定连接条件与连接方式。<br><img src="/img/MySQL/MySQL/%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2/1-1.png" srcset="/img/loading.gif" lazyload></p>
 <p>其中，没有部门的员工和部门没有员工的部门都没有被查出来，这就是内连接的特点，只查询在连接表中有对应的记录，其中<code>dept.id=emp.dept_id</code>是连接条件。</p>
 <h3 id="编程要求"><a href="#编程要求" class="headerlink" title="编程要求"></a>编程要求</h3><p>在右侧编辑器补充代码，查询数据表中学生姓名以及对应的班级名称，将其对应的列名分别另命名为<code>studentName</code>和<code>className</code>。</p>
 <p>我们为你提供了两张表，内容如下：</p>
@@ -474,11 +474,11 @@
 <td>销售部</td>
 </tr>
 </tbody></table>
-<p>例如查询所有员工姓名以及他所在部门，在<strong>内连接</strong>中<code>Mary</code>没有被查出，因为他没有对应的部门，现在想把<code>Mary</code>也查出来，就要使用<strong>左外连接</strong>。<br><img src="/img/%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2/2-1.png" srcset="/img/loading.gif" lazyload></p>
+<p>例如查询所有员工姓名以及他所在部门，在<strong>内连接</strong>中<code>Mary</code>没有被查出，因为他没有对应的部门，现在想把<code>Mary</code>也查出来，就要使用<strong>左外连接</strong>。<br><img src="/img/MySQL/%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2/2-1.png" srcset="/img/loading.gif" lazyload></p>
 <p>此查询语句以<code>employee</code>为主表查询，因此最终记录至少不少于主表已有的记录数。</p>
-<p>右外连接是同理的，只是基准表的位置变化了而已。<br><img src="/img/%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2/2-2.png" srcset="/img/loading.gif" lazyload></p>
+<p>右外连接是同理的，只是基准表的位置变化了而已。<br><img src="/img/MySQL/%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2/2-2.png" srcset="/img/loading.gif" lazyload></p>
 <p>我们在这里只是将<code>left</code>修改成了<code>right</code>,但是基准表变化了，是以<code>department</code>表的数据去匹配<code>employee</code>表，所以左外连接能做到的查询，右外连接也能做到，仅展现的效果有所不同。</p>
-<p>虽然左外连接和右外连接有主表差异，但左外连接和右外连接可以互转，如上面的右外连接也等效于如下查询语句，只需将基准表换一下：<br><img src="/img/%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2/2-3.png" srcset="/img/loading.gif" lazyload></p>
+<p>虽然左外连接和右外连接有主表差异，但左外连接和右外连接可以互转，如上面的右外连接也等效于如下查询语句，只需将基准表换一下：<br><img src="/img/MySQL/%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2/2-3.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="编程要求-1"><a href="#编程要求-1" class="headerlink" title="编程要求"></a>编程要求</h3><p>在右侧编辑器补充代码，分别使用<strong>左外连接</strong>和<strong>右外连接</strong>查询数据表中所有学生姓名和对应的班级名称，查询结果列分别另命名为<code>studentName</code>和<code>className</code>。</p>
 <p>我们为你提供了两张表，内容如下：</p>
 <p><code>tb_student</code>表数据：</p>
@@ -612,7 +612,7 @@
 <td>运维部</td>
 </tr>
 </tbody></table>
-<p>要求查询员工姓名和所在部门名称，使用内连接查询，将查询结果按照年龄升序排序：<br><img src="/img/%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2/3-1.png" srcset="/img/loading.gif" lazyload></p>
+<p>要求查询员工姓名和所在部门名称，使用内连接查询，将查询结果按照年龄升序排序：<br><img src="/img/MySQL/%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2/3-1.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="编程要求-2"><a href="#编程要求-2" class="headerlink" title="编程要求"></a>编程要求</h3><p>在右侧编辑器补充代码，查询所有班级里分数在<code>90</code>分以上的学生的姓名和学生的成绩以及学生所在的班级，其中学生的姓名和学生所在班级分别另命名为<code>studentName</code>和<code>className</code>。</p>
 <p>我们为你提供了两张表，内容如下：</p>
 <p><code>tb_student</code>表数据：</p>

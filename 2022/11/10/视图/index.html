@@ -23,12 +23,12 @@
 <meta property="og:site_name" content="casual_qian">
 <meta property="og:description" content="本文的主要内容是掌握视图基础知识">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://casual-qian.github.io/img/%E8%A7%86%E5%9B%BE/MySQL%E5%9B%BE%E7%89%87.png">
+<meta property="og:image" content="https://casual-qian.github.io/img/MySQL/MySQL%E5%9B%BE%E7%89%87.png">
 <meta property="article:published_time" content="2022-11-10T03:33:00.000Z">
-<meta property="article:modified_time" content="2022-11-10T03:26:49.811Z">
+<meta property="article:modified_time" content="2022-11-16T02:59:40.961Z">
 <meta property="article:author" content="casual_qian">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://casual-qian.github.io/img/%E8%A7%86%E5%9B%BE/MySQL%E5%9B%BE%E7%89%87.png">
+<meta name="twitter:image" content="https://casual-qian.github.io/img/MySQL/MySQL%E5%9B%BE%E7%89%87.png">
   
   
   
@@ -176,7 +176,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/%E8%A7%86%E5%9B%BE/banner.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/MySQL/banner.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -282,8 +282,8 @@
 <li><code>select_statement</code>：表示<code>select</code>语句；</li>
 <li><code>[WITH [CASCADED | LOCAL] CHECK OPTION]</code>：表示视图在更新时保证在视图的权限范围之内；<code>cascade</code>是默认值，表示更新视图的时候，要满足视图和表的相关条件；<code>local</code>表示更新视图的时候，要满足该视图定义的一个条件即可。</li>
 </ul>
-<p>示例一：<br><img src="/img/%E8%A7%86%E5%9B%BE/1-1.png" srcset="/img/loading.gif" lazyload></p>
-<p>示例二：<br><img src="/img/%E8%A7%86%E5%9B%BE/1-2.png" srcset="/img/loading.gif" lazyload></p>
+<p>示例一：<br><img src="/img/MySQL/%E8%A7%86%E5%9B%BE/1-1.png" srcset="/img/loading.gif" lazyload></p>
+<p>示例二：<br><img src="/img/MySQL/%E8%A7%86%E5%9B%BE/1-2.png" srcset="/img/loading.gif" lazyload></p>
 <p>以上两个示例可以看出，虽然两个视图的字段名不同，但是，数据是相同的，因为两个视图引用的是<strong>同一个表中的数据</strong>，并且，<code>as</code>后的创建视图的语句也相同。</p>
 <p>在实际开发中，用户可以根据自己的需求，通过视图的方式，获取基本表中自己需要的数据，这样既能满足用户的需求，也不会破坏基本表原来的结构，从而保证了基本表中数据的安全性。</p>
 <h4 id="操作视图"><a href="#操作视图" class="headerlink" title="操作视图"></a>操作视图</h4><p>视图是逻辑表，也就是说视图不是真实的表，但操作视图和操作普通表的语法是一样的。</p>
@@ -294,10 +294,10 @@
 <li>不能使用复合查询，即不能使用<code>union</code>、<code>intersect</code>、<code>except</code>等集合操作；</li>
 <li><code>select</code>子句的字段列表不能包含聚合、窗口函数、集合返回函数。</li>
 </ul>
-<p>我们仍使用之前示例中的数据来操作视图：<br><img src="/img/%E8%A7%86%E5%9B%BE/1-3.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们仍使用之前示例中的数据来操作视图：<br><img src="/img/MySQL/%E8%A7%86%E5%9B%BE/1-3.png" srcset="/img/loading.gif" lazyload></p>
 <h4 id="删除视图"><a href="#删除视图" class="headerlink" title="删除视图"></a>删除视图</h4><p>若视图不再被需要，我们可以将其删除，且视图的删除并不影响源表中的数据。</p>
 <p>删除视图的 <code>SQL</code> 如下：<br><code>DROP VIEW view_name;</code></p>
-<p>示例：<br><img src="/img/%E8%A7%86%E5%9B%BE/1-4.png" srcset="/img/loading.gif" lazyload></p>
+<p>示例：<br><img src="/img/MySQL/%E8%A7%86%E5%9B%BE/1-4.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="编程要求"><a href="#编程要求" class="headerlink" title="编程要求"></a>编程要求</h3><p>根据提示，在右侧编辑器补充代码，根据提供的表完成视图的创建，具体要求如下：</p>
 <p><code>student</code>表数据结构：</p>
 <table>

@@ -23,12 +23,12 @@
 <meta property="og:site_name" content="casual_qian">
 <meta property="og:description" content="在数据库中出现重复数据是常见之事，本文主要介绍如何删除表中的重复数据。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://casual-qian.github.io/img/%E5%88%A0%E9%99%A4%E9%87%8D%E5%A4%8D%E6%95%B0%E6%8D%AE/MySQL%E5%9B%BE%E7%89%87.png">
+<meta property="og:image" content="https://casual-qian.github.io/img/MySQL/MySQL%E5%9B%BE%E7%89%87.png">
 <meta property="article:published_time" content="2022-11-11T03:00:00.000Z">
-<meta property="article:modified_time" content="2022-11-11T03:51:31.258Z">
+<meta property="article:modified_time" content="2022-11-16T02:59:53.032Z">
 <meta property="article:author" content="casual_qian">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://casual-qian.github.io/img/%E5%88%A0%E9%99%A4%E9%87%8D%E5%A4%8D%E6%95%B0%E6%8D%AE/MySQL%E5%9B%BE%E7%89%87.png">
+<meta name="twitter:image" content="https://casual-qian.github.io/img/MySQL/MySQL%E5%9B%BE%E7%89%87.png">
   
   
   
@@ -176,7 +176,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/%E5%88%A0%E9%99%A4%E9%87%8D%E5%A4%8D%E6%95%B0%E6%8D%AE/banner.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/MySQL/banner.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -293,7 +293,7 @@
 <td>333</td>
 </tr>
 </tbody></table>
-<p>上面<code>users</code>表中出现了相同用户名的重复数据，我们需要将其重复的删除，首先我们将重复用户查出来：<br><img src="/img/%E5%88%A0%E9%99%A4%E9%87%8D%E5%A4%8D%E6%95%B0%E6%8D%AE/1-1.png" srcset="/img/loading.gif" lazyload></p>
+<p>上面<code>users</code>表中出现了相同用户名的重复数据，我们需要将其重复的删除，首先我们将重复用户查出来：<br><img src="/img/MySQL/%E5%88%A0%E9%99%A4%E9%87%8D%E5%A4%8D%E6%95%B0%E6%8D%AE/1-1.png" srcset="/img/loading.gif" lazyload></p>
 <p>找到重复的用户后我们要怎么删除呢？又要怎么选择保留的数据呢？</p>
 <h4 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h4><p>假设我们要保留的数据为<strong>先注册</strong>的账号，我们可将思路拟定如下：</p>
 <ul>
@@ -345,11 +345,11 @@
 <p>遇到这种情况要将数据去重，我们的解题思路基本就可以拟定为把数据拆开后去重再将数据重新组合。</p>
 <p>下面我们细分成几个小步骤来看：</p>
 <ul>
-<li><p>统计<code>mobile</code>列中各用户的电话数量；<br><img src="/img/%E5%88%A0%E9%99%A4%E9%87%8D%E5%A4%8D%E6%95%B0%E6%8D%AE/2-1.png" srcset="/img/loading.gif" lazyload></p>
+<li><p>统计<code>mobile</code>列中各用户的电话数量；<br><img src="/img/MySQL/%E5%88%A0%E9%99%A4%E9%87%8D%E5%A4%8D%E6%95%B0%E6%8D%AE/2-1.png" srcset="/img/loading.gif" lazyload></p>
 </li>
-<li><p>拆分数据（连接序列化表）；<br><img src="/img/%E5%88%A0%E9%99%A4%E9%87%8D%E5%A4%8D%E6%95%B0%E6%8D%AE/2-2.png" srcset="/img/loading.gif" lazyload></p>
+<li><p>拆分数据（连接序列化表）；<br><img src="/img/MySQL/%E5%88%A0%E9%99%A4%E9%87%8D%E5%A4%8D%E6%95%B0%E6%8D%AE/2-2.png" srcset="/img/loading.gif" lazyload></p>
 </li>
-<li><p>截取数据；<br><img src="/img/%E5%88%A0%E9%99%A4%E9%87%8D%E5%A4%8D%E6%95%B0%E6%8D%AE/2-3.png" srcset="/img/loading.gif" lazyload></p>
+<li><p>截取数据；<br><img src="/img/MySQL/%E5%88%A0%E9%99%A4%E9%87%8D%E5%A4%8D%E6%95%B0%E6%8D%AE/2-3.png" srcset="/img/loading.gif" lazyload></p>
 </li>
 <li><p>最后一步我们只需要将数据去重，然后再分组进行组合就大功告成了。</p>
 </li>

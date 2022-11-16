@@ -23,12 +23,12 @@
 <meta property="og:site_name" content="casual_qian">
 <meta property="og:description" content="文章主要如何使用关键字ORDER BY、GROUP BY对查询结果进行排序和分组的，以及如何使用关键字LIMIT限制查询结果的数量。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://casual-qian.github.io/img/%E5%8D%95%E8%A1%A8%E6%9F%A5%E8%AF%A2%EF%BC%88%E4%B8%89%EF%BC%89/MySQL%E5%9B%BE%E7%89%87.png">
+<meta property="og:image" content="https://casual-qian.github.io/img/MySQL/MySQL%E5%9B%BE%E7%89%87.png">
 <meta property="article:published_time" content="2022-10-24T14:50:00.000Z">
-<meta property="article:modified_time" content="2022-11-01T09:31:58.727Z">
+<meta property="article:modified_time" content="2022-11-16T02:51:04.851Z">
 <meta property="article:author" content="casual_qian">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://casual-qian.github.io/img/%E5%8D%95%E8%A1%A8%E6%9F%A5%E8%AF%A2%EF%BC%88%E4%B8%89%EF%BC%89/MySQL%E5%9B%BE%E7%89%87.png">
+<meta name="twitter:image" content="https://casual-qian.github.io/img/MySQL/MySQL%E5%9B%BE%E7%89%87.png">
   
   
   
@@ -176,7 +176,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/%E5%8D%95%E8%A1%A8%E6%9F%A5%E8%AF%A2%EF%BC%88%E4%B8%89%EF%BC%89/banner.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/MySQL/banner.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -290,7 +290,7 @@
 <td>23</td>
 </tr>
 </tbody></table>
-<p>我们需要查询表中信息，要求按照年龄的<strong>升序</strong>进行排序：<br><img src="/img/%E5%8D%95%E8%A1%A8%E6%9F%A5%E8%AF%A2%EF%BC%88%E4%B8%89%EF%BC%89/1-1.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们需要查询表中信息，要求按照年龄的<strong>升序</strong>进行排序：<br><img src="/img/MySQL/%E5%8D%95%E8%A1%A8%E6%9F%A5%E8%AF%A2%EF%BC%88%E4%B8%89%EF%BC%89/1-1.png" srcset="/img/loading.gif" lazyload></p>
 <h4 id="指定排序方向"><a href="#指定排序方向" class="headerlink" title="指定排序方向"></a>指定排序方向</h4><p>从上面的查询语句中我们并未看到有任何表示<strong>排序</strong>方向的关键字，在默认情况下，它是按<strong>升序</strong>排列的。</p>
 <ul>
 <li><code>ASC</code> 升序关键字</li>
@@ -377,7 +377,7 @@
 <td>男</td>
 </tr>
 </tbody></table>
-<p>我们对表中数据的性别进行分组查询：<br><img src="/img/%E5%8D%95%E8%A1%A8%E6%9F%A5%E8%AF%A2%EF%BC%88%E4%B8%89%EF%BC%89/2-1.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们对表中数据的性别进行分组查询：<br><img src="/img/MySQL/%E5%8D%95%E8%A1%A8%E6%9F%A5%E8%AF%A2%EF%BC%88%E4%B8%89%EF%BC%89/2-1.png" srcset="/img/loading.gif" lazyload></p>
 <p>可以看出，返回了<code>3</code>条记录，分别是<code>sex</code>字段值为<code>Null</code>、女、男的记录，查询结果按照<code>sex</code>字段中不同的值进行了<strong>分类，只显示每个分组中的一条记录</strong>，意义不大，一般情况下，<code>GROUP BY</code>都和聚合函数一起使用。</p>
 <h3 id="编程要求-1"><a href="#编程要求-1" class="headerlink" title="编程要求"></a>编程要求</h3><p>在右侧编辑器<code>Begin-En</code>d&#96;处补充代码，对班级表中的班级名称进行分组查询。</p>
 <p>我们已经为你提供了班级表信息：<br><code>tb_class</code>表数据：</p>
@@ -469,8 +469,8 @@
 <td>18</td>
 </tr>
 </tbody></table>
-<p>查询<code>employee</code>表中前<code>4</code>条数据：<br><img src="/img/%E5%8D%95%E8%A1%A8%E6%9F%A5%E8%AF%A2%EF%BC%88%E4%B8%89%EF%BC%89/3-1.png" srcset="/img/loading.gif" lazyload></p>
-<p>从第二条记录开始往后查看4条数据（不包含第二条）：<br><img src="/img/%E5%8D%95%E8%A1%A8%E6%9F%A5%E8%AF%A2%EF%BC%88%E4%B8%89%EF%BC%89/3-2.png" srcset="/img/loading.gif" lazyload></p>
+<p>查询<code>employee</code>表中前<code>4</code>条数据：<br><img src="/img/MySQL/%E5%8D%95%E8%A1%A8%E6%9F%A5%E8%AF%A2%EF%BC%88%E4%B8%89%EF%BC%89/3-1.png" srcset="/img/loading.gif" lazyload></p>
+<p>从第二条记录开始往后查看4条数据（不包含第二条）：<br><img src="/img/MySQL/%E5%8D%95%E8%A1%A8%E6%9F%A5%E8%AF%A2%EF%BC%88%E4%B8%89%EF%BC%89/3-2.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="编程要求-2"><a href="#编程要求-2" class="headerlink" title="编程要求"></a>编程要求</h3><p>在右侧编辑器<code>Begin-End</code>处补充代码，查询班级中第<code>2</code>名到第<code>5</code>名的学生信息，并根据学生成绩进行降序排序。</p>
 <p>我们已经为你提供了学生成绩表：<br><code>tb_score</code>表数据：</p>
 <table>
