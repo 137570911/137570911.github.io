@@ -1,0 +1,638 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="casual_qian">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="掌握DBMS 提供的数据库用户和权限管理机制；理解存储过程概念，掌握存储过程与触发器的使用；掌握数据库备份与恢复方法。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库管理系统的维护与管理">
+<meta property="og:url" content="https://casual-qian.github.io/2022/12/03/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BB%B4%E6%8A%A4%E4%B8%8E%E7%AE%A1%E7%90%86/index.html">
+<meta property="og:site_name" content="casual_qian">
+<meta property="og:description" content="掌握DBMS 提供的数据库用户和权限管理机制；理解存储过程概念，掌握存储过程与触发器的使用；掌握数据库备份与恢复方法。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://casual-qian.github.io/img/openGauss/openGauss.jpg">
+<meta property="article:published_time" content="2022-12-03T06:50:00.000Z">
+<meta property="article:modified_time" content="2022-12-03T07:05:48.834Z">
+<meta property="article:author" content="casual_qian">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://casual-qian.github.io/img/openGauss/openGauss.jpg">
+  
+  
+  
+  <title>数据库管理系统的维护与管理 - casual_qian</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/iconfont_csdn/iconfont.css">
+<link rel="stylesheet" href="/css/iconfont_kugou/iconfont.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"casual-qian.github.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"/","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>一个简陋的网站</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/openGauss/banner.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="数据库管理系统的维护与管理"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-12-03 14:50" pubdate>
+          2022年12月3日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.3k 字
+        
+      </span>
+    
+
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">数据库管理系统的维护与管理</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>掌握<code>DBMS</code>提供的数据库用户和权限管理机制；理解存储过程概念，掌握存储过程与触发器的使用；掌握数据库备份与恢复方法。</p>
+<h2 id="实验环境："><a href="#实验环境：" class="headerlink" title="实验环境："></a>实验环境：</h2><p><code>openEuler</code>操作系统上的<code>openGauss</code>数据库</p>
+<h2 id="实验内容"><a href="#实验内容" class="headerlink" title="实验内容"></a>实验内容</h2><h3 id="1-数据库安全性"><a href="#1-数据库安全性" class="headerlink" title="1.数据库安全性"></a>1.数据库安全性</h3><h4 id="1-数据库账户的添加、删除"><a href="#1-数据库账户的添加、删除" class="headerlink" title="(1)数据库账户的添加、删除"></a>(1)数据库账户的添加、删除</h4><p>添加用户<code>Tom</code>，登录密码为<code>137570</code></p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">user</span> Tom <span class="hljs-keyword">password</span> <span class="hljs-string">&#x27;137570&#x27;</span>;<br></code></pre></td></tr></table></figure>
+<p><img src="/img/openGauss/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BB%B4%E6%8A%A4%E4%B8%8E%E7%AE%A1%E7%90%86/1-1-1.png" srcset="/img/loading.gif" lazyload><br>发现密码至少需要8个字符</p>
+<p>修改密码为<code>137570911</code></p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">user</span> Tom <span class="hljs-keyword">password</span> <span class="hljs-string">&#x27;137570911&#x27;</span>;<br></code></pre></td></tr></table></figure>
+<p><img src="/img/openGauss/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BB%B4%E6%8A%A4%E4%B8%8E%E7%AE%A1%E7%90%86/1-1-2.png" srcset="/img/loading.gif" lazyload><br>又发现需要至少需要3种字符</p>
+<p>最终修改密码为<code>casual_user@137570</code></p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">user</span> Tom <span class="hljs-keyword">password</span> <span class="hljs-string">&#x27;casual_user@137570&#x27;</span>;<br></code></pre></td></tr></table></figure>
+<p><img src="/img/openGauss/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BB%B4%E6%8A%A4%E4%B8%8E%E7%AE%A1%E7%90%86/1-1-3.png" srcset="/img/loading.gif" lazyload></p>
+<p>再创建以下三个用户<br>用户<code>Jerry</code>		密码<code>Jerry@911</code><br>用户<code>XiaoMing</code> 	密码<code>XiaoMing&amp;762505</code><br>用户<code>LiHua</code>		密码<code>LiHua@12581</code></p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">user</span> Jerry <span class="hljs-keyword">password</span> <span class="hljs-string">&#x27;Jerry@911&#x27;</span>;<br><span class="hljs-keyword">create</span> <span class="hljs-keyword">user</span> XiaoMing <span class="hljs-keyword">password</span> <span class="hljs-string">&#x27;XiaoMing&amp;762505&#x27;</span>;<br><span class="hljs-keyword">create</span> <span class="hljs-keyword">user</span> LIHua <span class="hljs-keyword">password</span> <span class="hljs-string">&#x27;LiHua@12581&#x27;</span><br></code></pre></td></tr></table></figure>
+<p><img src="/img/openGauss/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BB%B4%E6%8A%A4%E4%B8%8E%E7%AE%A1%E7%90%86/1-1-4.png" srcset="/img/loading.gif" lazyload></p>
+<p>删除用户<code>XiaoMing</code></p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">drop <span class="hljs-keyword">user</span> <span class="hljs-title">XiaoMing</span> cascade;<br></code></pre></td></tr></table></figure>
+<p><img src="/img/openGauss/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BB%B4%E6%8A%A4%E4%B8%8E%E7%AE%A1%E7%90%86/1-1-5.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-对账户进行授予权限、收回权限"><a href="#2-对账户进行授予权限、收回权限" class="headerlink" title="(2)对账户进行授予权限、收回权限"></a>(2)对账户进行授予权限、收回权限</h4><p>将<code>student</code>表所有权限赋予用户<code>Tom</code></p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">grant</span> <span class="hljs-keyword">all</span> <span class="hljs-keyword">privileges</span> <span class="hljs-keyword">on</span> student <span class="hljs-keyword">to</span> Tom;<br></code></pre></td></tr></table></figure>
+<p><img src="/img/openGauss/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BB%B4%E6%8A%A4%E4%B8%8E%E7%AE%A1%E7%90%86/1-2-1.png" srcset="/img/loading.gif" lazyload></p>
+<p>将<code>student</code>表的<code>s_id</code>,<code>s_name</code>,<code>s_major</code>的查询、更新权限赋予用户<code>Jerry</code></p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">grant</span> <span class="hljs-keyword">select</span> (s_id,s_name,s_major),<br><span class="hljs-keyword">update</span> (s_id,s_name,s_major) <br><span class="hljs-keyword">on</span> student <span class="hljs-keyword">to</span> Jerry;<br></code></pre></td></tr></table></figure>
+<p><img src="/img/openGauss/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BB%B4%E6%8A%A4%E4%B8%8E%E7%AE%A1%E7%90%86/1-2-2.png" srcset="/img/loading.gif" lazyload></p>
+<p>将<code>student</code>表数据的查询权限赋予用户<code>LiHua</code></p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">grant</span> <span class="hljs-keyword">select</span> <span class="hljs-keyword">on</span> student <span class="hljs-keyword">to</span> LiHua;<br></code></pre></td></tr></table></figure>
+<p><img src="/img/openGauss/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BB%B4%E6%8A%A4%E4%B8%8E%E7%AE%A1%E7%90%86/1-2-3.png" srcset="/img/loading.gif" lazyload></p>
+<p>收回用户<code>LiHua</code>对<code>student</code>表的所有权限</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">revoke</span> <span class="hljs-keyword">all</span> <span class="hljs-keyword">privileges</span> <span class="hljs-keyword">from</span> LiHua;<br></code></pre></td></tr></table></figure>
+<p><img src="/img/openGauss/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BB%B4%E6%8A%A4%E4%B8%8E%E7%AE%A1%E7%90%86/1-2-4.png" srcset="/img/loading.gif" lazyload></p>
+<p>收回用户<code>jerry</code>对<code>student</code>表中对<code>s_id</code>，<code>s_name</code>的更新权限</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">revoke</span> <span class="hljs-keyword">update</span> (s_id,s_name) <span class="hljs-keyword">on</span> student <span class="hljs-keyword">from</span> Jerry;<br></code></pre></td></tr></table></figure>
+<p><img src="/img/openGauss/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BB%B4%E6%8A%A4%E4%B8%8E%E7%AE%A1%E7%90%86/1-2-5.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-触发器，存储过程的使用"><a href="#2-触发器，存储过程的使用" class="headerlink" title="2.触发器，存储过程的使用"></a>2.触发器，存储过程的使用</h3><h4 id="1-创建存储过程并执行"><a href="#1-创建存储过程并执行" class="headerlink" title="(1)创建存储过程并执行"></a>(1)创建存储过程并执行</h4><p>创建更新借书表<code>borrow_book</code>中的还书时间<code>r_time</code>的存储过程，名为<code>update_return_book</code>;</p>
+<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs oxygene"><span class="hljs-keyword">create</span> <span class="hljs-keyword">procedure</span> <span class="hljs-title function_">update_return_date</span><br><span class="hljs-params">(<span class="hljs-keyword">in</span> stu_id varchar(10)</span> , <span class="hljs-title function_">in</span> <span class="hljs-title function_">book_id</span> <span class="hljs-title function_">varchar</span><span class="hljs-params">(10)</span> , <span class="hljs-title function_">in</span> <span class="hljs-title function_">return_date</span> <span class="hljs-title function_">date</span>)<br><span class="hljs-title function_">as</span><br><span class="hljs-title function_">begin</span><br><span class="hljs-title function_">update</span> <span class="hljs-title function_">borrow_book</span><br><span class="hljs-title function_">set</span> <span class="hljs-title function_">r_time</span> = <span class="hljs-title function_">return_date</span><br><span class="hljs-title function_">where</span> <span class="hljs-title function_">stu_id</span> = <span class="hljs-title function_">s_id</span> <span class="hljs-title function_">and</span> <span class="hljs-title function_">book_id</span> = <span class="hljs-title function_">b_id</span>;<br><span class="hljs-keyword">end</span><span class="hljs-punctuation">;</span><br>/<br></code></pre></td></tr></table></figure>
+<p><img src="/img/openGauss/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BB%B4%E6%8A%A4%E4%B8%8E%E7%AE%A1%E7%90%86/2-1-1.png" srcset="/img/loading.gif" lazyload></p>
+<p>原先<code>borrow_book</code>表中数据如下：<br><img src="/img/openGauss/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BB%B4%E6%8A%A4%E4%B8%8E%E7%AE%A1%E7%90%86/2-1-2.png" srcset="/img/loading.gif" lazyload></p>
+<p>调用刚才创建的过程</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs 1c">call update_return_date (&#x27;<span class="hljs-number">003837</span>&#x27;,&#x27;<span class="hljs-number">3422</span>4&#x27;,&#x27;<span class="hljs-number">2022-11</span>-9&#x27;);<br></code></pre></td></tr></table></figure>
+<p><img src="/img/openGauss/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BB%B4%E6%8A%A4%E4%B8%8E%E7%AE%A1%E7%90%86/2-1-3.png" srcset="/img/loading.gif" lazyload></p>
+<p>再次查看该表的数据发现已经发送改变<br><img src="/img/openGauss/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BB%B4%E6%8A%A4%E4%B8%8E%E7%AE%A1%E7%90%86/2-1-4.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-创建触发器并测试效果"><a href="#2-创建触发器并测试效果" class="headerlink" title="(2)创建触发器并测试效果"></a>(2)创建触发器并测试效果</h4><p>创建触发器函数，功能是在还书更细还书时间的时候将相应的图书库存+1</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">or replace</span> <span class="hljs-keyword">function</span> update_booknum()<br><span class="hljs-keyword">returns</span> <span class="hljs-type">trigger</span><br><span class="hljs-keyword">as</span><br>$$<span class="language-pgsql"></span><br><span class="language-pgsql"><span class="hljs-keyword">declare</span></span><br><span class="language-pgsql"><span class="hljs-keyword">begin</span></span><br><span class="language-pgsql"><span class="hljs-keyword">update</span> book <span class="hljs-keyword">set</span> b_num=b_num+<span class="hljs-number">1</span> <span class="hljs-keyword">where</span> b_id=<span class="hljs-built_in">old</span>.b_id;</span><br><span class="language-pgsql"><span class="hljs-keyword">return</span> <span class="hljs-built_in">new</span>;</span><br><span class="language-pgsql"><span class="hljs-keyword">end</span>;</span><br><span class="language-pgsql">$$</span> <span class="hljs-keyword">language</span> plpgsql;<br></code></pre></td></tr></table></figure>
+<p><img src="/img/openGauss/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BB%B4%E6%8A%A4%E4%B8%8E%E7%AE%A1%E7%90%86/2-2-1.png" srcset="/img/loading.gif" lazyload></p>
+<p>创建触发器，在还书更新还书时间后调用上述触发器函数</p>
+<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs oxygene"><span class="hljs-keyword">create</span> trigger return_book<br>after update <span class="hljs-keyword">of</span> r_time <span class="hljs-keyword">on</span> borrow_book<br><span class="hljs-keyword">for</span> <span class="hljs-keyword">each</span> row<br>execute <span class="hljs-keyword">procedure</span> <span class="hljs-title function_">update_booknum</span><span class="hljs-params">()</span>;<br></code></pre></td></tr></table></figure>
+<p><img src="/img/openGauss/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BB%B4%E6%8A%A4%E4%B8%8E%E7%AE%A1%E7%90%86/2-2-2.png" srcset="/img/loading.gif" lazyload></p>
+<p>原先图书表<code>book</code>数据如下<br><img src="/img/openGauss/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BB%B4%E6%8A%A4%E4%B8%8E%E7%AE%A1%E7%90%86/2-2-3.png" srcset="/img/loading.gif" lazyload></p>
+<p>更新还书时间<code>r_time</code></p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs 1c">update borrow_book set r_time = &#x27;<span class="hljs-number">2022-11-12</span>&#x27;<br>where b_id = &#x27;<span class="hljs-number">3422</span>4&#x27; and s_id = &#x27;<span class="hljs-number">043858</span>&#x27;;<br></code></pre></td></tr></table></figure>
+<p><img src="/img/openGauss/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BB%B4%E6%8A%A4%E4%B8%8E%E7%AE%A1%E7%90%86/2-2-4.png" srcset="/img/loading.gif" lazyload></p>
+<p>再次查看<code>book</code>表可以看到相应的图书库存已经发生变化<br><img src="/img/openGauss/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BB%B4%E6%8A%A4%E4%B8%8E%E7%AE%A1%E7%90%86/2-2-5.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-数据库备份与恢复"><a href="#3-数据库备份与恢复" class="headerlink" title="3.数据库备份与恢复"></a>3.数据库备份与恢复</h3><h4 id="1-对所创建的数据库进行备份"><a href="#1-对所创建的数据库进行备份" class="headerlink" title="(1)对所创建的数据库进行备份"></a>(1)对所创建的数据库进行备份</h4><p>创建备份目录并且启动数据库</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">mkdir -p <span class="hljs-regexp">/home/</span>omm<span class="hljs-regexp">/physical/</span>backup<br></code></pre></td></tr></table></figure>
+<p><img src="/img/openGauss/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BB%B4%E6%8A%A4%E4%B8%8E%E7%AE%A1%E7%90%86/3-1-1.png" srcset="/img/loading.gif" lazyload></p>
+<p>对数据库进行物理备份</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">gs_basebackup -D <span class="hljs-regexp">/home/</span>omm<span class="hljs-regexp">/physical/</span>backup -p <span class="hljs-number">26000</span><br></code></pre></td></tr></table></figure>
+<p><img src="/img/openGauss/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BB%B4%E6%8A%A4%E4%B8%8E%E7%AE%A1%E7%90%86/3-1-2.png" srcset="/img/loading.gif" lazyload></p>
+<p>查看备份好的文件<br><img src="/img/openGauss/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BB%B4%E6%8A%A4%E4%B8%8E%E7%AE%A1%E7%90%86/3-1-3.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-利用备份进行数据库恢复"><a href="#2-利用备份进行数据库恢复" class="headerlink" title="(2)利用备份进行数据库恢复"></a>(2)利用备份进行数据库恢复</h4><p><code>/gaussdb/data/db1</code>原文件如下<br><img src="/img/openGauss/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BB%B4%E6%8A%A4%E4%B8%8E%E7%AE%A1%E7%90%86/3-2-1.png" srcset="/img/loading.gif" lazyload></p>
+<p>模拟数据被破坏<br><img src="/img/openGauss/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BB%B4%E6%8A%A4%E4%B8%8E%E7%AE%A1%E7%90%86/3-2-2.png" srcset="/img/loading.gif" lazyload></p>
+<p>恢复数据库文件</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">cp -r <span class="hljs-regexp">/home/</span>omm<span class="hljs-regexp">/physical/</span>backup<span class="hljs-regexp">/.  /g</span>aussdb<span class="hljs-regexp">/data/</span>db1<br></code></pre></td></tr></table></figure>
+<p><img src="/img/openGauss/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BB%B4%E6%8A%A4%E4%B8%8E%E7%AE%A1%E7%90%86/3-2-3.png" srcset="/img/loading.gif" lazyload><br>数据已经恢复</p>
+<h2 id="实验总结"><a href="#实验总结" class="headerlink" title="实验总结"></a>实验总结</h2><p><code>openGauss</code>创建存储过程也有所不同，<code>openGauss</code>中没有<code>delimiter</code>命令，主要创建过程如上所示。<br>在创建触发器时，没有注意到<code>openGauss</code>与<code>MySQL</code>之间的不同，尝试几次后没有成功，查阅资料得知<code>openGauss</code>需要触发器函数，在定义触发器的时候调用触发器函数才能成功调用<br>在创建用户时设置密码需要至少三种字符且至少需要8位</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/openGauss/" class="category-chain-item">openGauss</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/12/02/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E7%9A%84%E5%88%9B%E5%BB%BA%E4%BD%BF%E7%94%A8/" title="数据库管理系统及其应用开发环境的创建使用">
+                        <span class="hidden-mobile">数据库管理系统及其应用开发环境的创建使用</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+      
+<i class="iconfont icon-love"></i>
+
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/qipao.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/caidai.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiantiao.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/dianjichuzi.js"></script>
+<script src="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
