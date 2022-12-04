@@ -16,23 +16,23 @@
   <meta name="author" content="casual_qian">
   <meta name="keywords" content="">
   
-    <meta name="description" content="程序运行需要两个最基本的条件：一个是程序要占有足够的主存储空间；另一个是得到处理器，并且首先要得到足够的主存储空间。本章将介绍操作系统对主存储器的管理，简称存储器管理。">
+    <meta name="description" content="初步掌握数据库应用系统分析设计的基本方法；进一步提高分析与解决问题的综合能力；初步掌握数据库建模工具的使用方法.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="存储器管理">
-<meta property="og:url" content="https://casual-qian.github.io/2022/11/10/%E5%AD%98%E5%82%A8%E5%99%A8%E7%AE%A1%E7%90%86/index.html">
+<meta property="og:title" content="数据库应用系统的开发">
+<meta property="og:url" content="https://casual-qian.github.io/2022/12/04/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%BA%94%E7%94%A8%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%BC%80%E5%8F%91/index.html">
 <meta property="og:site_name" content="casual_qian">
-<meta property="og:description" content="程序运行需要两个最基本的条件：一个是程序要占有足够的主存储空间；另一个是得到处理器，并且首先要得到足够的主存储空间。本章将介绍操作系统对主存储器的管理，简称存储器管理。">
+<meta property="og:description" content="初步掌握数据库应用系统分析设计的基本方法；进一步提高分析与解决问题的综合能力；初步掌握数据库建模工具的使用方法.">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://casual-qian.github.io/img/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F.jpg">
-<meta property="article:published_time" content="2022-11-10T10:01:00.000Z">
-<meta property="article:modified_time" content="2022-11-16T07:41:46.438Z">
+<meta property="og:image" content="https://casual-qian.github.io/img/openGauss/openGauss.jpg">
+<meta property="article:published_time" content="2022-12-04T08:30:00.000Z">
+<meta property="article:modified_time" content="2022-12-04T08:14:13.209Z">
 <meta property="article:author" content="casual_qian">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://casual-qian.github.io/img/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F.jpg">
+<meta name="twitter:image" content="https://casual-qian.github.io/img/openGauss/openGauss.jpg">
   
   
   
-  <title>存储器管理 - casual_qian</title>
+  <title>数据库应用系统的开发 - casual_qian</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -92,9 +92,7 @@
 
 
   
-<meta name="generator" content="Hexo 6.3.0"><link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
-<script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
-</head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 
 <body>
@@ -178,13 +176,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/banner.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/openGauss/banner.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="存储器管理"></span>
+            <span id="subtitle" data-typed-text="数据库应用系统的开发"></span>
           
         </div>
 
@@ -195,8 +193,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-11-10 18:01" pubdate>
-          2022年11月10日 晚上
+        <time datetime="2022-12-04 16:30" pubdate>
+          2022年12月4日 下午
         </time>
       </span>
     
@@ -207,7 +205,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          453 字
+          1.7k 字
         
       </span>
     
@@ -247,55 +245,47 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">存储器管理</h1>
+            <h1 style="display: none">数据库应用系统的开发</h1>
             
             
               <div class="markdown-body">
                 
-                <p>程序运行需要两个最基本的条件：一个是程序要占有足够的主存储空间；另一个是得到处理器，并且首先要得到足够的主存储空间。本章将介绍操作系统对主存储器的管理，简称存储器管理。</p>
-<p>本章主要内容如下：<br>第五章 存储器调度</p>
-<ul>
-<li>一、存储器概述</li>
-<li>二、单一连续区存储管理</li>
-<li>三、固定分区存储管理</li>
-<li>四、可变分区存储管理</li>
-<li>五、分页存储管理</li>
-<li>六、分段存储管理</li>
-<li>七、段页式存储管理</li>
-</ul>
+                <p>初步掌握数据库应用系统分析设计的基本方法；进一步提高分析与解决问题的综合能力；初步掌握数据库建模工具的使用方法</p>
+<h2 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h2><p>数据库使用云服务器<code>openEuler</code>操作系统上的<code>openGauss</code>数据库，主要功能及界面在<code>windows</code>下使用<code>eclipse</code>编写<code>java</code>程序实现。</p>
+<h2 id="实验内容"><a href="#实验内容" class="headerlink" title="实验内容"></a>实验内容</h2><h3 id="一、系统选题需求情况"><a href="#一、系统选题需求情况" class="headerlink" title="一、系统选题需求情况"></a>一、系统选题需求情况</h3><p>完成一个图书管理系统，实现对图书信息的增删改查功能，并且该系统需要进行用户登录的过程才能够正常使用。</p>
+<h3 id="二、系统的概念数据模型（E-R-图）设计"><a href="#二、系统的概念数据模型（E-R-图）设计" class="headerlink" title="二、系统的概念数据模型（E-R 图）设计"></a>二、系统的概念数据模型（E-R 图）设计</h3><h3 id="三、系统中每张表的说明"><a href="#三、系统中每张表的说明" class="headerlink" title="三、系统中每张表的说明"></a>三、系统中每张表的说明</h3><p><code>users</code>中包含了管理员的登录信息，其中包含了管理员名称和密码，目前只包含了两个管理员。<br><img src="/img/openGauss/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%BA%94%E7%94%A8%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%BC%80%E5%8F%91/3-1.png" srcset="/img/loading.gif" lazyload></p>
+<p><code>booktype</code>表是有关图书的类别表,其中包括图书类别名称（<code>typename</code>）和图书类别简介（<code>typedesc</code>），其中<code>typename</code>作为<code>book</code>表的外键<br><img src="/img/openGauss/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%BA%94%E7%94%A8%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%BC%80%E5%8F%91/3-2.png" srcset="/img/loading.gif" lazyload></p>
+<p><code>book</code>表中保存所有图书的基本信息，包括书号（<code>id</code>），书名（<code>bookname</code>），作者（<code>author</code>），图书类别（<code>booktype</code>），图书简介（<code>bookdesc</code>）。其中<code>id</code>为主键且固定为5位字符<br><img src="/img/openGauss/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%BA%94%E7%94%A8%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%BC%80%E5%8F%91/3-3.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="四、系统运行环境配置，操作说明，前端与后台数据库连接用到的关键语句说明"><a href="#四、系统运行环境配置，操作说明，前端与后台数据库连接用到的关键语句说明" class="headerlink" title="四、系统运行环境配置，操作说明，前端与后台数据库连接用到的关键语句说明"></a>四、系统运行环境配置，操作说明，前端与后台数据库连接用到的关键语句说明</h3><h4 id="1-系统运行环境配置"><a href="#1-系统运行环境配置" class="headerlink" title="1.系统运行环境配置"></a>1.系统运行环境配置</h4><p>目前仅在<code>Windows</code>下试运行过</p>
+<p>若需要查看程序的详细组成将<code>bookManager.jar</code>文件解压即可</p>
+<h4 id="2-操作说明"><a href="#2-操作说明" class="headerlink" title="2.操作说明"></a>2.操作说明</h4><p><code>Windows</code>操作系统下双击运行<code>bookManager.exe</code>文件<br>或者配置<code>java</code>环境后双击运行<code>bookManager.jar</code>文件（命令窗口运行也可以）</p>
+<p>或者用编译器编译运行<code>com.bookMangager.view</code>包下的<code>LogOnfrm.java</code>文件。</p>
+<h4 id="3-前端与后台数据库连接用到的关键语句说明"><a href="#3-前端与后台数据库连接用到的关键语句说明" class="headerlink" title="3.前端与后台数据库连接用到的关键语句说明"></a>3.前端与后台数据库连接用到的关键语句说明</h4><p>首先引入<code>openGauss</code>的驱动包，使用<code>sql</code>包中的<code>Connection</code>类获取连接<br><img src="/img/openGauss/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%BA%94%E7%94%A8%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%BC%80%E5%8F%91/4-3.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="五、系统主要功能界面介绍"><a href="#五、系统主要功能界面介绍" class="headerlink" title="五、系统主要功能界面介绍"></a>五、系统主要功能界面介绍</h3><p>登录界面<br><img src="/img/openGauss/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%BA%94%E7%94%A8%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%BC%80%E5%8F%91/5-1.png" srcset="/img/loading.gif" lazyload></p>
+<p>目前有两个管理员</p>
+<table>
+<thead>
+<tr>
+<th>用户名</th>
+<th>密码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>admin</td>
+<td>123456</td>
+</tr>
+<tr>
+<td>qian</td>
+<td>12581</td>
+</tr>
+</tbody></table>
+<p>用户名和密码输入正确后会进入主界面<br><img src="/img/openGauss/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%BA%94%E7%94%A8%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%BC%80%E5%8F%91/5-2.png" srcset="/img/loading.gif" lazyload></p>
+<p>点击导航栏的菜单可以进行各种操作<br><img src="/img/openGauss/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%BA%94%E7%94%A8%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%BC%80%E5%8F%91/5-3.png" srcset="/img/loading.gif" lazyload></p>
+<p>点击具体的功能会进入相关的功能界面<br><img src="/img/openGauss/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%BA%94%E7%94%A8%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%BC%80%E5%8F%91/5-4.png" srcset="/img/loading.gif" lazyload></p>
+<p>更多详细操作请参看<a href="https://casual-qian.github.io/2022/12/05/%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/">下一篇文章</a></p>
+<h4 id="六、实验结果总结"><a href="#六、实验结果总结" class="headerlink" title="六、实验结果总结"></a>六、实验结果总结</h4><p>系统运行的效果基本符合预期的要求，对于图书、图书类别的添加和修改有这很多要求，比如图书名称及类别不能为空，不能够级联删除，书号不能超过5位等等。<br>界面的设计过于简陋，实现的功能也过于简单，因为设计的基本表只有3个，且表与表之间了联系很弱，所以对于功能也只能围绕其中两个表的增删改查来设计，没有着手与现实生活中较为复杂的情景来设计</p>
+<h3 id="编程工作总结"><a href="#编程工作总结" class="headerlink" title="编程工作总结"></a>编程工作总结</h3><p>本次编程的学习和参考为B站上的教程视频<br>本次编程工作的首要任务是如何远程连接<code>openGauss</code>数据库，后查找资料后决定使用<code>jdbc</code>连接，引入<code>openGauss</code>的驱动包，并且注意到其连接格式与<code>mysql</code>有所不同，在种种错误都尝试后还是不能连接数据库，捣鼓了几天后终于发现云服务器中的<code>openGauss</code>数据库对应的端口号并没有开放…<br>数据库设计方面从简单的关系入手进行设计，但是发现<code>openGauss</code>数据库并不支持表格的属性自增这一功能，所以放弃了原本主键自增的设计<br>在如何呈现可视化界面的方面，由于自己决定使用<code>java</code>编写系统，所以决定使用<code>java</code>中的<code>Swing</code>工具包来实现系统的各个界面（虽然以后实际可能很少会用该工具包，但是眼下实现起来比较简单且快速，而且是个人第一次实现可视化较高的程序，还是有一定成就感的）。但是从头学习<code>Swing</code>也比较繁琐复杂，所以在<code>eclipse</code>中安装相关插件，可以实现对窗口、按钮、文本框的拖动来更加方便地设计界面。<br>在<code>sql</code>语句的编写上，因为要实现多条件查询，所以我计划将各条件分开写成多个<code>String</code>，再组合成一个<code>String</code>传参，但是却忘了组合后各<code>String</code>之间要以空格分开，导致单个<code>sql</code>语句错误，这个错误找了挺久的。<br>其实在完成该系统的实现之前，自己对<code>java</code>的熟悉程度并不是很高，因为真正的使用<code>java</code>编写程序的经验很少，但是此次过后，觉得自己对于<code>java</code>的编写熟悉程度，对于面向对象的思想理解和运用有了很大的提升，本次实验对于自己的帮助很大，有确确实实感觉到自己有学到一些东西。</p>
 
-
-	<div class="row">
-    <embed src="/pdf/操作系统/存储器管理.pdf" width="100%" height="550" type="application/pdf">
-	</div>
-
-
-
-
-
-
-<p><strong>注：本PDF仅用于本人复习及查找，请勿大量外传。</strong></p>
-
-        <div id="aplayer-LVFphUyI" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
-            <pre class="aplayer-lrc-content"></pre>
-        </div>
-        <script>
-          var ap = new APlayer({
-            element: document.getElementById("aplayer-LVFphUyI"),
-            narrow: false,
-            autoplay: false,
-            showlrc: false,
-            music: {
-              title: "娘子",
-              author: "周杰伦",
-              url: "/music/周杰伦-娘子.flac",
-              pic: "/music/图片/Jay.jpg",
-              lrc: ""
-            }
-          });
-          window.aplayers || (window.aplayers = []);
-          window.aplayers.push(ap);
-        </script>
                 
               </div>
             
@@ -313,7 +303,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="category-chain-item">操作系统</a>
+  <a href="/categories/openGauss/" class="category-chain-item">openGauss</a>
   
   
 
@@ -335,9 +325,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/11/11/%E7%BD%91%E7%BB%9C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80%E5%92%8C%E7%BD%91%E7%BB%9C%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E6%A8%A1%E5%9E%8B/" title="网络程序设计基础和网络程序通信模型">
+                      <a href="/2022/12/05/%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/" title="图书管理系统使用说明">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">网络程序设计基础和网络程序通信模型</span>
+                        <span class="hidden-mobile">图书管理系统使用说明</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -345,8 +335,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/11/10/%E5%A4%8D%E6%9D%82%E6%9F%A5%E8%AF%A2%EF%BC%88%E4%BA%8C%EF%BC%89/" title="复杂查询（二）">
-                        <span class="hidden-mobile">复杂查询（二）</span>
+                      <a href="/2022/12/03/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BB%B4%E6%8A%A4%E4%B8%8E%E7%AE%A1%E7%90%86/" title="数据库管理系统的维护与管理">
+                        <span class="hidden-mobile">数据库管理系统的维护与管理</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
