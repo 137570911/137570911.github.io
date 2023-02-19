@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://casual-qian.github.io/img/Java/Java.jpg">
 <meta property="article:published_time" content="2023-01-08T05:30:00.000Z">
-<meta property="article:modified_time" content="2023-02-19T06:11:25.179Z">
+<meta property="article:modified_time" content="2023-02-19T06:24:06.466Z">
 <meta property="article:author" content="casual_qian">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://casual-qian.github.io/img/Java/Java.jpg">
@@ -355,7 +355,7 @@
 <p>下面已点餐界面为例介绍系统的点餐功能<br><img src="/img/Java/SmartCanteen/12.png" srcset="/img/loading.gif" lazyload><br>改变购物车中某一菜品的数量后需要点击右侧购物车表格的其他地方，是修改的单元格处于没有被选中的状态，这样才能检测出数据修改了，然后在点击刷新按钮刷新总金额。<br>也可以选中购物车中的某一菜品点击删除按钮即可删除。</p>
 <p>等待顺序界面可以看到当前系统要处理的所有订单记录，处理顺序为从上到下，可以通过餐位号判断自己的顺序，但是需要不断点击刷新按钮才能刷新订单状态的显示<br><img src="/img/Java/SmartCanteen/13.png" srcset="/img/loading.gif" lazyload></p>
 <p>更详细的操作步骤及一些注意事项请查看下一篇文章<br>附：<a target="_blank" rel="noopener" href="https://github.com/casual-qian/JavaProject/tree/main/SmartCanteen">github仓库链接</a></p>
-<h4 id="4-结论及总结"><a href="#4-结论及总结" class="headerlink" title="4.结论及总结"></a>4.结论及总结</h4><p>本次实验对于课程设计的需求基本上实现了，但是也有一些细节的地方没有设计好，比如说对于食堂的工作人员或许可以再细分成配菜的工作人员和数据查询分析的工作人员，打印机打印订单信息的功能也没有具体实现。还有对于订单状态实时变化的情况，不知道该如何将其状态的变化通知给点餐者，这一点没什么思路。在整体上，感觉代码量有点大，有点冗杂繁多，或许有一些更加清晰、明确的设计方案和框架能够比较简单的来实现课程设计中的需求。<br>本次实验我使用<code>Swing</code>框架来实现系统的可视化效果，因为这个实现可视化似乎比较快，但是依旧花了不少时间来学习，现在大多数人很少用这个库，并且现在也可以通过拖动具体的组件来实现窗体、组件的大小设计和位置摆放。<br>对于数据的输出，保存，取出等操作借助了<code>MySQL</code>数据库，将菜品、订单、用户等建立成为二维的基本表，使得对于数据的记录和读取都需要使用<code>sql</code>语言来进行更新或者查询，这次的课程设计也算是对于数据库理论和实践的又一次熟悉。</p>
+<h2 id="4-结论及总结"><a href="#4-结论及总结" class="headerlink" title="4.结论及总结"></a>4.结论及总结</h2><p>本次实验对于课程设计的需求基本上实现了，但是也有一些细节的地方没有设计好，比如说对于食堂的工作人员或许可以再细分成配菜的工作人员和数据查询分析的工作人员，打印机打印订单信息的功能也没有具体实现。还有对于订单状态实时变化的情况，不知道该如何将其状态的变化通知给点餐者，这一点没什么思路。在整体上，感觉代码量有点大，有点冗杂繁多，或许有一些更加清晰、明确的设计方案和框架能够比较简单的来实现课程设计中的需求。<br>本次实验我使用<code>Swing</code>框架来实现系统的可视化效果，因为这个实现可视化似乎比较快，但是依旧花了不少时间来学习，现在大多数人很少用这个库，并且现在也可以通过拖动具体的组件来实现窗体、组件的大小设计和位置摆放。<br>对于数据的输出，保存，取出等操作借助了<code>MySQL</code>数据库，将菜品、订单、用户等建立成为二维的基本表，使得对于数据的记录和读取都需要使用<code>sql</code>语言来进行更新或者查询，这次的课程设计也算是对于数据库理论和实践的又一次熟悉。</p>
 
                 
               </div>
