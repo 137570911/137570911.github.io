@@ -1,0 +1,630 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="casual_qian">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="完成博饼小游戏的设计">
+<meta property="og:type" content="article">
+<meta property="og:title" content="博饼小游戏">
+<meta property="og:url" content="https://casual-qian.github.io/2023/01/14/bo-bing-xiao-you-xi/index.html">
+<meta property="og:site_name" content="casual_qian">
+<meta property="og:description" content="完成博饼小游戏的设计">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://casual-qian.github.io/img/Java/Java.jpg">
+<meta property="article:published_time" content="2023-01-14T05:30:00.000Z">
+<meta property="article:modified_time" content="2023-02-19T14:18:14.133Z">
+<meta property="article:author" content="casual_qian">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://casual-qian.github.io/img/Java/Java.jpg">
+  
+  
+  
+  <title>博饼小游戏 - casual_qian</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/iconfont_csdn/iconfont.css">
+<link rel="stylesheet" href="/css/iconfont_kugou/iconfont.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<link rel="stylesheet" href="/css/fluid-extension.css">
+<link rel="stylesheet" href="/css/youhua.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/CodeByZach/pace/themes/pink/pace-theme-bounce.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"casual-qian.github.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"/","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Stranding</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- 天气 -->
+    
+<div id="he-plugin-simple"></div>
+<script>
+WIDGET = {
+  "CONFIG": {
+    "modules": "0124",
+    "background": "5",
+    "tmpColor": "FFFFFF",
+    "tmpSize": "16",
+    "cityColor": "FFFFFF",
+    "citySize": "16",
+    "aqiColor": "FFFFFF",
+    "aqiSize": "16",
+    "weatherIconSize": "24",
+    "alertIconSize": "18",
+    "padding": "10px 10px 10px 10px",
+    "shadow": "0",
+    "language": "auto",
+    "borderRadius": "5",
+    "fixed": "false",
+    "vertical": "top",
+    "horizontal": "left",
+    "key": "3f0a554e33cd491f89f997e4ca28c44d"
+  }
+}
+</script>
+<script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script>
+
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/Java/banner.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="博饼小游戏"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-01-14 13:30" pubdate>
+          2023年1月14日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.4k 字
+        
+      </span>
+    
+
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">博饼小游戏</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="一、实验要求"><a href="#一、实验要求" class="headerlink" title="一、实验要求"></a>一、实验要求</h2><h3 id="游戏规则"><a href="#游戏规则" class="headerlink" title="游戏规则"></a>游戏规则</h3><p>设计并编程实现博饼小游戏，游戏规则如下：<br>游戏使用骰子一副（6个），参与游戏的玩家轮流依次掷骰子，看骰子点数得饼：<br>（1）有1个“四点”，得“一秀”饼；<br>（2）有2个“四点”，得“二举”饼；<br>（3）有3个“四点”，得“三红”饼；<br>（4）有4个相同点数（除四点外），得“四进”饼；<br>（5）若骰子点数分别为1-6顺序排列，得“对堂”饼；<br>（6）玩家得“状元”饼的情况有几种，其等级按从小到大排列如下：</p>
+<ul>
+<li>a)有4个“四点”，得“状元”；</li>
+<li>b)有5个相同点数的，得“五子登科”；</li>
+<li>c)有4个“四点”，加上2个“一点”，得“状元插金花”；</li>
+</ul>
+<p>（7）特殊情况： 若玩家掷出6个“四点”得“六杯红”，则直接夺得所有奖品。</p>
+<h3 id="程序要求"><a href="#程序要求" class="headerlink" title="程序要求"></a>程序要求</h3><p>（1）：游戏开始时，可由玩家设置奖品数，例如：设“状元”1个，“对堂”2个，“三红”4个，“四进”8个，“二举”16个，“一秀”32个。<br>（2）：游戏开始时，可设定玩家人数，游戏中应提示各位玩家轮流依次掷骰子，例如“1号玩家请掷筛子：y”；<br>（3）游戏中，应显示玩家每次掷得的点数，并显示得奖情况。例如“1,2,3,5,5,6   无奖，继续努力”；“1,4,4,3,5,6  二举，恭喜”。程序应能保存各位玩家得奖的记录。<br>（4）游戏设定的“一秀”、“二举”、“三红”、“四进”、“对堂”的奖品若领完，后续玩家若再掷出此类点数，不再得奖。但在上述奖品领完前，“状元饼”采取追饼的方式，即在其他奖品分完前，后一个掷得“状元”的人若比前一个“状元”等级大，则可追得“状元饼”。<br>（5）所有奖品分完，游戏结束。或者某玩家掷出6个“四点”，夺得所有奖品，其他玩家将同时失去所有奖品，游戏结束。<br>（6）游戏结束后，应输出所有玩家得奖情况。</p>
+<h2 id="二、实验总体设计方案"><a href="#二、实验总体设计方案" class="headerlink" title="二、实验总体设计方案"></a>二、实验总体设计方案</h2><p>（1）在控制台运行本程序。<br>（2）初始化游戏，输入玩家数量，奖池中各种奖励的数量(状元默认数量为1)来初始化奖池。<br>（3）每一轮所以玩家轮流投掷骰子6次，每轮结束后打印输出每个玩家本轮的6次骰子的点数以及获得的奖品。<br>（4）当奖池中的奖品被领完后游戏结束，输出所有玩家获得的奖品。</p>
+<p><strong>类说明</strong><br><code>Prize</code>类：奖品类，每种奖品的数量作为其属性，可以用来描述讲出，以及构成各个玩家获得的奖品情况。<br><code>Player</code>类：玩家，每个玩家有其序号、奖品、一轮的骰子点数。<br><code>BoCake</code>类：游戏的主类，实现玩家玩游戏的过程（开始到结束）。<br><code>GameUtil</code>类：游戏过程的各种工具类函数封装其中，包括玩家的初始化、奖池的初始化、玩家奖品的获得等等。<br><code>PrizeJudgeUtil</code>类：用于判别一个玩家一轮投掷的点数所对应的奖品。</p>
+<h2 id="三、实验关键代码"><a href="#三、实验关键代码" class="headerlink" title="三、实验关键代码"></a>三、实验关键代码</h2><p>以下用<code>BoCake</code>类（主类）的代码来表现出整体的游戏过程</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-keyword">package</span> com.boCake;<br><br><span class="hljs-keyword">import</span> java.util.Scanner;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">BoCake</span> &#123;<br><br>	<span class="hljs-keyword">private</span> Player player[];<br>	<span class="hljs-keyword">private</span> Prize prize;<br>	<span class="hljs-keyword">private</span> GameUtil gameUtil = new GameUtil();<br>	<span class="hljs-keyword">private</span> PrizeJudgeUtil prizeJudgeUtil = new PrizeJudgeUtil();<br>	<span class="hljs-keyword">private</span> Prize originalPrize;<br>	<br>	<span class="hljs-keyword">public</span> Prize getPrize() &#123;<br>		<span class="hljs-keyword">return</span> prize;<br>	&#125;<br><br>	<span class="hljs-keyword">public</span> void setPrize(Prize prize) &#123;<br>		<span class="hljs-keyword">this</span>.prize = prize;<br>	&#125;<br><br>	<span class="hljs-keyword">public</span> Player[] getPlayer() &#123;<br>		<span class="hljs-keyword">return</span> player;<br>	&#125;<br><br>	<span class="hljs-keyword">public</span> void setPlayer(Player[] player) &#123;<br>		<span class="hljs-keyword">this</span>.player = player;<br>	&#125;<br><br>	<span class="hljs-comment">/*</span><br><span class="hljs-comment">	 * 主函数</span><br><span class="hljs-comment">	 */</span><br>	<span class="hljs-keyword">public</span> static void main(String[] args) &#123;<br>		BoCake boCake = new BoCake();<br>		boCake.initGame();<br>		boCake.playGame();<br>		boCake.gameOver();<br>		<br>	&#125;<br>	<br>	<span class="hljs-comment">/**</span><br><span class="hljs-comment">	 * 初始化游戏</span><br><span class="hljs-comment">	 */</span><br>	<span class="hljs-keyword">private</span>  void initGame() &#123;<br>		<span class="hljs-keyword">this</span>.player= <span class="hljs-keyword">this</span>.gameUtil.initPlayer();<br>		<span class="hljs-keyword">this</span>.originalPrize= <span class="hljs-keyword">this</span>.gameUtil.initPrize();<br>		<span class="hljs-keyword">this</span>.prize = <span class="hljs-keyword">this</span>.originalPrize;<br>	&#125;<br>	<br>	<span class="hljs-comment">/**</span><br><span class="hljs-comment">	 *开始游戏</span><br><span class="hljs-comment">	 * <span class="hljs-doctag">@param</span> player</span><br><span class="hljs-comment">	 * <span class="hljs-doctag">@param</span> prize</span><br><span class="hljs-comment">	 */</span><br>	<span class="hljs-keyword">public</span> void playGame() &#123;<br>		int i=<span class="hljs-number">1</span>;<span class="hljs-comment">//i为轮次</span><br>		int flag=<span class="hljs-number">0</span>;<span class="hljs-comment">//后的六杯红的玩家的id</span><br>		Scanner input = new Scanner(System.<span class="hljs-keyword">in</span>);<br>		<span class="hljs-keyword">for</span>(i=<span class="hljs-number">1</span>;!prizeJudgeUtil.prizeIsEmpty(<span class="hljs-keyword">this</span>.getPrize())&amp;&amp;flag==<span class="hljs-number">0</span>;i++) &#123;<br>			System.<span class="hljs-keyword">out</span>.println(<span class="hljs-string">&quot;第&quot;</span> + i + <span class="hljs-string">&quot;轮开始&quot;</span>);<br>			<span class="hljs-comment">//进行一轮的投掷骰子</span><br>			<span class="hljs-keyword">for</span>(int j=<span class="hljs-number">1</span>;j&lt;=<span class="hljs-number">6</span>;j++) &#123;<br>				<span class="hljs-keyword">for</span>(int k=<span class="hljs-number">0</span>;k&lt;<span class="hljs-keyword">this</span>.gameUtil.getN();k++) &#123;<br>					System.<span class="hljs-keyword">out</span>.println(<span class="hljs-keyword">this</span>.player[k].getId() + <span class="hljs-string">&quot;号玩家第&quot;</span> + j + <span class="hljs-string">&quot;次掷得筛子：&quot;</span> + <span class="hljs-keyword">this</span>.player[k].setArr(j-<span class="hljs-number">1</span>));<br>				&#125;<br>				System.<span class="hljs-keyword">out</span>.println();<br>			&#125;<br>			<span class="hljs-comment">//一轮结束，打印奖品</span><br>			<span class="hljs-keyword">for</span>(int k=<span class="hljs-number">0</span>;k&lt;<span class="hljs-keyword">this</span>.gameUtil.getN();k++) &#123;<br>				System.<span class="hljs-keyword">out</span>.print(<span class="hljs-keyword">this</span>.player[k].getId() + <span class="hljs-string">&quot;号玩家第&quot;</span> + i + <span class="hljs-string">&quot;轮掷得点数：&quot;</span>);<br>				<span class="hljs-keyword">this</span>.player[k].printArr();<br>				<span class="hljs-comment">//判断奖品</span><br>				Prize t_pirce = <span class="hljs-keyword">this</span>.prizeJudgeUtil.prizeJudge(<span class="hljs-keyword">this</span>.player[k].getArr());<br>				Prize r_prize[] = <span class="hljs-keyword">this</span>.gameUtil.prizeResult(prize, t_pirce, player[k].prize);<br>				<span class="hljs-keyword">this</span>.setPrize(r_prize[<span class="hljs-number">0</span>]);<br>				<span class="hljs-keyword">this</span>.player[k].setPrize(r_prize[<span class="hljs-number">1</span>]);<br>				Prize b_prize = r_prize[<span class="hljs-number">2</span>];<br>				<br>				<span class="hljs-comment">//六杯红特殊情况</span><br>				<span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.prize.getZY_level()==<span class="hljs-number">4</span>) &#123;<br>					flag=<span class="hljs-keyword">this</span>.player[k].getId();<br>					<span class="hljs-keyword">break</span>;<br>				&#125;<br>				<br>				<span class="hljs-comment">//打印奖品</span><br>				b_prize.PrintPrize(<span class="hljs-number">1</span>);<br>				<br>				<span class="hljs-comment">//有状元或状元被抢</span><br>				<span class="hljs-keyword">if</span>(b_prize.ZhuangYuan&gt;<span class="hljs-number">0</span>) &#123;<br>					<span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.prize.getZY_id()!=<span class="hljs-number">0</span>) &#123;<br>						<span class="hljs-keyword">this</span>.player[<span class="hljs-keyword">this</span>.prize.getZY_id()-<span class="hljs-number">1</span>].prize.ZhuangYuan--;<br>						<span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.player[k].getId()!=<span class="hljs-keyword">this</span>.prize.getZY_id()) &#123;<br>							System.<span class="hljs-keyword">out</span>.println(<span class="hljs-keyword">this</span>.prize.getZY_id() + <span class="hljs-string">&quot;号玩家的“状元”奖品被&quot;</span> + <span class="hljs-keyword">this</span>.player[k].getId() + <span class="hljs-string">&quot;号玩家抢走&quot;</span>);<br>							prize.setZY_id(<span class="hljs-keyword">this</span>.player[k].getId());<br>						&#125;<br>					&#125;<span class="hljs-keyword">else</span> &#123;<br>						<span class="hljs-keyword">this</span>.prize.setZY_id(<span class="hljs-keyword">this</span>.player[k].getId());<br>					&#125;<br>				&#125;<br>			&#125;<br>			<span class="hljs-comment">//六杯红情况处理</span><br>			<span class="hljs-keyword">if</span>(flag&gt;<span class="hljs-number">0</span>) &#123;<br>				System.<span class="hljs-keyword">out</span>.println(<span class="hljs-string">&quot;恭喜&quot;</span> + flag + <span class="hljs-string">&quot;号玩家获得“六杯红”，获得奖池所有奖品！&quot;</span>);<br>				<span class="hljs-keyword">this</span>.player=<span class="hljs-keyword">this</span>.gameUtil.LiuBeiHong(<span class="hljs-keyword">this</span>.player, flag, <span class="hljs-keyword">this</span>.gameUtil.getN(), originalPrize);<br>				<span class="hljs-keyword">this</span>.prize=new Prize();<br>				<span class="hljs-keyword">break</span>;<br>			&#125;<br>			<span class="hljs-keyword">this</span>.prize.PrintPrize(<span class="hljs-number">0</span>);<br>			System.<span class="hljs-keyword">out</span>.print(<span class="hljs-string">&quot;按回车键开始下一轮&quot;</span>);<br>			System.<span class="hljs-keyword">out</span>.println(<span class="hljs-string">&quot;----------------------------------&quot;</span>);<br>			input.nextLine();<br>		&#125;<br>	&#125;<br>	<span class="hljs-comment">/**</span><br><span class="hljs-comment">	 * 游戏结束，打印奖品</span><br><span class="hljs-comment">	 */</span><br>	<span class="hljs-keyword">public</span> void gameOver() &#123;<br>		System.<span class="hljs-keyword">out</span>.println(<span class="hljs-string">&quot;游戏结束&quot;</span>);<br>		<span class="hljs-keyword">this</span>.gameUtil.displayPrize(<span class="hljs-keyword">this</span>.player, <span class="hljs-keyword">this</span>.gameUtil.getN());<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="四、实验结果"><a href="#四、实验结果" class="headerlink" title="四、实验结果"></a>四、实验结果</h2><p>初始化游戏，对玩家数量及奖池进行初始化<br><img src="/img/Java/%E5%8D%9A%E9%A5%BC%E5%B0%8F%E6%B8%B8%E6%88%8F/1.png" srcset="/img/loading.gif" lazyload></p>
+<p>某一轮次的执行过程如下<br><img src="/img/Java/%E5%8D%9A%E9%A5%BC%E5%B0%8F%E6%B8%B8%E6%88%8F/2.png" srcset="/img/loading.gif" lazyload></p>
+<p>每轮结束后会打印本轮各个玩家的点数和获奖情况已经奖池的剩余奖品情况<br><img src="/img/Java/%E5%8D%9A%E9%A5%BC%E5%B0%8F%E6%B8%B8%E6%88%8F/3.png" srcset="/img/loading.gif" lazyload></p>
+<p>奖池清空，游戏结束，打印各个玩家的获奖情况<br><img src="/img/Java/%E5%8D%9A%E9%A5%BC%E5%B0%8F%E6%B8%B8%E6%88%8F/4.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="五、实验总结"><a href="#五、实验总结" class="headerlink" title="五、实验总结"></a>五、实验总结</h2><p>本次实验的内容为一个游戏，由于自己第一次接触这个游戏，对于游戏规则的理解花费了一些时间，主要是各种点数对应的奖品的判断逻辑需要理解。<br>在开始设计是，对于奖池的设计和每位玩家获得的奖品是分开来的，但是这样设计后发觉有些复杂，于是把这两个都用<code>Prize</code>类来表示，简化了一些不必要的设计。对于游戏规则中每种点数对应的奖品的判断是这个游戏的重点，我用的是简单的逻辑判断，每种奖品设计一种判断方法，去除掉一些重叠的部分，所以判断奖品的<code>PrizeJudgeUtil</code>类设计的有些复杂。<br>可能在整体的框架上可以做得比我这次设计的更加简单，感觉这次写的代码过于冗杂了。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Java/" class="category-chain-item">Java</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/01/14/cheng-ji-de-cha-xun-he-pai-xu-gong-neng-shi-xian/" title="成绩的查询和排序功能实现">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">成绩的查询和排序功能实现</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/01/13/ha-ha/" title="86上山了">
+                        <span class="hidden-mobile">86上山了</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+      
+<i class="iconfont icon-love"></i>
+
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/qipao.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/caidai.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiantiao.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/dianjichuzi.js"></script>
+<script src="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

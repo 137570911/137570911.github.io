@@ -70,9 +70,11 @@
 <link rel="stylesheet" href="/css/iconfont_csdn/iconfont.css">
 <link rel="stylesheet" href="/css/iconfont_kugou/iconfont.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
-<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<link rel="stylesheet" href="/css/fluid-extension.css">
+<link rel="stylesheet" href="/css/youhua.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/CodeByZach/pace/themes/pink/pace-theme-bounce.css">
 
 
 
@@ -113,6 +115,36 @@
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <div class="animated-icon"><span></span><span></span><span></span></div>
     </button>
+
+    <!-- 天气 -->
+    
+<div id="he-plugin-simple"></div>
+<script>
+WIDGET = {
+  "CONFIG": {
+    "modules": "0124",
+    "background": "5",
+    "tmpColor": "FFFFFF",
+    "tmpSize": "16",
+    "cityColor": "FFFFFF",
+    "citySize": "16",
+    "aqiColor": "FFFFFF",
+    "aqiSize": "16",
+    "weatherIconSize": "24",
+    "alertIconSize": "18",
+    "padding": "10px 10px 10px 10px",
+    "shadow": "0",
+    "language": "auto",
+    "borderRadius": "5",
+    "fixed": "false",
+    "vertical": "top",
+    "horizontal": "left",
+    "key": "3f0a554e33cd491f89f997e4ca28c44d"
+  }
+}
+</script>
+<script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script>
+
 
     <!-- Collapsible content -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -314,7 +346,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/10/02/%E5%8E%9F%E5%9E%8B%E8%AE%BE%E8%AE%A1/" title="初识原型设计">
+                      <a href="/2022/10/02/yuan-xing-she-ji/" title="初识原型设计">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">初识原型设计</span>
                         <span class="visible-mobile">上一篇</span>

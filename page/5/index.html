@@ -58,9 +58,11 @@
 <link rel="stylesheet" href="/css/iconfont_csdn/iconfont.css">
 <link rel="stylesheet" href="/css/iconfont_kugou/iconfont.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
-<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<link rel="stylesheet" href="/css/fluid-extension.css">
+<link rel="stylesheet" href="/css/youhua.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/CodeByZach/pace/themes/pink/pace-theme-bounce.css">
 
 
 
@@ -101,6 +103,36 @@
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <div class="animated-icon"><span></span><span></span><span></span></div>
     </button>
+
+    <!-- 天气 -->
+    
+<div id="he-plugin-simple"></div>
+<script>
+WIDGET = {
+  "CONFIG": {
+    "modules": "0124",
+    "background": "5",
+    "tmpColor": "FFFFFF",
+    "tmpSize": "16",
+    "cityColor": "FFFFFF",
+    "citySize": "16",
+    "aqiColor": "FFFFFF",
+    "aqiSize": "16",
+    "weatherIconSize": "24",
+    "alertIconSize": "18",
+    "padding": "10px 10px 10px 10px",
+    "shadow": "0",
+    "language": "auto",
+    "borderRadius": "5",
+    "fixed": "false",
+    "vertical": "top",
+    "horizontal": "left",
+    "key": "3f0a554e33cd491f89f997e4ca28c44d"
+  }
+}
+</script>
+<script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script>
+
 
     <!-- Collapsible content -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -206,487 +238,7 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2022/11/06/%E7%B4%A2%E5%BC%95/" target="_blank">
-          <img src="/img/MySQL/MySQL%E5%9B%BE%E7%89%87.png" srcset="/img/loading.gif" lazyload alt="索引">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/11/06/%E7%B4%A2%E5%BC%95/" target="_blank">
-          索引
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/2022/11/06/%E7%B4%A2%E5%BC%95/" target="_blank">
-        <div>
-          视图、索引、存储过程和事务是 MySQL中非常重要的几个概念，也是数据库应用开发者必须掌握的知识。视图用于延伸表的边界，索引用于提高数据库查找效率，存储过程用于分装业务逻辑，事务用于提升数据库应用的健壮性。本文主要介绍索引的基础知识。
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-11-06 17:01" pubdate>
-              2022-11-06
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/MySQL/" class="category-chain-item">MySQL</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2022/11/05/%E5%88%86%E7%BB%84%E9%80%89%E6%8B%A9%E6%95%B0%E6%8D%AE/" target="_blank">
-          <img src="/img/MySQL/MySQL%E5%9B%BE%E7%89%87.png" srcset="/img/loading.gif" lazyload alt="分组选择数据">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/11/05/%E5%88%86%E7%BB%84%E9%80%89%E6%8B%A9%E6%95%B0%E6%8D%AE/" target="_blank">
-          分组选择数据
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/2022/11/05/%E5%88%86%E7%BB%84%E9%80%89%E6%8B%A9%E6%95%B0%E6%8D%AE/" target="_blank">
-        <div>
-          主要介绍MySQL是如何实现分组数据的，以便能汇总表内容的子集。这涉及了两个SELECT子句，分别是GROUP BY 和 HAVING；分组可以将一个整表分为多个逻辑组，以便能对每个组进行聚集计算。
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-11-05 16:50" pubdate>
-              2022-11-05
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/MySQL/" class="category-chain-item">MySQL</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2022/11/04/%E5%BC%95%E8%AE%BA%E5%8F%8A%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%8E%A5%E5%8F%A3/" target="_blank">
-          <img src="/img/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F.jpg" srcset="/img/loading.gif" lazyload alt="引论及操作系统的接口">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/11/04/%E5%BC%95%E8%AE%BA%E5%8F%8A%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%8E%A5%E5%8F%A3/" target="_blank">
-          引论及操作系统的接口
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/2022/11/04/%E5%BC%95%E8%AE%BA%E5%8F%8A%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%8E%A5%E5%8F%A3/" target="_blank">
-        <div>
-          计算机硬件系统上配置的第一个大型软件，称为计算机操作系统。
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-11-04 15:01" pubdate>
-              2022-11-04
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="category-chain-item">操作系统</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2022/11/03/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank">
-          <img src="/img/MySQL/MySQL%E5%9B%BE%E7%89%87.png" srcset="/img/loading.gif" lazyload alt="其他函数的使用">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/11/03/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank">
-          其他函数的使用
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/2022/11/03/%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank">
-        <div>
-          介绍 MySQL中其他函数的使用，主要有以下几大类型：字符函数，数学函数，日期时间函数，流程控制类函数，自定义函数。
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-11-03 23:30" pubdate>
-              2022-11-03
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/MySQL/" class="category-chain-item">MySQL</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2022/11/02/%E4%BD%BF%E7%94%A8%E8%81%9A%E5%90%88%E5%87%BD%E6%95%B0%E6%9F%A5%E8%AF%A2/" target="_blank">
-          <img src="/img/MySQL/MySQL%E5%9B%BE%E7%89%87.png" srcset="/img/loading.gif" lazyload alt="使用聚合函数查询">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/11/02/%E4%BD%BF%E7%94%A8%E8%81%9A%E5%90%88%E5%87%BD%E6%95%B0%E6%9F%A5%E8%AF%A2/" target="_blank">
-          使用聚合函数查询
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/2022/11/02/%E4%BD%BF%E7%94%A8%E8%81%9A%E5%90%88%E5%87%BD%E6%95%B0%E6%9F%A5%E8%AF%A2/" target="_blank">
-        <div>
-          聚合：通俗的讲就是聚集到一起；函数：可以理解为一个方法。那么组合起来我们就可以理解为是一个将某种东西聚集在一起的一个方法。而在MySQL中这个被聚集的则是一组行中的某个列。
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-11-02 23:30" pubdate>
-              2022-11-02
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/MySQL/" class="category-chain-item">MySQL</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2022/11/02/%E5%AD%90%E6%9F%A5%E8%AF%A2/" target="_blank">
-          <img src="/img/MySQL/MySQL%E5%9B%BE%E7%89%87.png" srcset="/img/loading.gif" lazyload alt="子查询">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/11/02/%E5%AD%90%E6%9F%A5%E8%AF%A2/" target="_blank">
-          子查询
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/2022/11/02/%E5%AD%90%E6%9F%A5%E8%AF%A2/" target="_blank">
-        <div>
-          子查询允许把一个查询嵌套在另一个查询当中。子查询，又叫内部查询，相对于内部查询，包含内部查询的就称为外部查询。
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-11-02 22:30" pubdate>
-              2022-11-02
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/MySQL/" class="category-chain-item">MySQL</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2022/11/01/Linux%E7%BB%BC%E5%90%88%E5%BA%94%E7%94%A8/" target="_blank">
-          <img src="/img/Linux/Linux%E5%9B%BE%E7%89%87.jpg" srcset="/img/loading.gif" lazyload alt="Linux综合应用">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/11/01/Linux%E7%BB%BC%E5%90%88%E5%BA%94%E7%94%A8/" target="_blank">
-          Linux综合应用
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/2022/11/01/Linux%E7%BB%BC%E5%90%88%E5%BA%94%E7%94%A8/" target="_blank">
-        <div>
-          用c语言编程模拟一个有应用背景的客户端、服务器交互类应用，包含文件读写功能。
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-11-01 22:50" pubdate>
-              2022-11-01
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Linux-C/" class="category-chain-item">Linux C</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2022/10/26/%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2/" target="_blank">
-          <img src="/img/MySQL/MySQL%E5%9B%BE%E7%89%87.png" srcset="/img/loading.gif" lazyload alt="连接查询">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/10/26/%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2/" target="_blank">
-          连接查询
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/2022/10/26/%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2/" target="_blank">
-        <div>
-          当我们同时需要两张表的信息时，我们该怎么写查询语句呢？这时我们就可以使用连接查询，将两张表“连接”起来，让返回的查询结果中包含两张表的数据，连接查询包括内连接和外链接查询。
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-10-26 16:50" pubdate>
-              2022-10-26
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/MySQL/" class="category-chain-item">MySQL</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2022/10/25/%E8%BD%AF%E5%B7%A5%E5%AE%9E%E8%B7%B5%E9%80%89%E9%A2%98%E6%8A%A5%E5%91%8A/" target="_blank">
+        <a href="/2022/10/25/ruan-gong-shi-jian-xuan-ti-bao-gao/" target="_blank">
           <img src="/img/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/teamwork.png" srcset="/img/loading.gif" lazyload alt="软工实践选题报告">
         </a>
       </div>
@@ -694,13 +246,13 @@
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2022/10/25/%E8%BD%AF%E5%B7%A5%E5%AE%9E%E8%B7%B5%E9%80%89%E9%A2%98%E6%8A%A5%E5%91%8A/" target="_blank">
+        <a href="/2022/10/25/ruan-gong-shi-jian-xuan-ti-bao-gao/" target="_blank">
           软工实践选题报告
         </a>
       </h1>
 
       
-      <a class="index-excerpt " href="/2022/10/25/%E8%BD%AF%E5%B7%A5%E5%AE%9E%E8%B7%B5%E9%80%89%E9%A2%98%E6%8A%A5%E5%91%8A/" target="_blank">
+      <a class="index-excerpt " href="/2022/10/25/ruan-gong-shi-jian-xuan-ti-bao-gao/" target="_blank">
         <div>
           软工实践选题报告
         </div>
@@ -746,7 +298,7 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2022/10/24/%E5%8D%95%E8%A1%A8%E6%9F%A5%E8%AF%A2%EF%BC%88%E4%B8%89%EF%BC%89/" target="_blank">
+        <a href="/2022/10/24/dan-biao-cha-xun-san/" target="_blank">
           <img src="/img/MySQL/MySQL%E5%9B%BE%E7%89%87.png" srcset="/img/loading.gif" lazyload alt="单表查询（三）">
         </a>
       </div>
@@ -754,13 +306,13 @@
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2022/10/24/%E5%8D%95%E8%A1%A8%E6%9F%A5%E8%AF%A2%EF%BC%88%E4%B8%89%EF%BC%89/" target="_blank">
+        <a href="/2022/10/24/dan-biao-cha-xun-san/" target="_blank">
           单表查询（三）
         </a>
       </h1>
 
       
-      <a class="index-excerpt " href="/2022/10/24/%E5%8D%95%E8%A1%A8%E6%9F%A5%E8%AF%A2%EF%BC%88%E4%B8%89%EF%BC%89/" target="_blank">
+      <a class="index-excerpt " href="/2022/10/24/dan-biao-cha-xun-san/" target="_blank">
         <div>
           文章主要如何使用关键字ORDER BY、GROUP BY对查询结果进行排序和分组的，以及如何使用关键字LIMIT限制查询结果的数量。
         </div>
@@ -802,11 +354,611 @@
     </article>
   </div>
 
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/10/21/linux-wang-luo-bian-cheng-ji-wen-jian-cao-zuo/" target="_blank">
+          <img src="/img/Linux/Linux%E5%9B%BE%E7%89%87.jpg" srcset="/img/loading.gif" lazyload alt="Linux网络编程及文件操作">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/10/21/linux-wang-luo-bian-cheng-ji-wen-jian-cao-zuo/" target="_blank">
+          Linux网络编程及文件操作
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2022/10/21/linux-wang-luo-bian-cheng-ji-wen-jian-cao-zuo/" target="_blank">
+        <div>
+          使用套接口通信机制实现客户端进程与服务器端进程之间信息的发送接收；并利用文件I/O 操作读取及保存信息的发送接收。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-10-21 22:50" pubdate>
+              2022-10-21
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Linux-C/" class="category-chain-item">Linux C</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/10/21/dan-biao-cha-xun-er/" target="_blank">
+          <img src="/img/MySQL/MySQL%E5%9B%BE%E7%89%87.png" srcset="/img/loading.gif" lazyload alt="单表查询（二）">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/10/21/dan-biao-cha-xun-er/" target="_blank">
+          单表查询（二）
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2022/10/21/dan-biao-cha-xun-er/" target="_blank">
+        <div>
+          文章主要如何使用通配符进行内容查询、如何去除重复结果和查询空值以及如何进行多条件查询。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-10-21 22:50" pubdate>
+              2022-10-21
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/MySQL/" class="category-chain-item">MySQL</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/10/20/dan-biao-cha-xun-yi/" target="_blank">
+          <img src="/img/MySQL/MySQL%E5%9B%BE%E7%89%87.png" srcset="/img/loading.gif" lazyload alt="单表查询（一）">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/10/20/dan-biao-cha-xun-yi/" target="_blank">
+          单表查询（一）
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2022/10/20/dan-biao-cha-xun-yi/" target="_blank">
+        <div>
+          数据查询是数据库操作中使用做多，最重要的内容。为什么这么说呢？因为我们不仅仅要对数据进行存储，我们还要时不时的把不同的信息“翻出来”为我们所用。MySQL为我们提供了功能强大的语句来实现这些操作。文章主要介绍如何使用SELECT语句查询数据表中的一列或多列数据、使用SELECT语句和关键字进行范围查询。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-10-20 16:50" pubdate>
+              2022-10-20
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/MySQL/" class="category-chain-item">MySQL</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/10/19/shu-ju-ku-he-biao-de-ji-ben-cao-zuo-er/" target="_blank">
+          <img src="/img/MySQL/MySQL%E5%9B%BE%E7%89%87.png" srcset="/img/loading.gif" lazyload alt="数据库和表的基本操作（二）">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/10/19/shu-ju-ku-he-biao-de-ji-ben-cao-zuo-er/" target="_blank">
+          数据库和表的基本操作（二）
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2022/10/19/shu-ju-ku-he-biao-de-ji-ben-cao-zuo-er/" target="_blank">
+        <div>
+          MySQL为我们提供了丰富的数据库管理语句，包括向数据表中插入(INSERT)数据内容的语句，修改(UPDATE)数据内容的语句和删除(DELETE)数据内容的语句。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-10-19 23:21" pubdate>
+              2022-10-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/MySQL/" class="category-chain-item">MySQL</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/10/17/shu-ju-ku-he-biao-de-ji-ben-cao-zuo-yi/" target="_blank">
+          <img src="/img/MySQL/MySQL%E5%9B%BE%E7%89%87.png" srcset="/img/loading.gif" lazyload alt="数据库和表的基本操作（一）">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/10/17/shu-ju-ku-he-biao-de-ji-ben-cao-zuo-yi/" target="_blank">
+          数据库和表的基本操作（一）
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2022/10/17/shu-ju-ku-he-biao-de-ji-ben-cao-zuo-yi/" target="_blank">
+        <div>
+          查看表结构与修改表名、修改字段名与字段数据类型、添加与删除字段、修改字段的排列位置、删除表的外键约束
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-10-17 17:01" pubdate>
+              2022-10-17
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/MySQL/" class="category-chain-item">MySQL</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/10/16/sheng-cheng-chou-dian-ming-dan/" target="_blank">
+          <img src="/img/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/teamwork.png" srcset="/img/loading.gif" lazyload alt="生成抽点名单">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/10/16/sheng-cheng-chou-dian-ming-dan/" target="_blank">
+          生成抽点名单
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2022/10/16/sheng-cheng-chou-dian-ming-dan/" target="_blank">
+        <div>
+          要求背景栋哥对大家第一次结对编程作业的原型设计感到很满意，为了尽快让同学们使用上软件，于是栋哥花一晚上时间开发了一个点名小程序。但是在上线运行过后，发现了一些问题： 大多数老师习惯在每次上课后或下课前的一小段时间内进行点名。如果采用全点的方式，在这段时间里，后端服务器需要处理大量的请求，拥塞导致响应速度变慢，给点名小程序带来极差的使用体验。采用随机抽点的方式，能够有效减少并发量，但是无法保证点名的
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-10-16 22:34" pubdate>
+              2022-10-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" class="category-chain-item">软件工程</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/10/15/chu-shi-mysql/" target="_blank">
+          <img src="/img/MySQL/MySQL%E5%9B%BE%E7%89%87.png" srcset="/img/loading.gif" lazyload alt="初识MySQL">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/10/15/chu-shi-mysql/" target="_blank">
+          初识MySQL
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2022/10/15/chu-shi-mysql/" target="_blank">
+        <div>
+          创建数据库，创建表，添加约束
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-10-15 22:50" pubdate>
+              2022-10-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/MySQL/" class="category-chain-item">MySQL</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/10/15/linux-jin-cheng-tong-xin/" target="_blank">
+          <img src="/img/Linux/Linux%E5%9B%BE%E7%89%87.jpg" srcset="/img/loading.gif" lazyload alt="Linux进程通信">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/10/15/linux-jin-cheng-tong-xin/" target="_blank">
+          Linux进程通信
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2022/10/15/linux-jin-cheng-tong-xin/" target="_blank">
+        <div>
+          Linux 作为一个多任务多进程的操作系统，各个进程间信息交互不可避免，进程间通信可分为本地进程间通信和远程进程间通信。本地进程间通信主要包括信号，管道，消息队列，信号量，共享内存等通信方式。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-10-15 22:46" pubdate>
+              2022-10-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Linux-C/" class="category-chain-item">Linux C</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/10/08/linux-jin-cheng-guan-li/" target="_blank">
+          <img src="/img/Linux/Linux%E5%9B%BE%E7%89%87.jpg" srcset="/img/loading.gif" lazyload alt="Linux进程管理">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/10/08/linux-jin-cheng-guan-li/" target="_blank">
+          Linux进程管理
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2022/10/08/linux-jin-cheng-guan-li/" target="_blank">
+        <div>
+          make工具，fork函数，exec函数，singal函数的使用
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-10-08 23:46" pubdate>
+              2022-10-08
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Linux-C/" class="category-chain-item">Linux C</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/10/02/yuan-xing-she-ji/" target="_blank">
+          <img src="/img/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/teamwork.png" srcset="/img/loading.gif" lazyload alt="初识原型设计">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/10/02/yuan-xing-she-ji/" target="_blank">
+          初识原型设计
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2022/10/02/yuan-xing-she-ji/" target="_blank">
+        <div>
+          事先说明其实主要是设计方面，个人艺术细胞不太好，没有美观的界面，只是设计了一个模型出来，无法实现其功能，这次是两人结队完成的哦 一、需求分析1.Need 需求 班级名单导入或生成，要方便易用 班级点名方式要方便易用 班级点名方式要尽可能防作弊 要支持多班级功能 要支持期末汇总统计导出 要支持请假功能 要符合小程序的规范的界面或功能要求  2.Approach 做法（1）使用原型设计工具墨刀设计基于
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-10-02 16:34" pubdate>
+              2022-10-02
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" class="category-chain-item">软件工程</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/4/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/#board">6</a><a class="page-number" href="/page/7/#board">7</a><a class="extend next" rel="next" href="/page/6/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/4/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/#board">6</a><a class="extend next" rel="next" href="/page/6/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

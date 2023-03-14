@@ -1,0 +1,718 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="casual_qian">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="本文的主要内容是掌握视图基础知识">
+<meta property="og:type" content="article">
+<meta property="og:title" content="视图">
+<meta property="og:url" content="https://casual-qian.github.io/2022/11/10/shi-tu/index.html">
+<meta property="og:site_name" content="casual_qian">
+<meta property="og:description" content="本文的主要内容是掌握视图基础知识">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://casual-qian.github.io/img/MySQL/MySQL%E5%9B%BE%E7%89%87.png">
+<meta property="article:published_time" content="2022-11-10T03:33:00.000Z">
+<meta property="article:modified_time" content="2022-11-16T02:59:40.961Z">
+<meta property="article:author" content="casual_qian">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://casual-qian.github.io/img/MySQL/MySQL%E5%9B%BE%E7%89%87.png">
+  
+  
+  
+  <title>视图 - casual_qian</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/iconfont_csdn/iconfont.css">
+<link rel="stylesheet" href="/css/iconfont_kugou/iconfont.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<link rel="stylesheet" href="/css/fluid-extension.css">
+<link rel="stylesheet" href="/css/youhua.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/CodeByZach/pace/themes/pink/pace-theme-bounce.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"casual-qian.github.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"/","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Stranding</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- 天气 -->
+    
+<div id="he-plugin-simple"></div>
+<script>
+WIDGET = {
+  "CONFIG": {
+    "modules": "0124",
+    "background": "5",
+    "tmpColor": "FFFFFF",
+    "tmpSize": "16",
+    "cityColor": "FFFFFF",
+    "citySize": "16",
+    "aqiColor": "FFFFFF",
+    "aqiSize": "16",
+    "weatherIconSize": "24",
+    "alertIconSize": "18",
+    "padding": "10px 10px 10px 10px",
+    "shadow": "0",
+    "language": "auto",
+    "borderRadius": "5",
+    "fixed": "false",
+    "vertical": "top",
+    "horizontal": "left",
+    "key": "3f0a554e33cd491f89f997e4ca28c44d"
+  }
+}
+</script>
+<script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script>
+
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/MySQL/banner.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="视图"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-11-10 11:33" pubdate>
+          2022年11月10日 中午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2k 字
+        
+      </span>
+    
+
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">视图</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>本文的主要内容是掌握视图基础知识</p>
+<h2 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h2><h3 id="任务描述"><a href="#任务描述" class="headerlink" title="任务描述"></a>任务描述</h3><p>本关任务：通过学习视图，创建一个单表视图和一个多表视图。</p>
+<h3 id="相关知识"><a href="#相关知识" class="headerlink" title="相关知识"></a>相关知识</h3><p>为了完成本关任务，你需要掌握：</p>
+<ol>
+<li>视图的定义；</li>
+<li>创建视图；</li>
+<li>操作视图；</li>
+<li>删除视图。</li>
+</ol>
+<h4 id="视图的定义"><a href="#视图的定义" class="headerlink" title="视图的定义"></a>视图的定义</h4><p>视图（<code>view</code>）是一种虚拟存在的表，是一个逻辑表，本身并不包含数据。通过视图，可以展现基表（用来创建视图的表）的部分数据；视图数据来自定义视图的查询表。</p>
+<p>我们知道了视图的定义，那么，为什么要使用它呢？</p>
+<p>因为视图有如下优点：</p>
+<ul>
+<li><p>① 简单：使用视图的用户完全不需要关心后面对应的表的结构、关联条件和筛选条件，对用户来说已经是过滤好的复合条件的结果集；</p>
+</li>
+<li><p>② 安全：使用视图的用户只能访问他们被允许查询的结果集，对表的权限管理并不能限制到某个行或列，但是通过视图就可以简单的实现；</p>
+</li>
+<li><p>③ 数据独立：一旦视图的结构确定了，可以屏蔽表结构变化对用户的影响，源表增加列队视图没有影响；源表修改列名，则可以通过修改视图来解决，不会造成对访问者的影响。</p>
+</li>
+</ul>
+<p>总而言之，使用视图的大部分情况是为了<strong>保障数据安全性，提高查询效率</strong>。</p>
+<p>**** 创建视图</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">CREATE</span> [<span class="hljs-keyword">OR REPLACE</span>] [ALGORITHM = &#123;UNDEFINED | MERGE | TEMPTABLE&#125;]<br>    <span class="hljs-keyword">VIEW</span> view_name [(column_list)]<br>    <span class="hljs-keyword">AS</span> select_statement<br>   [<span class="hljs-keyword">WITH</span> [CASCADED | <span class="hljs-keyword">LOCAL</span>] <span class="hljs-keyword">CHECK</span> <span class="hljs-keyword">OPTION</span>]<br></code></pre></td></tr></table></figure>
+
+<p>参数说明：</p>
+<ul>
+<li><code>OR REPLACE</code>：表示替换已有视图；</li>
+<li><code>ALGORITHM</code>：表示视图选择算法，默认算法是<code>UNDEFINED</code>(未定义的)： <code>MySQL</code> 自动选择要使用的算法 ；<code>merge</code>合并；<code>temptable</code>临时表；</li>
+<li><code>column_list</code>：可选参数，指定视图中各个属性的名词，默认情况下与<code>select</code>语句中查询的属性相同；</li>
+<li><code>select_statement</code>：表示<code>select</code>语句；</li>
+<li><code>[WITH [CASCADED | LOCAL] CHECK OPTION]</code>：表示视图在更新时保证在视图的权限范围之内；<code>cascade</code>是默认值，表示更新视图的时候，要满足视图和表的相关条件；<code>local</code>表示更新视图的时候，要满足该视图定义的一个条件即可。</li>
+</ul>
+<p>示例一：<br><img src="/img/MySQL/%E8%A7%86%E5%9B%BE/1-1.png" srcset="/img/loading.gif" lazyload></p>
+<p>示例二：<br><img src="/img/MySQL/%E8%A7%86%E5%9B%BE/1-2.png" srcset="/img/loading.gif" lazyload></p>
+<p>以上两个示例可以看出，虽然两个视图的字段名不同，但是，数据是相同的，因为两个视图引用的是<strong>同一个表中的数据</strong>，并且，<code>as</code>后的创建视图的语句也相同。</p>
+<p>在实际开发中，用户可以根据自己的需求，通过视图的方式，获取基本表中自己需要的数据，这样既能满足用户的需求，也不会破坏基本表原来的结构，从而保证了基本表中数据的安全性。</p>
+<h4 id="操作视图"><a href="#操作视图" class="headerlink" title="操作视图"></a>操作视图</h4><p>视图是逻辑表，也就是说视图不是真实的表，但操作视图和操作普通表的语法是一样的。</p>
+<p>用户可以在视图中无条件地使用<code>select</code>语句查询数据。但使用<code>insert</code>、<code>update</code>和<code>delete</code>操作需要在<strong>创建视图时</strong>满足以下条件（满足以下条件的视图称为<strong>可更新视图</strong>）：</p>
+<ul>
+<li><code>from</code>子句中只能引用有<code>1</code>个表（真实表或可更新视图）；</li>
+<li>不能包含 <code>with</code>、<code>distinct</code>、<code>group by</code>、<code>having</code>、<code>limit</code>等子句；</li>
+<li>不能使用复合查询，即不能使用<code>union</code>、<code>intersect</code>、<code>except</code>等集合操作；</li>
+<li><code>select</code>子句的字段列表不能包含聚合、窗口函数、集合返回函数。</li>
+</ul>
+<p>我们仍使用之前示例中的数据来操作视图：<br><img src="/img/MySQL/%E8%A7%86%E5%9B%BE/1-3.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="删除视图"><a href="#删除视图" class="headerlink" title="删除视图"></a>删除视图</h4><p>若视图不再被需要，我们可以将其删除，且视图的删除并不影响源表中的数据。</p>
+<p>删除视图的 <code>SQL</code> 如下：<br><code>DROP VIEW view_name;</code></p>
+<p>示例：<br><img src="/img/MySQL/%E8%A7%86%E5%9B%BE/1-4.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="编程要求"><a href="#编程要求" class="headerlink" title="编程要求"></a>编程要求</h3><p>根据提示，在右侧编辑器补充代码，根据提供的表完成视图的创建，具体要求如下：</p>
+<p><code>student</code>表数据结构：</p>
+<table>
+<thead>
+<tr>
+<th>stu_id</th>
+<th>name</th>
+<th>math</th>
+<th>chinese</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Tom</td>
+<td>80</td>
+<td>78</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Jack</td>
+<td>70</td>
+<td>80</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Lucy</td>
+<td>97</td>
+<td>95</td>
+</tr>
+</tbody></table>
+<p><code>stu_info</code>表数据结构：</p>
+<table>
+<thead>
+<tr>
+<th>stu_id</th>
+<th>classes</th>
+<th>city</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>1633</td>
+<td>长沙</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1632</td>
+<td>重庆</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1633</td>
+<td>成都</td>
+</tr>
+</tbody></table>
+<p>在<code>student</code>表上创建视图<code>stu_view</code>，查询<code>math</code>、<code>chinese</code>字段并定义一个<code>math+chinese</code>成绩之和字段，值为两者之和；</p>
+<p>在<code>student</code>表和<code>stu_info</code>表上，创建<code>stu_classes</code>视图，查询出<code>stu_id</code>、姓名和班级，查询条件为两表中的<code>stu_id</code>字段相同。</p>
+<h3 id="测试说明"><a href="#测试说明" class="headerlink" title="测试说明"></a>测试说明</h3><p>平台会对你编写的代码进行测试，预期输出会查询你创建的两个视图，具体内容请查看右侧测试集。</p>
+<h3 id="我的代码"><a href="#我的代码" class="headerlink" title="我的代码"></a>我的代码</h3><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs clean">use School;<br><br>#请在此处添加实现代码<br>########## Begin ##########<br><br>#<span class="hljs-number">1.</span>创建单表视图<br>create view stu_view <span class="hljs-keyword">as</span> select math,chinese,math+chinese <span class="hljs-keyword">from</span> student;<br><br>#<span class="hljs-number">2.</span>创建多表视图<br>create view stu_classes <span class="hljs-keyword">as</span> select student.stu_id,name,classes <br><span class="hljs-keyword">from</span> student,stu_info <br><span class="hljs-keyword">where</span> student.stu_id=stu_info.stu_id;<br><br>########## End ##########<br></code></pre></td></tr></table></figure>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/MySQL/" class="category-chain-item">MySQL</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/11/10/fu-za-cha-xun-er/" title="复杂查询（二）">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">复杂查询（二）</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/11/09/fu-za-cha-xun-yi/" title="复杂查询（一）">
+                        <span class="hidden-mobile">复杂查询（一）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+      
+<i class="iconfont icon-love"></i>
+
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/qipao.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/caidai.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiantiao.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/dianjichuzi.js"></script>
+<script src="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
