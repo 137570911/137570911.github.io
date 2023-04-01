@@ -1,0 +1,679 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="casual_qian">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="视图、索引、存储过程和事务 是 MySQL 中非常重要的几个概念，也是数据库应用开发者必须掌握的知识。视图用于延伸表的边界，索引用于提高数据库查找效率，存储过程用于分装业务逻辑，事务用于提升数据库应用的健壮性。本文的主要内容是掌握存储过程的基础知识。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="存储过程（一）">
+<meta property="og:url" content="https://casual-qian.github.io/2022/11/15/mysql/cun-chu-guo-cheng-yi/index.html">
+<meta property="og:site_name" content="casual_qian">
+<meta property="og:description" content="视图、索引、存储过程和事务 是 MySQL 中非常重要的几个概念，也是数据库应用开发者必须掌握的知识。视图用于延伸表的边界，索引用于提高数据库查找效率，存储过程用于分装业务逻辑，事务用于提升数据库应用的健壮性。本文的主要内容是掌握存储过程的基础知识。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://casual-qian.github.io/img/MySQL/MySQL%E5%9B%BE%E7%89%87.png">
+<meta property="article:published_time" content="2022-11-15T10:00:00.000Z">
+<meta property="article:modified_time" content="2022-11-16T03:00:20.888Z">
+<meta property="article:author" content="casual_qian">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://casual-qian.github.io/img/MySQL/MySQL%E5%9B%BE%E7%89%87.png">
+  
+  
+  
+  <title>存储过程（一） - casual_qian</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/iconfont_csdn/iconfont.css">
+<link rel="stylesheet" href="/css/iconfont_kugou/iconfont.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<link rel="stylesheet" href="/css/fluid-extension.css">
+<link rel="stylesheet" href="/css/youhua.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/CodeByZach/pace/themes/pink/pace-theme-bounce.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"casual-qian.github.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Stranding</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- 天气 -->
+    
+<div id="he-plugin-simple"></div>
+<script>
+WIDGET = {
+  "CONFIG": {
+    "modules": "0124",
+    "background": "5",
+    "tmpColor": "FFFFFF",
+    "tmpSize": "16",
+    "cityColor": "FFFFFF",
+    "citySize": "16",
+    "aqiColor": "FFFFFF",
+    "aqiSize": "16",
+    "weatherIconSize": "24",
+    "alertIconSize": "18",
+    "padding": "10px 10px 10px 10px",
+    "shadow": "0",
+    "language": "auto",
+    "borderRadius": "5",
+    "fixed": "false",
+    "vertical": "top",
+    "horizontal": "left",
+    "key": "3f0a554e33cd491f89f997e4ca28c44d"
+  }
+}
+</script>
+<script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script>
+
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/MySQL/banner.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="存储过程（一）"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-11-15 18:00" pubdate>
+          2022年11月15日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.5k 字
+        
+      </span>
+    
+
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">存储过程（一）</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p><strong>视图、索引、存储过程和事务</strong> 是 <code>MySQL</code> 中非常重要的几个概念，也是数据库应用开发者必须掌握的知识。视图用于<strong>延伸表的边界</strong>，索引用于提高数据库<strong>查找效率</strong>，<strong>存储过程</strong>用于<strong>分装</strong>业务逻辑，事务用于提升数据库应用的<strong>健壮性</strong>。</p>
+<p>本文的主要内容是掌握存储过程的基础知识。</p>
+<h2 id="存储过程（一）"><a href="#存储过程（一）" class="headerlink" title="存储过程（一）"></a>存储过程（一）</h2><h3 id="任务描述"><a href="#任务描述" class="headerlink" title="任务描述"></a>任务描述</h3><p>本关任务：为<code>customers</code>表创建一个存储过程，使该存储过程能通过用户的信用额度来区分用户的等级。</p>
+<h3 id="相关知识"><a href="#相关知识" class="headerlink" title="相关知识"></a>相关知识</h3><p>为了完成本关任务，你需要掌握：<br>1.存储过程的定义；<br>2.存储过程的创建和查询；<br>3.存储过程的查询和删除。</p>
+<h4 id="存储过程的定义"><a href="#存储过程的定义" class="headerlink" title="存储过程的定义"></a>存储过程的定义</h4><p><strong>存储过程</strong>（<code>Stored Procedure</code>）是一种在数据库中存储复杂程序，以便外部程序调用的一种数据库对象。</p>
+<p>存储过程是为了完成特定功能的<code>SQL</code>语句集，经编译创建并保存在数据库中，用户可通过指定存储过程的名字并给定参数（需要时）来调用执行。</p>
+<p>存储过程思想上很简单，就是数据库 <code>SQL</code> 语言层面的代码<strong>封装与重用</strong>。</p>
+<p>简单的说存储过程就是具有名字的一段代码，用来完成一个特定的功能。</p>
+<h4 id="存储过程的创建和查询"><a href="#存储过程的创建和查询" class="headerlink" title="存储过程的创建和查询"></a>存储过程的创建和查询</h4><p>创建存储过程：<code>create procedure 存储过程名(参数)</code> </p>
+<ul>
+<li>下面我们来创建第一个存储过程<br>每个存储的程序都包含一个由 <code>SQL</code> 语句组成的主体。此语句可能是由以分号（<code>;</code>）字符分隔的多个语句组成的复合语句。例如：<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs oxygene"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">PROCEDURE</span> <span class="hljs-title function_">proc1</span><span class="hljs-params">()</span><br><span class="hljs-title function_">BEGIN</span><br><span class="hljs-title function_">SELECT</span> * <span class="hljs-title function_">FROM</span> <span class="hljs-title function_">user</span>;<br><span class="hljs-keyword">END</span><span class="hljs-punctuation">;</span><br></code></pre></td></tr></table></figure>
+在命令行客户端中，如果有一行命令以分号结束，那么回车后，MySQL 将会执行该命令，但在创建存储过程中我们并不希望 MySQL 这么做。</li>
+</ul>
+<p><code>MySQL</code> 本身将分号识别为语句分隔符，因此必须临时重新定义分隔符以使 <code>MySQL</code> 将整个存储的程序定义传递给服务器。</p>
+<p>要重新定义 <code>MySQL</code> 分隔符，请使用该 <code>delimiter</code>命令。使用 <code>delimiter</code> 首先将结束符定义为<code>//</code>，完成创建存储过程后，使用<code>//</code>表示结束，然后将分隔符重新设置为分号（<code>;</code>）：</p>
+<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs oxygene">DELIMITER <span class="hljs-comment">//</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">PROCEDURE</span> <span class="hljs-title function_">proc1</span><span class="hljs-params">()</span><br><span class="hljs-title function_">BEGIN</span><br><span class="hljs-title function_">SELECT</span> * <span class="hljs-title function_">FROM</span> <span class="hljs-title function_">user</span>;<br><span class="hljs-keyword">END</span> <span class="hljs-comment">//</span><br>DELIMITER <span class="hljs-punctuation">;</span><br></code></pre></td></tr></table></figure>
+<p><strong>注意</strong>：<code>/</code>也可以换成其他符号，例如<code>$</code>;</p>
+<ul>
+<li><p>执行存储过程：<code>call 存储过程名</code><br><img src="/img/MySQL/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/1-1.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>创建带有参数的存储过程<br>存储过程的参数有三种：</p>
+<ul>
+<li><code>IN</code>：输入参数，也是默认模式，表示该参数的值必须在调用存储过程时指定，在存储过程中修改该参数的值不能被返回；</li>
+<li><code>OUT</code>：输出参数，该值可在存储过程内部被改变，并可返回；</li>
+<li><code>INOUT</code>：输入输出参数，调用时指定，并且可被改变和返回。</li>
+</ul>
+</li>
+</ul>
+<p><code>IN</code>参数示例：<br><img src="/img/MySQL/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/1-2.png" srcset="/img/loading.gif" lazyload></p>
+<p><code>OUT</code>参数示例：<br><img src="/img/MySQL/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/1-3.png" srcset="/img/loading.gif" lazyload></p>
+<p><code>INOUT</code>参数示例：<br><img src="/img/MySQL/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/1-4.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="存储过程的查询和删除"><a href="#存储过程的查询和删除" class="headerlink" title="存储过程的查询和删除"></a>存储过程的查询和删除</h4><p>我们如何在数据库中查询我们已经创建过的存储过程呢：<br><code>SHOW PROCEDURE STATUS WHERE db=&#39;数据库名&#39;;</code></p>
+<p>查看存储过程的详细定义信息：<br><code>SHOW CREATE PROCEDURE 数据库.存储过程名;</code><br><img src="/img/MySQL/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/1-5.png" srcset="/img/loading.gif" lazyload></p>
+<p>当我们不再需要某个存储过程时，我们可以使用：<br><code>DROP PROCEDURE [IF EXISTS] 数据库名.存储过程名;</code><br><img src="/img/MySQL/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/1-6.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="编程要求"><a href="#编程要求" class="headerlink" title="编程要求"></a>编程要求</h3><p>根据提示，在右侧编辑器补充代码，创建存储过程<code>GetCustomerLevel(in p_customNumber int(11),out p_customerLevel varchar(10))</code>，通过查询<code>customers</code>表中客户的信用额度，来决定客户级别，并将客户编号和对应等级输出，具体输出内容参考测试集。</p>
+<p><code>customers</code>表数据结构：</p>
+<table>
+<thead>
+<tr>
+<th>customerNumber</th>
+<th>creditlimit</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>101</td>
+<td>2000</td>
+</tr>
+<tr>
+<td>102</td>
+<td>12000</td>
+</tr>
+<tr>
+<td>103</td>
+<td>6000</td>
+</tr>
+</tbody></table>
+<p>等级设定：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">PLATINUM</span> （creditlim&gt;<span class="hljs-number">10000</span>）<br><span class="hljs-attribute">GOLD</span> （<span class="hljs-number">5000</span>&lt;=creditlim&lt;=<span class="hljs-number">10000</span>）<br><span class="hljs-attribute">SILVER</span>（creditlim&lt;<span class="hljs-number">5000</span>）<br></code></pre></td></tr></table></figure>
+
+<p><strong>提示</strong>：你可能需要使用到定义变量和判断，</p>
+<ol>
+<li>变量的定义和使用：<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">declare</span> 变量名 类型; #定义变量<br><span class="hljs-keyword">select</span> id <span class="hljs-keyword">into</span> 变量名 <span class="hljs-keyword">from</span> <span class="hljs-keyword">table</span>; #将<span class="hljs-keyword">table</span>表中的id列值赋给变量。<br></code></pre></td></tr></table></figure></li>
+<li>SQL 中的if和case语法：<figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs gauss"><span class="hljs-keyword">IF</span> expression THEN<br> <span class="hljs-built_in">statements</span>;<br><span class="hljs-keyword">ELSEIF</span> <span class="hljs-keyword">elseif</span>-expression THEN<br> <span class="hljs-keyword">elseif</span>-<span class="hljs-built_in">statements</span>;<br>...<br><span class="hljs-keyword">ELSE</span><br> <span class="hljs-keyword">else</span>-<span class="hljs-built_in">statements</span>;<br><span class="hljs-keyword">END</span> <span class="hljs-keyword">IF</span>;<br></code></pre></td></tr></table></figure></li>
+</ol>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs ada"><span class="hljs-keyword">CASE</span> <span class="hljs-keyword">case</span>-expression<br> <span class="hljs-keyword">WHEN</span> when_expression_1 <span class="hljs-keyword">THEN</span> commands<br> <span class="hljs-keyword">WHEN</span> when_expression_2 <span class="hljs-keyword">THEN</span> commands<br> ...<br> <span class="hljs-keyword">ELSE</span> commands<br><span class="hljs-keyword">END</span> <span class="hljs-keyword">CASE</span>;<br></code></pre></td></tr></table></figure>
+<h3 id="测试说明"><a href="#测试说明" class="headerlink" title="测试说明"></a>测试说明</h3><p>平台会对你编写的代码进行测试，将调用你编写的存储过程，具体输出请参考右侧测试集。</p>
+<h3 id="我的代码"><a href="#我的代码" class="headerlink" title="我的代码"></a>我的代码</h3><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs clean">USE mydb;<br>#请在此处添加实现代码<br>########## Begin ##########<br>delimiter $$<br>create procedure GetCustomerLevel(<span class="hljs-keyword">in</span> p_customNumber int(<span class="hljs-number">11</span>),out p_customerLevel varchar(<span class="hljs-number">10</span>))<br>begin<br>declare levels int;<br>select creditlimit into levels <span class="hljs-keyword">from</span> customers <span class="hljs-keyword">where</span> customerNumber=p_customNumber;<br><span class="hljs-keyword">if</span> levels &lt;<span class="hljs-number">5000</span> then<br>    set p_customerLevel = <span class="hljs-string">&#x27;SILVER&#x27;</span>;<br>elseif levels &lt;<span class="hljs-number">10000</span> then<br>    set p_customerLevel = <span class="hljs-string">&#x27;GOLD&#x27;</span>;<br> else<br>    set p_customerLevel = <span class="hljs-string">&#x27;PLATINUM&#x27;</span>;<br>end <span class="hljs-keyword">if</span>;<br>select p_customNumber <span class="hljs-keyword">as</span> customerNumber,p_customerLevel;<br>end $$<br>delimiter ;<br>########## End ##########<br></code></pre></td></tr></table></figure>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/MySQL/" class="category-chain-item">MySQL</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/11/16/cao-zuo-xi-tong/she-bei-guan-li/" title="设备管理">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">设备管理</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/11/15/windows-wang-luo-bian-cheng/jian-dan-de-window-cheng-xu-she-ji/" title="简单的window程序设计">
+                        <span class="hidden-mobile">简单的window程序设计</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+      
+<i class="iconfont icon-love"></i> <script src="https://myhkw.cn/player/js/jquery.min.js" type="text/javascript"></script> <script src="https://myhkw.cn/api/player/167955572494" id="myhk" key="167955572494" m="1"></script>   
+
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/qipao.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/caidai.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiantiao.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/dianjichuzi.js"></script>
+<script src="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/xiabo2/CDN@latest/fishes.js">.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+ 
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

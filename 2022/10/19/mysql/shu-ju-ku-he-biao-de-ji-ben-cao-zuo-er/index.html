@@ -1,0 +1,690 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="casual_qian">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="MySQL为我们提供了丰富的数据库管理语句，包括向数据表中插入(INSERT)数据内容的语句，修改(UPDATE)数据内容的语句和删除(DELETE)数据内容的语句。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库和表的基本操作（二）">
+<meta property="og:url" content="https://casual-qian.github.io/2022/10/19/mysql/shu-ju-ku-he-biao-de-ji-ben-cao-zuo-er/index.html">
+<meta property="og:site_name" content="casual_qian">
+<meta property="og:description" content="MySQL为我们提供了丰富的数据库管理语句，包括向数据表中插入(INSERT)数据内容的语句，修改(UPDATE)数据内容的语句和删除(DELETE)数据内容的语句。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://casual-qian.github.io/img/MySQL/MySQL%E5%9B%BE%E7%89%87.png">
+<meta property="article:published_time" content="2022-10-19T15:21:00.000Z">
+<meta property="article:modified_time" content="2022-11-16T02:30:28.528Z">
+<meta property="article:author" content="casual_qian">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://casual-qian.github.io/img/MySQL/MySQL%E5%9B%BE%E7%89%87.png">
+  
+  
+  
+  <title>数据库和表的基本操作（二） - casual_qian</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/iconfont_csdn/iconfont.css">
+<link rel="stylesheet" href="/css/iconfont_kugou/iconfont.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<link rel="stylesheet" href="/css/fluid-extension.css">
+<link rel="stylesheet" href="/css/youhua.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/CodeByZach/pace/themes/pink/pace-theme-bounce.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"casual-qian.github.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Stranding</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- 天气 -->
+    
+<div id="he-plugin-simple"></div>
+<script>
+WIDGET = {
+  "CONFIG": {
+    "modules": "0124",
+    "background": "5",
+    "tmpColor": "FFFFFF",
+    "tmpSize": "16",
+    "cityColor": "FFFFFF",
+    "citySize": "16",
+    "aqiColor": "FFFFFF",
+    "aqiSize": "16",
+    "weatherIconSize": "24",
+    "alertIconSize": "18",
+    "padding": "10px 10px 10px 10px",
+    "shadow": "0",
+    "language": "auto",
+    "borderRadius": "5",
+    "fixed": "false",
+    "vertical": "top",
+    "horizontal": "left",
+    "key": "3f0a554e33cd491f89f997e4ca28c44d"
+  }
+}
+</script>
+<script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script>
+
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/MySQL/banner.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="数据库和表的基本操作（二）"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-10-19 23:21" pubdate>
+          2022年10月19日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.2k 字
+        
+      </span>
+    
+
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">数据库和表的基本操作（二）</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p><code>MySQL</code>为我们提供了丰富的数据库管理语句，包括向数据表中插入(<code>INSERT</code>)数据内容的语句，修改(<code>UPDATE</code>)数据内容的语句和删除(<code>DELETE</code>)数据内容的语句。</p>
+<h2 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h2><h3 id="任务描述"><a href="#任务描述" class="headerlink" title="任务描述"></a>任务描述</h3><p>本关任务：为表同时插入多条我们规定的记录。</p>
+<h3 id="相关知识"><a href="#相关知识" class="headerlink" title="相关知识"></a>相关知识</h3><p>为了完成本关任务，你需要掌握：如何为表一次性插入多条记录。</p>
+<h4 id="为表的所有字段插入数据"><a href="#为表的所有字段插入数据" class="headerlink" title="为表的所有字段插入数据"></a>为表的所有字段插入数据</h4><p>向表中插入数据最简单的方法就是使用<code>INSERT</code>语句。<code>INSERT</code>语句需要你声明要插入内容的表(<code>table</code>)名和内容(<code>values</code>)。</p>
+<p>语法规则：<code>INSERT INTO 表名 (字段名) VALUES (内容);</code><br><strong>举个例子</strong>：<br>假设我们现在有一张空表<code>MyUser</code>如下：<br><img src="/img/MySQL/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%BA%8C%EF%BC%89/1-1.png" srcset="/img/loading.gif" lazyload></p>
+<p>接下来，我们要往空表中插入一条内容，插入(<code>INSERT</code>)语句为：<br>i<code>nsert into MyUser(name,age) values(&#39;zhnagsan&#39;,18);</code><br>结果为：<br><img src="/img/MySQL/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%BA%8C%EF%BC%89/1-2.png" srcset="/img/loading.gif" lazyload></p>
+<p>插入过程如下：<br><img src="/img/MySQL/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%BA%8C%EF%BC%89/1-3.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们检索到了一条数据的结果，一条完整的内容已经被填入了空表中。</p>
+<p><strong>分析：</strong><br>在插入数据时，我们指定了所有的字段名，这样的好处是：即使我们打乱了原本字段的排列顺序，只要插入的数据与之匹配，插入都不会出错。其实，还有一种偷懒的办法，就是我们可以不填字段名，但是这样的话，就必须老老实实的按字段顺序来填入相应的数据。</p>
+<h4 id="为表的指定字段插入数据"><a href="#为表的指定字段插入数据" class="headerlink" title="为表的指定字段插入数据"></a>为表的指定字段插入数据</h4><p>有的时候，我们并不想往某个字段内插入完完整整的值，或者说，有的时候我们并没有完整的数据可以整整齐齐插入某个字段。这时候就需要我们只为指定好的字段插入数据了，其他的我们都不用管。换句话说，就是：<br>为表的指定字段插入数据，就是在INSERT中只向部分插入值，而其他字段的值为表定义时的默认值。</p>
+<p><strong>举个例子</strong></p>
+<p>假设我们现在有一张空表 <code>MyUser</code> 如下：<br><img src="/img/MySQL/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%BA%8C%EF%BC%89/1-4.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们忽略字段 <code>age</code>，为表 <code>MyUser</code> 插入内容:<br><code>insert into MyUser(name) values(&#39;lisi&#39;),(&#39;fawaikuangtu&#39;),(&#39;zhangsan&#39;);</code><br>结果为：<br><img src="/img/MySQL/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%BA%8C%EF%BC%89/1-5.png" srcset="/img/loading.gif" lazyload></p>
+<p>插入过程如下：<br><img src="/img/MySQL/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%BA%8C%EF%BC%89/1-6.png" srcset="/img/loading.gif" lazyload></p>
+<p>可以看到，由于我们建表时给字段 <code>age</code> 设置的默认值为 <code>Null</code>，所以插入数据时忽略该字段，就会默认给它赋值为空。</p>
+<h3 id="编程要求"><a href="#编程要求" class="headerlink" title="编程要求"></a>编程要求</h3><p>根据提示，在右侧编辑器<code>Begin-End</code>处补充代码：</p>
+<ul>
+<li><p>我们为你新建了一个空数据表<code>tb_emp</code>，请你为它同时添加3条数据内容；</p>
+</li>
+<li><p>空数据表结构如下，注意<code>字段3</code> 为<code>DeptId</code>，倒数第二个字母为大写的<code>i</code>：<br><img src="/img/MySQL/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%BA%8C%EF%BC%89/1-7.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>需要你同时添加的数据内容为： （注意，是同时插入多条记录）<br><img src="/img/MySQL/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%BA%8C%EF%BC%89/1-8.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ul>
+<h3 id="测试说明"><a href="#测试说明" class="headerlink" title="测试说明"></a>测试说明</h3><p>我会对你编写的代码进行测试，最终结果会如下图所示：<br><img src="/img/MySQL/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%BA%8C%EF%BC%89/1-9.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="我的代码"><a href="#我的代码" class="headerlink" title="我的代码"></a>我的代码</h3><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs clean">USE Company;<br><br>#请在此处添加实现代码<br>########## Begin ##########<br><br>########## bundle insert the value ##########<br>insert into tb_emp value (<span class="hljs-number">1</span>,<span class="hljs-string">&#x27;Nancy&#x27;</span>,<span class="hljs-number">301</span>,<span class="hljs-number">2300.00</span>),(<span class="hljs-number">2</span>,<span class="hljs-string">&#x27;Tod&#x27;</span>,<span class="hljs-number">303</span>,<span class="hljs-number">5600.00</span>),(<span class="hljs-number">3</span>,<span class="hljs-string">&#x27;Carly&#x27;</span>,<span class="hljs-number">301</span>,<span class="hljs-number">3200.00</span>);<br><br><br>########## End ##########<br>SELECT * FROM tb_emp;<br></code></pre></td></tr></table></figure>
+
+<h2 id="更新数据"><a href="#更新数据" class="headerlink" title="更新数据"></a>更新数据</h2><h3 id="任务描述-1"><a href="#任务描述-1" class="headerlink" title="任务描述"></a>任务描述</h3><p>有道是：人生在世，孰能无过。过而能改，善莫大焉!</p>
+<p>本关就为各位着重介绍数据的更新（<code>UPDATE</code>）。</p>
+<p>本关任务：将数据表中原有的数据修改为本关指定的数据。</p>
+<h3 id="相关知识-1"><a href="#相关知识-1" class="headerlink" title="相关知识"></a>相关知识</h3><p>为了完成本关任务，你需要掌握：如何使用<code>update</code>来修改已有的数据。</p>
+<h4 id="更新表中指定的内容"><a href="#更新表中指定的内容" class="headerlink" title="更新表中指定的内容"></a>更新表中指定的内容</h4><p>通过上一关的学习，我们已经掌握了<code>INSERT</code>操作！同样，<code>UPDATE</code>操作也很简单，只要记住<code>UPDATE</code>语句三要素就能轻松掌握，它们分别是:</p>
+<ul>
+<li>需要更新的<code>表（table）名</code>；</li>
+<li>需要更新的<code>字段（column）</code>名和它的<code>新内容（value）</code>；</li>
+<li>决定更新哪一条<code>内容（value）</code>的过滤条件。</li>
+</ul>
+<p>语法规则为： <code>UPDATE 表名 SET 字段名1 = 内容1, 字段名2 = 内容2, 字段名3 = 内容3 WHERE 过滤条件;</code> 。<br><strong>举个例子</strong><br>我们现在有一张表<code>Mall_products2</code>，内容如下图所示：<br><img src="/img/MySQL/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%BA%8C%EF%BC%89/2-1.png" srcset="/img/loading.gif" lazyload></p>
+<p>现在我们想把<code>Span</code>换成<code>Pakistan</code>，当然，地区代码也要换为<code>92</code> 。</p>
+<p>更新(<code>UPDATE</code>)语句为：</p>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs gams">UPDATE Mall_products2<br><span class="hljs-keyword">SET</span> country_name <span class="hljs-comment">=</span> <span class="hljs-comment">&quot;Pakistan&quot;</span><span class="hljs-comment">, country_id = 92</span><br>WHERE <span class="hljs-comment">id = 2</span>;<br></code></pre></td></tr></table></figure>
+<p>结果为：<br><img src="/img/MySQL/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%BA%8C%EF%BC%89/2-2.png" srcset="/img/loading.gif" lazyload></p>
+<p>插入过程如下：<br><img src="/img/MySQL/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%BA%8C%EF%BC%89/2-3.gif" srcset="/img/loading.gif" lazyload></p>
+<p>看上去不难吧，快来练练手吧！</p>
+<h3 id="编程要求-1"><a href="#编程要求-1" class="headerlink" title="编程要求"></a>编程要求</h3><p>根据提示，在右侧编辑器<code>Begin-End</code>处补充代码：</p>
+<ul>
+<li>我们为你新建了一个数据表<code>tb_emp</code>，并添加了3条数据内容；</li>
+<li>3条数据内容如下表所示：<br><img src="/img/MySQL/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%BA%8C%EF%BC%89/2-4.png" srcset="/img/loading.gif" lazyload></li>
+</ul>
+<p>请你将<code>Carly</code>改为<code>Tracy</code>，相应的，<code>301</code>改为<code>302</code>，<code>3200.00</code>改为<code>4300.00</code>。<br><strong>注意</strong>：<code>字段3</code>为<code>DeptId</code>，倒数第二个字母为大写的<code>i</code>。</p>
+<h3 id="测试说明-1"><a href="#测试说明-1" class="headerlink" title="测试说明"></a>测试说明</h3><p>我会对你编写的代码进行测试，最终结果会如下图所示：<br><img src="/img/MySQL/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%BA%8C%EF%BC%89/2-5.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="我的代码-1"><a href="#我的代码-1" class="headerlink" title="我的代码"></a>我的代码</h3><figure class="highlight plaintext"><figcaption><span>Company;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs USE"><br>#请在此处添加实现代码<br>########## Begin ##########<br><br>########## update the value ##########<br>update tb_emp set Name=&#x27;Tracy&#x27;,Salary=4300.00 ,DeptId=302 where id = 3;<br><br><br>########## End ##########<br>SELECT * FROM tb_emp;<br></code></pre></td></tr></table></figure>
+
+<h2 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h2><h3 id="任务描述-2"><a href="#任务描述-2" class="headerlink" title="任务描述"></a>任务描述</h3><p>本关任务：删除表中的指定行。</p>
+<h3 id="相关知识-2"><a href="#相关知识-2" class="headerlink" title="相关知识"></a>相关知识</h3><p>为了完成本关任务，你需要掌握：如何删除指定行的数据。</p>
+<h4 id="删除表中的指定行"><a href="#删除表中的指定行" class="headerlink" title="删除表中的指定行"></a>删除表中的指定行</h4><p>从数据表中删除数据内容需要使用<code>DELETE</code>语句，它需要WHERE语句来配合它来指定我们究竟应该删除哪些数据内容。</p>
+<p>语法规则为：<code> DELETE FROM 表名 WHERE 条件语句;</code> 。<br>我们可以指定删除某一行的数据内容，当然，我们还可以指定删除很多行的数据内容，区别就在于条件语句。那么在接下来的例子里，我们来看看很多行内容是怎么删除的。</p>
+<p><strong>举个例子</strong><br>我们现在有一张表<code>Mall_products2</code>，内容如下图所示：<br><img src="/img/MySQL/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%BA%8C%EF%BC%89/3-1.png" srcset="/img/loading.gif" lazyload></p>
+<p>现在我们想把包含<code>Span</code>和<code>Italy</code>的这两行数据内容同时删除，删除（<code>DELETE</code>）语句为：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs routeros">DELETE <span class="hljs-keyword">FROM</span> Mall_products2 <br>WHERE <span class="hljs-attribute">id</span>=2 <span class="hljs-keyword">OR</span> <span class="hljs-attribute">id</span>=3;<br></code></pre></td></tr></table></figure>
+<p>结果为：<br><img src="/img/MySQL/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%BA%8C%EF%BC%89/3-2.png" srcset="/img/loading.gif" lazyload></p>
+<p>删除过程如下：<br><img src="/img/MySQL/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%BA%8C%EF%BC%89/3-3.gif" srcset="/img/loading.gif" lazyload></p>
+<p>聪明如你，删除多行内容的例子都看懂了，我想删除某一行的数据内容对你们来说简直易如反掌！</p>
+<h4 id="删除表中的所有行"><a href="#删除表中的所有行" class="headerlink" title="删除表中的所有行"></a>删除表中的所有行</h4><p>删除表中的所有行就更简单了。如果需要删除表中所有的行，只需要省略<code>WHERE</code>语句即可。</p>
+<p>语法规则为： <code>DELETE FROM 表名;</code> 。<br><strong>举个例子</strong><br>我们现在有一张表<code>Mall_products2</code>，内容如下图所示：<br><img src="/img/MySQL/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%BA%8C%EF%BC%89/3-4.png" srcset="/img/loading.gif" lazyload></p>
+<p>现在我们想把表<code>Mall_products2</code>的所有数据内容同时删除，删除（<code>DELETE</code>）语句为：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gradle"><span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> Mall_products2;<br></code></pre></td></tr></table></figure>
+<p>结果为：<br><img src="/img/MySQL/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%BA%8C%EF%BC%89/3-5.png" srcset="/img/loading.gif" lazyload></p>
+<p>删除过程如下：<br><img src="/img/MySQL/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%BA%8C%EF%BC%89/3-6.gif" srcset="/img/loading.gif" lazyload></p>
+<p><strong>小提示</strong>： <code>TRUNCATE TABLE</code> 语句也可以用来删除表中的所有记录。但是与 <code>DELETE</code> 不同的是，<code>TRUNCATE TABLE</code> 语句直接删除的是表，而不是表中的内容，删除结束后还会重新创建一个表。所以它的执行速度会比 <code>DELETE</code> 语句快。 语法为：<code>TRUNCATE TABLE 表名;</code><br>好了，数据的删除就介绍到这里了，是不是跃跃欲试呢？</p>
+<h3 id="编程要求-2"><a href="#编程要求-2" class="headerlink" title="编程要求"></a>编程要求</h3><p>根据提示，在右侧编辑器<code>Begin-End</code>处补充代码：</p>
+<ul>
+<li>我们为你新建了一个数据表<code>tb_emp</code>，并添加了3条数据内容；</li>
+<li>3条数据内容如下表所示：<br><img src="/img/MySQL/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%BA%8C%EF%BC%89/3-7.png" srcset="/img/loading.gif" lazyload></li>
+</ul>
+<p>请你将<code>Salary</code>大于<code>3000</code>的数据行删除。</p>
+<h3 id="测试说明-2"><a href="#测试说明-2" class="headerlink" title="测试说明"></a>测试说明</h3><p>我会对你编写的代码进行测试，最终结果会如下图所示：<br><img src="/img/MySQL/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%BA%8C%EF%BC%89/3-8.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="我的代码-2"><a href="#我的代码-2" class="headerlink" title="我的代码"></a>我的代码</h3><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs clean">USE Company;<br><br>#请在此处添加实现代码<br>########## Begin ##########<br><br>########## delete the value ##########<br>delete <span class="hljs-keyword">from</span> tb_emp <span class="hljs-keyword">where</span> Salary&gt;<span class="hljs-number">3000</span>;<br><br><br>########## End ##########<br><br>SELECT * FROM tb_emp;<br></code></pre></td></tr></table></figure>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/MySQL/" class="category-chain-item">MySQL</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/10/20/mysql/dan-biao-cha-xun-yi/" title="单表查询（一）">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">单表查询（一）</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/10/17/mysql/shu-ju-ku-he-biao-de-ji-ben-cao-zuo-yi/" title="数据库和表的基本操作（一）">
+                        <span class="hidden-mobile">数据库和表的基本操作（一）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+      
+<i class="iconfont icon-love"></i> <script src="https://myhkw.cn/player/js/jquery.min.js" type="text/javascript"></script> <script src="https://myhkw.cn/api/player/167955572494" id="myhk" key="167955572494" m="1"></script>   
+
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/qipao.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/caidai.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiantiao.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/dianjichuzi.js"></script>
+<script src="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/xiabo2/CDN@latest/fishes.js">.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+ 
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
