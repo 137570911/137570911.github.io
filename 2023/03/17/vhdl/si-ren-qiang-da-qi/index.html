@@ -1,0 +1,634 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="casual_qian">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="设计一个4人参加的抢答器，当有一个选手首先按下抢答器开关时，相应在一个数码管上显示该选手所在的开关编号，此时抢答器不再接受其他人的输入信号，同时启动计时功能，采用到计时的方式在2个数码管上显示时间，时间最长为100S，显示为99～00，当到达00时，用一个发光二极管提醒，并不再计时。另外系统设计一个开关，用来复位。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="四人抢答器">
+<meta property="og:url" content="https://casual-qian.github.io/2023/03/17/vhdl/si-ren-qiang-da-qi/index.html">
+<meta property="og:site_name" content="casual_qian">
+<meta property="og:description" content="设计一个4人参加的抢答器，当有一个选手首先按下抢答器开关时，相应在一个数码管上显示该选手所在的开关编号，此时抢答器不再接受其他人的输入信号，同时启动计时功能，采用到计时的方式在2个数码管上显示时间，时间最长为100S，显示为99～00，当到达00时，用一个发光二极管提醒，并不再计时。另外系统设计一个开关，用来复位。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://casual-qian.github.io/img/vhdl/vhdl.jpg">
+<meta property="article:published_time" content="2023-03-17T00:10:00.000Z">
+<meta property="article:modified_time" content="2023-04-13T15:00:48.032Z">
+<meta property="article:author" content="casual_qian">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://casual-qian.github.io/img/vhdl/vhdl.jpg">
+  
+  
+  
+  <title>四人抢答器 - casual_qian</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/iconfont_csdn/iconfont.css">
+<link rel="stylesheet" href="/css/iconfont_kugou/iconfont.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<link rel="stylesheet" href="/css/fluid-extension.css">
+<link rel="stylesheet" href="/css/youhua.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/CodeByZach/pace/themes/pink/pace-theme-bounce.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"casual-qian.github.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Stranding</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- 天气 -->
+    
+<div id="he-plugin-simple"></div>
+<script>
+WIDGET = {
+  "CONFIG": {
+    "modules": "0124",
+    "background": "5",
+    "tmpColor": "FFFFFF",
+    "tmpSize": "16",
+    "cityColor": "FFFFFF",
+    "citySize": "16",
+    "aqiColor": "FFFFFF",
+    "aqiSize": "16",
+    "weatherIconSize": "24",
+    "alertIconSize": "18",
+    "padding": "10px 10px 10px 10px",
+    "shadow": "0",
+    "language": "auto",
+    "borderRadius": "5",
+    "fixed": "false",
+    "vertical": "top",
+    "horizontal": "left",
+    "key": "3f0a554e33cd491f89f997e4ca28c44d"
+  }
+}
+</script>
+<script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script>
+
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/vhdl/banner.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="四人抢答器"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-03-17 08:10" pubdate>
+          2023年3月17日 早上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.5k 字
+        
+      </span>
+    
+
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">四人抢答器</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="一、实验目的"><a href="#一、实验目的" class="headerlink" title="一、实验目的"></a>一、实验目的</h2><ol>
+<li>掌握模块设计方法； </li>
+<li>掌握采用刷新方式控制多个数码管显示的方法。</li>
+</ol>
+<h2 id="二、实验电路图"><a href="#二、实验电路图" class="headerlink" title="二、实验电路图"></a>二、实验电路图</h2><p>本实验电路图与<a href="https://casual-qian.github.io/2023/03/11/vhdl/shu-ma-guan-kong-zhi-qi/">数码管控制实验</a>相同。</p>
+<h2 id="三、实验内容"><a href="#三、实验内容" class="headerlink" title="三、实验内容"></a>三、实验内容</h2><p>设计一个4人参加的抢答器，当有一个选手首先按下抢答器开关时，相应在一个数码管上显示该选手所在的开关编号，此时抢答器不再接受其他人的输入信号，同时启动计时功能，采用到计时的方式在2个数码管上显示时间，时间最长为100S，显示为99～00，当到达00时，用一个发光二极管提醒，并不再计时。另外系统设计一个开关，用来复位。<br>本实验要求同时显示3个数码管，但实际一个时刻只能显示一个数码管，所以只能采用刷新的方式，刷新频率要足够快（<code>600Hz</code>以上）；时钟可用一个秒计数器实现；另外加一个数码数字转换模块和按键输入检测电路（即抢答控制），这部分可以参考上个实验。<br>根据实验要求，可以采用多模块的方式设计，下图是建议划分的模块，也可以自行设计模块。<br><img src="/img/vhdl/%E5%9B%9B%E4%BA%BA%E6%8A%A2%E7%AD%94%E5%99%A8/1.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="四、实验连线"><a href="#四、实验连线" class="headerlink" title="四、实验连线"></a>四、实验连线</h2><p>实验连线同<a href="https://casual-qian.github.io/2023/03/10/vhdl/cai-deng-kong-zhi-qi/">彩灯控制实验</a></p>
+<h2 id="五、实验结果"><a href="#五、实验结果" class="headerlink" title="五、实验结果"></a>五、实验结果</h2><p>拨动开关，数码管上观看抢答情况。</p>
+<h2 id="我的vhdl代码"><a href="#我的vhdl代码" class="headerlink" title="我的vhdl代码"></a>我的vhdl代码</h2><p>①主程序：FourManQuest</p>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><code class="hljs vhdl"><span class="hljs-keyword">library</span> ieee;<br><span class="hljs-keyword">use</span> ieee.std_logic_1164.<span class="hljs-keyword">all</span>;<br><span class="hljs-keyword">entity</span> FourManQuest <span class="hljs-keyword">is</span><br>	<span class="hljs-keyword">port</span> (K: <span class="hljs-keyword">in</span> <span class="hljs-built_in">std_logic_vector</span> (<span class="hljs-number">3</span> <span class="hljs-keyword">downto</span> <span class="hljs-number">0</span>);<br>			clk_5: <span class="hljs-keyword">in</span> <span class="hljs-built_in">STD_LOGIC</span>;<br>			clk_2: <span class="hljs-keyword">in</span> <span class="hljs-built_in">STD_LOGIC</span>;<br>			reset: <span class="hljs-keyword">in</span> <span class="hljs-built_in">STD_LOGIC</span>;<br>			L_ABC: <span class="hljs-keyword">buffer</span> <span class="hljs-built_in">STD_LOGIC_VECTOR</span>(<span class="hljs-number">2</span> <span class="hljs-keyword">DOWNTO</span> <span class="hljs-number">0</span>);<br>			LED: <span class="hljs-keyword">out</span> <span class="hljs-built_in">STD_LOGIC_VECTOR</span> (<span class="hljs-number">7</span> <span class="hljs-keyword">downto</span> <span class="hljs-number">0</span>));<br><span class="hljs-keyword">end</span>;<br><span class="hljs-keyword">architecture</span> behave <span class="hljs-keyword">of</span> FourManQuest <span class="hljs-keyword">is</span><br><span class="hljs-keyword">component</span> CTL<br><span class="hljs-keyword">PORT</span>(K: <span class="hljs-keyword">IN</span> <span class="hljs-built_in">STD_LOGIC_VECTOR</span>(<span class="hljs-number">3</span> <span class="hljs-keyword">DOWNTO</span> <span class="hljs-number">0</span>);<br>			reset:		<span class="hljs-keyword">IN</span> <span class="hljs-built_in">STD_LOGIC</span>;<br>			en : <span class="hljs-keyword">OUT</span> <span class="hljs-built_in">STD_LOGIC</span>;<br>		    D  : <span class="hljs-keyword">OUT</span> <span class="hljs-built_in">STD_LOGIC_VECTOR</span>(<span class="hljs-number">3</span> <span class="hljs-keyword">DOWNTO</span> <span class="hljs-number">0</span>));<br><span class="hljs-keyword">end</span> <span class="hljs-keyword">component</span>;<br><span class="hljs-keyword">component</span> SLT_4<br>	<span class="hljs-keyword">PORT</span>(KD, QL, QH: <span class="hljs-keyword">IN</span> <span class="hljs-built_in">STD_LOGIC_VECTOR</span>(<span class="hljs-number">3</span> <span class="hljs-keyword">DOWNTO</span> <span class="hljs-number">0</span>);<br>	X, Y: <span class="hljs-keyword">IN</span> <span class="hljs-built_in">STD_LOGIC</span>;<br>	D: <span class="hljs-keyword">OUT</span> <span class="hljs-built_in">STD_LOGIC_VECTOR</span>(<span class="hljs-number">3</span> <span class="hljs-keyword">DOWNTO</span> <span class="hljs-number">0</span>));<br><span class="hljs-keyword">end</span> <span class="hljs-keyword">component</span>; <br><span class="hljs-keyword">component</span> CNT_100<br>     <span class="hljs-keyword">PORT</span> (reset,clk,en: <span class="hljs-keyword">IN</span> <span class="hljs-built_in">STD_LOGIC</span>;<br>                 light: <span class="hljs-keyword">OUT</span> <span class="hljs-built_in">STD_LOGIC</span>;<br>                 qh,ql: <span class="hljs-keyword">BUFFER</span> <span class="hljs-built_in">STD_LOGIC_VECTOR</span>(<span class="hljs-number">3</span> <span class="hljs-keyword">DOWNTO</span> <span class="hljs-number">0</span>));<br><span class="hljs-keyword">end</span> <span class="hljs-keyword">component</span>;	 <br><span class="hljs-keyword">component</span>  CNT_4<br> 	<span class="hljs-keyword">PORT</span>(CLK: <span class="hljs-keyword">IN</span> <span class="hljs-built_in">STD_LOGIC</span>;<br>        L_ABC: <span class="hljs-keyword">OUT</span> <span class="hljs-built_in">STD_LOGIC_VECTOR</span>(<span class="hljs-number">2</span> <span class="hljs-keyword">DOWNTO</span> <span class="hljs-number">0</span>));<br><span class="hljs-keyword">end</span> <span class="hljs-keyword">component</span>; <br><span class="hljs-keyword">component</span> LED_8<br>	<span class="hljs-keyword">port</span> (A: <span class="hljs-keyword">in</span> <span class="hljs-built_in">std_logic_vector</span> (<span class="hljs-number">3</span> <span class="hljs-keyword">downto</span> <span class="hljs-number">0</span>);<br>	LED: <span class="hljs-keyword">out</span> <span class="hljs-built_in">std_logic_vector</span> (<span class="hljs-number">7</span> <span class="hljs-keyword">downto</span> <span class="hljs-number">0</span>));<br><span class="hljs-keyword">end</span> <span class="hljs-keyword">component</span>;<br><span class="hljs-keyword">Signal</span> en: <span class="hljs-built_in">STD_LOGIC</span>;<br><span class="hljs-keyword">Signal</span> light: <span class="hljs-built_in">STD_LOGIC</span>;<br><span class="hljs-keyword">Signal</span> D  : <span class="hljs-built_in">STD_LOGIC_VECTOR</span>(<span class="hljs-number">3</span> <span class="hljs-keyword">DOWNTO</span> <span class="hljs-number">0</span>);<br><span class="hljs-keyword">Signal</span> DL : <span class="hljs-built_in">STD_LOGIC_VECTOR</span>(<span class="hljs-number">3</span> <span class="hljs-keyword">DOWNTO</span> <span class="hljs-number">0</span>);<br><span class="hljs-keyword">Signal</span> qh : <span class="hljs-built_in">STD_LOGIC_VECTOR</span>(<span class="hljs-number">3</span> <span class="hljs-keyword">DOWNTO</span> <span class="hljs-number">0</span>);<br><span class="hljs-keyword">Signal</span> ql : <span class="hljs-built_in">STD_LOGIC_VECTOR</span>(<span class="hljs-number">3</span> <span class="hljs-keyword">DOWNTO</span> <span class="hljs-number">0</span>);<br><span class="hljs-comment">-- Signal L_ABC:STD_LOGIC_VECTOR(2 DOWNTO 0);</span><br>	<span class="hljs-keyword">begin</span><br>		ctl_c: CTL <span class="hljs-keyword">port</span> <span class="hljs-keyword">map</span>(K, reset, en, D);<br>		cnt_100_c: CNT_100 <span class="hljs-keyword">port</span> <span class="hljs-keyword">map</span>(reset, clk_5, en, light, qh, ql);<br>		cnt_4_c: CNT_4 <span class="hljs-keyword">port</span> <span class="hljs-keyword">map</span>(clk_2, L_ABC);<br>		slt_4_c: SLT_4 <span class="hljs-keyword">port</span> <span class="hljs-keyword">map</span>(D, ql, qh, L_ABC(<span class="hljs-number">1</span>), L_ABC(<span class="hljs-number">0</span>), DL);<br>		led_8_c: LED_8 <span class="hljs-keyword">port</span> <span class="hljs-keyword">map</span>(DL, LED);<br><span class="hljs-keyword">end</span> behave;<br></code></pre></td></tr></table></figure>
+
+<p>②SLT_4：</p>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs vhdl"><span class="hljs-keyword">LIBRARY</span> ieee;<br><span class="hljs-keyword">USE</span> ieee.STD_LOGIC_1164.<span class="hljs-keyword">ALL</span>;<br><span class="hljs-keyword">USE</span> ieee. STD_LOGIC_unsigned.<span class="hljs-keyword">ALL</span>;<br><span class="hljs-keyword">ENTITY</span> SLT_4 <span class="hljs-keyword">IS</span><br>	<span class="hljs-keyword">PORT</span>(KD, QL, QH: <span class="hljs-keyword">IN</span> <span class="hljs-built_in">STD_LOGIC_VECTOR</span>(<span class="hljs-number">3</span> <span class="hljs-keyword">DOWNTO</span> <span class="hljs-number">0</span>);<br>	X,Y:<span class="hljs-keyword">IN</span> <span class="hljs-built_in">STD_LOGIC</span>;<br>	D: <span class="hljs-keyword">OUT</span> <span class="hljs-built_in">STD_LOGIC_VECTOR</span>(<span class="hljs-number">3</span> <span class="hljs-keyword">DOWNTO</span> <span class="hljs-number">0</span>));<br><span class="hljs-keyword">END</span>;<br><span class="hljs-keyword">ARCHITECTURE</span> maxpld <span class="hljs-keyword">OF</span> SLT_4 <span class="hljs-keyword">IS</span><br><span class="hljs-keyword">Signal</span> S: <span class="hljs-built_in">integer</span>;<br><span class="hljs-keyword">begin</span><br>   <span class="hljs-keyword">WITH</span> S <span class="hljs-keyword">SELECT</span><br>   D &lt;= KD <span class="hljs-keyword">WHEN</span>  <span class="hljs-number">0</span>,<br>            QL <span class="hljs-keyword">WHEN</span> <span class="hljs-number">1</span>,<br>            QH <span class="hljs-keyword">WHEN</span> <span class="hljs-number">2</span>,<br>            <span class="hljs-string">&quot;0000&quot;</span> <span class="hljs-keyword">WHEN</span> <span class="hljs-keyword">OTHERS</span>;<br>	S &lt;= <span class="hljs-number">0</span> <span class="hljs-keyword">WHEN</span>  X = <span class="hljs-string">&#x27;0&#x27;</span> <span class="hljs-keyword">AND</span> Y = <span class="hljs-string">&#x27;0&#x27;</span> <span class="hljs-keyword">ELSE</span><br>      <span class="hljs-number">1</span> <span class="hljs-keyword">WHEN</span> X = <span class="hljs-string">&#x27;0&#x27;</span> <span class="hljs-keyword">AND</span> Y = <span class="hljs-string">&#x27;1&#x27;</span> <span class="hljs-keyword">ELSE</span><br>      <span class="hljs-number">2</span> <span class="hljs-keyword">WHEN</span> X = <span class="hljs-string">&#x27;1&#x27;</span> <span class="hljs-keyword">AND</span> Y = <span class="hljs-string">&#x27;0&#x27;</span> <span class="hljs-keyword">ELSE</span><br>      <span class="hljs-number">3</span> ;<br><span class="hljs-keyword">END</span> maxpld;<br></code></pre></td></tr></table></figure>
+
+<p>③LED_8：</p>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs vhdl"><span class="hljs-keyword">library</span> ieee;<br><span class="hljs-keyword">use</span> ieee.std_logic_1164.<span class="hljs-keyword">all</span>;<br><span class="hljs-keyword">entity</span> LED_8 <span class="hljs-keyword">is</span><br>	<span class="hljs-keyword">port</span>(A: <span class="hljs-keyword">in</span> <span class="hljs-built_in">std_logic_vector</span>(<span class="hljs-number">3</span> <span class="hljs-keyword">downto</span> <span class="hljs-number">0</span>);<br>	LED: <span class="hljs-keyword">out</span> <span class="hljs-built_in">std_logic_vector</span>(<span class="hljs-number">7</span> <span class="hljs-keyword">downto</span> <span class="hljs-number">0</span>));<br><span class="hljs-keyword">end</span>;<br><span class="hljs-keyword">architecture</span> one <span class="hljs-keyword">of</span> LED_8 <span class="hljs-keyword">is</span><br><span class="hljs-keyword">begin</span><br>	<span class="hljs-keyword">process</span>(A)<br>	<span class="hljs-keyword">begin</span><br>	<span class="hljs-keyword">case</span> A <span class="hljs-keyword">is</span><br>		<span class="hljs-keyword">when</span> <span class="hljs-string">&quot;0000&quot;</span>=&gt; LED &lt;=<span class="hljs-string">&quot;00111111&quot;</span>;<br>		<span class="hljs-keyword">when</span> <span class="hljs-string">&quot;0001&quot;</span>=&gt; LED &lt;=<span class="hljs-string">&quot;00000110&quot;</span>;<br>		<span class="hljs-keyword">when</span> <span class="hljs-string">&quot;0010&quot;</span>=&gt; LED &lt;=<span class="hljs-string">&quot;01011011&quot;</span>;<br>		<span class="hljs-keyword">when</span> <span class="hljs-string">&quot;0011&quot;</span>=&gt; LED &lt;=<span class="hljs-string">&quot;01001111&quot;</span>;<br>		<span class="hljs-keyword">when</span> <span class="hljs-string">&quot;0100&quot;</span>=&gt; LED &lt;=<span class="hljs-string">&quot;01100110&quot;</span>;<br>		<span class="hljs-keyword">when</span> <span class="hljs-string">&quot;0101&quot;</span>=&gt; LED &lt;=<span class="hljs-string">&quot;01101101&quot;</span>;<br>		<span class="hljs-keyword">when</span> <span class="hljs-string">&quot;0110&quot;</span>=&gt; LED &lt;=<span class="hljs-string">&quot;01111101&quot;</span>;<br>		<span class="hljs-keyword">when</span> <span class="hljs-string">&quot;0111&quot;</span>=&gt; LED &lt;=<span class="hljs-string">&quot;00000111&quot;</span>;<br>		<span class="hljs-keyword">when</span> <span class="hljs-string">&quot;1000&quot;</span>=&gt; LED &lt;=<span class="hljs-string">&quot;01111111&quot;</span>;<br>		<span class="hljs-keyword">when</span> <span class="hljs-string">&quot;1001&quot;</span>=&gt; LED &lt;=<span class="hljs-string">&quot;01101111&quot;</span>;<br>		<span class="hljs-keyword">when</span> <span class="hljs-string">&quot;1010&quot;</span>=&gt; LED &lt;=<span class="hljs-string">&quot;01110111&quot;</span>;<br>		<span class="hljs-keyword">when</span> <span class="hljs-string">&quot;1011&quot;</span>=&gt; LED &lt;=<span class="hljs-string">&quot;01111100&quot;</span>;<br>		<span class="hljs-keyword">when</span> <span class="hljs-string">&quot;1100&quot;</span>=&gt; LED &lt;=<span class="hljs-string">&quot;00111001&quot;</span>;<br>		<span class="hljs-keyword">when</span> <span class="hljs-string">&quot;1101&quot;</span>=&gt; LED &lt;=<span class="hljs-string">&quot;01011110&quot;</span>;<br>		<span class="hljs-keyword">when</span> <span class="hljs-string">&quot;1110&quot;</span>=&gt; LED &lt;=<span class="hljs-string">&quot;01111001&quot;</span>;<br>		<span class="hljs-keyword">when</span> <span class="hljs-string">&quot;1111&quot;</span>=&gt; LED &lt;=<span class="hljs-string">&quot;01110001&quot;</span>;<br>		<span class="hljs-keyword">when</span> <span class="hljs-keyword">others</span>=&gt; <span class="hljs-keyword">NULL</span>;<br>		<span class="hljs-keyword">end</span> <span class="hljs-keyword">case</span>;<br>	<span class="hljs-keyword">end</span> <span class="hljs-keyword">process</span>;<br><span class="hljs-keyword">end</span>;<br></code></pre></td></tr></table></figure>
+
+<p>④CTL：</p>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs vhdl"><span class="hljs-keyword">LIBRARY</span> ieee;<br><span class="hljs-keyword">USE</span> ieee.STD_LOGIC_1164.<span class="hljs-keyword">ALL</span>;<br><span class="hljs-keyword">USE</span> ieee. STD_LOGIC_unsigned.<span class="hljs-keyword">ALL</span>;<br><span class="hljs-keyword">ENTITY</span> CTL <span class="hljs-keyword">IS</span><br>	<span class="hljs-keyword">PORT</span>(K: <span class="hljs-keyword">IN</span> <span class="hljs-built_in">STD_LOGIC_VECTOR</span>(<span class="hljs-number">3</span> <span class="hljs-keyword">DOWNTO</span> <span class="hljs-number">0</span>);<br>			reset:		<span class="hljs-keyword">IN</span> <span class="hljs-built_in">STD_LOGIC</span>;<br>			en : <span class="hljs-keyword">BUFFER</span> <span class="hljs-built_in">STD_LOGIC</span>;<br>		   D:<span class="hljs-keyword">OUT</span> <span class="hljs-built_in">STD_LOGIC_VECTOR</span>(<span class="hljs-number">3</span> <span class="hljs-keyword">DOWNTO</span> <span class="hljs-number">0</span>));<br><span class="hljs-keyword">END</span>;<br><span class="hljs-keyword">ARCHITECTURE</span> one <span class="hljs-keyword">OF</span> CTL <span class="hljs-keyword">IS</span><br><span class="hljs-keyword">BEGIN</span>	<br>   <span class="hljs-keyword">PROCESS</span> (reset, en, K)  <br>   <span class="hljs-keyword">BEGIN</span><br>   <span class="hljs-keyword">IF</span> reset=<span class="hljs-string">&#x27;1&#x27;</span>  <span class="hljs-keyword">THEN</span>  en &lt;= <span class="hljs-string">&#x27;0&#x27;</span>; D &lt;= <span class="hljs-string">&quot;0000&quot;</span>;<br>	<span class="hljs-keyword">ELSIF</span> en = <span class="hljs-string">&#x27;0&#x27;</span> <span class="hljs-keyword">THEN</span><br>		<span class="hljs-keyword">case</span> K <span class="hljs-keyword">is</span><br>		<span class="hljs-keyword">when</span> <span class="hljs-string">&quot;0001&quot;</span> =&gt; D &lt;=<span class="hljs-string">&quot;0001&quot;</span>;<br>		<span class="hljs-keyword">when</span> <span class="hljs-string">&quot;0010&quot;</span> =&gt; D &lt;=<span class="hljs-string">&quot;0010&quot;</span>;<br>		<span class="hljs-keyword">when</span> <span class="hljs-string">&quot;0100&quot;</span> =&gt; D &lt;=<span class="hljs-string">&quot;0011&quot;</span>;<br>		<span class="hljs-keyword">when</span> <span class="hljs-string">&quot;1000&quot;</span> =&gt; D &lt;=<span class="hljs-string">&quot;0100&quot;</span>; <br>		<span class="hljs-keyword">when</span> <span class="hljs-keyword">others</span> =&gt; D &lt;=<span class="hljs-string">&quot;0000&quot;</span>;<br>		<span class="hljs-keyword">end</span> <span class="hljs-keyword">case</span>;<br>		<span class="hljs-keyword">case</span> K <span class="hljs-keyword">is</span><br>		<span class="hljs-keyword">when</span> <span class="hljs-string">&quot;0001&quot;</span> =&gt; en &lt;= <span class="hljs-string">&#x27;1&#x27;</span>;<br>		<span class="hljs-keyword">when</span> <span class="hljs-string">&quot;0010&quot;</span> =&gt; en &lt;= <span class="hljs-string">&#x27;1&#x27;</span>;<br>		<span class="hljs-keyword">when</span> <span class="hljs-string">&quot;0100&quot;</span> =&gt; en &lt;= <span class="hljs-string">&#x27;1&#x27;</span>;<br>		<span class="hljs-keyword">when</span> <span class="hljs-string">&quot;1000&quot;</span> =&gt; en &lt;= <span class="hljs-string">&#x27;1&#x27;</span>;<br>		<span class="hljs-keyword">when</span> <span class="hljs-keyword">others</span> =&gt; en &lt;= <span class="hljs-string">&#x27;0&#x27;</span>;<br>		<span class="hljs-keyword">end</span> <span class="hljs-keyword">case</span>;<br>	<span class="hljs-keyword">END</span> <span class="hljs-keyword">IF</span>;<br>	<span class="hljs-keyword">end</span> <span class="hljs-keyword">process</span>;<br><span class="hljs-keyword">END</span> one;<br></code></pre></td></tr></table></figure>
+
+<p>⑤CNT_100：</p>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs vhdl"><span class="hljs-keyword">LIBRARY</span> ieee;<br><span class="hljs-keyword">USE</span> ieee.STD_LOGIC_1164.<span class="hljs-keyword">ALL</span>;<br><span class="hljs-keyword">USE</span> ieee. STD_LOGIC_unsigned.<span class="hljs-keyword">ALL</span>;<br><span class="hljs-keyword">ENTITY</span> CNT_100 <span class="hljs-keyword">IS</span><br>	<span class="hljs-keyword">PORT</span> (reset,clk, en: <span class="hljs-keyword">IN</span> <span class="hljs-built_in">STD_LOGIC</span>;<br>                 light: <span class="hljs-keyword">BUFFER</span> <span class="hljs-built_in">STD_LOGIC</span>;<br>                 qh,ql: <span class="hljs-keyword">BUFFER</span> <span class="hljs-built_in">STD_LOGIC_VECTOR</span>(<span class="hljs-number">3</span> <span class="hljs-keyword">DOWNTO</span> <span class="hljs-number">0</span>));<br><span class="hljs-keyword">END</span>;<br><span class="hljs-keyword">ARCHITECTURE</span> behave <span class="hljs-keyword">OF</span> CNT_100 <span class="hljs-keyword">IS</span><br><span class="hljs-keyword">BEGIN</span><br>	light &lt;= <span class="hljs-string">&#x27;1&#x27;</span> <span class="hljs-keyword">WHEN</span>(qh = <span class="hljs-string">&quot;0000&quot;</span> <span class="hljs-keyword">AND</span> ql = <span class="hljs-string">&quot;0000&quot;</span>) <span class="hljs-keyword">ELSE</span> <span class="hljs-string">&#x27;0&#x27;</span>;<br>	<span class="hljs-keyword">PROCESS</span> (reset, clk, en, light)<br>		<span class="hljs-keyword">BEGIN</span><br>		<span class="hljs-keyword">IF</span> reset = <span class="hljs-string">&#x27;1&#x27;</span> <span class="hljs-keyword">THEN</span> qh &lt;= <span class="hljs-string">&quot;1001&quot;</span>; ql &lt;= <span class="hljs-string">&quot;1001&quot;</span>;<br>		<span class="hljs-keyword">ELSIF</span> (  clk&#x27; EVENT <span class="hljs-keyword">AND</span> clk = <span class="hljs-string">&#x27;1&#x27;</span>) <span class="hljs-keyword">THEN</span><br>			<span class="hljs-keyword">IF</span> (en = <span class="hljs-string">&#x27;1&#x27;</span> <span class="hljs-keyword">and</span>  light = <span class="hljs-string">&#x27;0&#x27;</span>) <span class="hljs-keyword">THEN</span><br>				<span class="hljs-keyword">IF</span> (ql = <span class="hljs-number">0</span>) <span class="hljs-keyword">THEN</span> ql &lt;= <span class="hljs-string">&quot;1001&quot;</span>;<br>					<span class="hljs-keyword">IF</span> (qh = <span class="hljs-number">0</span>) <span class="hljs-keyword">THEN</span> qh &lt;= <span class="hljs-string">&quot;1001&quot;</span>;<br>					<span class="hljs-keyword">ELSE</span> qh &lt;= qh-<span class="hljs-number">1</span>;<br>					<span class="hljs-keyword">END</span> <span class="hljs-keyword">IF</span>;<br>				<span class="hljs-keyword">ELSE</span> ql &lt;= ql-<span class="hljs-number">1</span>;<br>				<span class="hljs-keyword">END</span> <span class="hljs-keyword">IF</span>;<br>			<span class="hljs-keyword">END</span> <span class="hljs-keyword">IF</span>;<br>		<span class="hljs-keyword">END</span> <span class="hljs-keyword">IF</span>;<br><span class="hljs-keyword">END</span> <span class="hljs-keyword">PROCESS</span>;<br><span class="hljs-keyword">End</span>  behave;<br></code></pre></td></tr></table></figure>
+
+<p>⑥CNT_4：</p>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs vhdl"><span class="hljs-keyword">LIBRARY</span> ieee;<br><span class="hljs-keyword">USE</span> ieee.STD_LOGIC_1164.<span class="hljs-keyword">ALL</span>;<br><span class="hljs-keyword">USE</span> ieee. STD_LOGIC_unsigned.<span class="hljs-keyword">ALL</span>;<br><span class="hljs-keyword">ENTITY</span>  CNT_4  <span class="hljs-keyword">IS</span><br> 	<span class="hljs-keyword">PORT</span>(CLK: <span class="hljs-keyword">IN</span> <span class="hljs-built_in">STD_LOGIC</span>;<br>        L_ABC: <span class="hljs-keyword">OUT</span> <span class="hljs-built_in">STD_LOGIC_VECTOR</span>(<span class="hljs-number">2</span> <span class="hljs-keyword">DOWNTO</span> <span class="hljs-number">0</span>));<br><span class="hljs-keyword">END</span>;<br><span class="hljs-keyword">ARCHITECTURE</span> one <span class="hljs-keyword">OF</span> CNT_4 <span class="hljs-keyword">IS</span><br><span class="hljs-keyword">BEGIN</span><br><span class="hljs-keyword">PROCESS</span> (CLK)<br>    <span class="hljs-keyword">VARIABLE</span> CQI: <span class="hljs-built_in">STD_LOGIC_VECTOR</span> (<span class="hljs-number">2</span> <span class="hljs-keyword">DOWNTO</span> <span class="hljs-number">0</span>);<br>  <span class="hljs-keyword">BEGIN</span><br>   <span class="hljs-keyword">IF</span> CLK<span class="hljs-symbol">&#x27;EVENT</span> <span class="hljs-keyword">AND</span> CLK=<span class="hljs-string">&#x27;1&#x27;</span> <span class="hljs-keyword">THEN</span><br>       CQI := CQI+<span class="hljs-number">1</span>;         <br>   <span class="hljs-keyword">END</span> <span class="hljs-keyword">IF</span>;<br>	<span class="hljs-comment">--IF CLK&#x27;EVENT AND CLK=&#x27;1&#x27; AND CQI = 3 THEN</span><br>	<span class="hljs-keyword">IF</span>  CQI = <span class="hljs-number">3</span> <span class="hljs-keyword">THEN</span><br>		 CQI := <span class="hljs-string">&quot;000&quot;</span>;             <br>   <span class="hljs-keyword">END</span> <span class="hljs-keyword">IF</span>;<br>   L_ABC &lt;= CQI;<br>   <span class="hljs-keyword">END</span> <span class="hljs-keyword">PROCESS</span>;<br><span class="hljs-keyword">END</span>;<br></code></pre></td></tr></table></figure>
+
+<p>引脚连接如下：<br><img src="/img/vhdl/%E5%9B%9B%E4%BA%BA%E6%8A%A2%E7%AD%94%E5%99%A8/2.png" srcset="/img/loading.gif" lazyload><br><img src="/img/vhdl/%E5%9B%9B%E4%BA%BA%E6%8A%A2%E7%AD%94%E5%99%A8/3.png" srcset="/img/loading.gif" lazyload></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/vhdl/" class="category-chain-item">vhdl</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/03/11/vhdl/shu-ma-guan-kong-zhi-qi/" title="数码管控制器">
+                        <span class="hidden-mobile">数码管控制器</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+      
+<i class="iconfont icon-love"></i> <script src="https://myhkw.cn/player/js/jquery.min.js" type="text/javascript"></script> <script src="https://myhkw.cn/api/player/167955572494" id="myhk" key="167955572494" m="1"></script>   
+
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/qipao.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/caidai.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiantiao.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/dianjichuzi.js"></script>
+<script src="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/xiabo2/CDN@latest/fishes.js">.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+ 
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
