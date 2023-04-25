@@ -279,6 +279,14 @@ WIDGET = {
             <!-- SEO header -->
             <h1 style="display: none">并发程序设计实验指导</h1>
             
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：5 个月前
+                  
+                
+              </p>
+            
             
               <div class="markdown-body">
                 
@@ -305,12 +313,12 @@ WIDGET = {
 
 <p><strong>注：本PDF仅用于本人复习及查找，请勿大量外传。</strong></p>
 
-        <div id="aplayer-fZomQWGh" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-xVkFNsij" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-fZomQWGh"),
+            element: document.getElementById("aplayer-xVkFNsij"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -386,6 +394,34 @@ WIDGET = {
             </div>
 
             
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"nGGRplgSRNwjR8B0cdRGJZt6-MdYXbMMI","appKey":"9weM6Axp4tg5ozKrLXhiF871","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
           </article>
         </div>
       </div>
