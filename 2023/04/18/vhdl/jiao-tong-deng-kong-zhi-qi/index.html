@@ -16,23 +16,23 @@
   <meta name="author" content="casual_qian">
   <meta name="keywords" content="">
   
-    <meta name="description" content="本文是关于流式套接字、数据报套接字和原始套接字三种套接字编程的相关知识介绍。">
+    <meta name="description" content="设计位于十字路口的交通灯，在&#96;A&#96;方向和&#96;B&#96;方向各有红、黄和绿&#96;3&#96;盏灯，二个路口的红绿灯交叉循环显示，当一个路口红灯时，另一个路口才能绿灯，绿灯变成红灯前，需先亮一会黄灯。二个路口的显示时间可以一样，也可以不一样。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="三种套接字编程">
-<meta property="og:url" content="https://casual-qian.github.io/2023/01/23/windows-wang-luo-bian-cheng/san-chong-tao-jie-zi-bian-cheng/index.html">
+<meta property="og:title" content="交通灯控制器">
+<meta property="og:url" content="https://casual-qian.github.io/2023/04/18/vhdl/jiao-tong-deng-kong-zhi-qi/index.html">
 <meta property="og:site_name" content="casual_qian">
-<meta property="og:description" content="本文是关于流式套接字、数据报套接字和原始套接字三种套接字编程的相关知识介绍。">
+<meta property="og:description" content="设计位于十字路口的交通灯，在&#96;A&#96;方向和&#96;B&#96;方向各有红、黄和绿&#96;3&#96;盏灯，二个路口的红绿灯交叉循环显示，当一个路口红灯时，另一个路口才能绿灯，绿灯变成红灯前，需先亮一会黄灯。二个路口的显示时间可以一样，也可以不一样。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://casual-qian.github.io/img/windows%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B.jpg">
-<meta property="article:published_time" content="2023-01-23T11:01:00.000Z">
-<meta property="article:modified_time" content="2023-02-21T06:10:18.913Z">
+<meta property="og:image" content="https://casual-qian.github.io/img/vhdl/vhdl.jpg">
+<meta property="article:published_time" content="2023-04-18T13:15:00.000Z">
+<meta property="article:modified_time" content="2023-05-12T14:54:29.693Z">
 <meta property="article:author" content="casual_qian">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://casual-qian.github.io/img/windows%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B.jpg">
+<meta name="twitter:image" content="https://casual-qian.github.io/img/vhdl/vhdl.jpg">
   
   
   
-  <title>三种套接字编程 - casual_qian</title>
+  <title>交通灯控制器 - casual_qian</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -208,13 +208,13 @@ WIDGET = {
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/windows%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/banner.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/vhdl/banner.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="三种套接字编程"></span>
+            <span id="subtitle" data-typed-text="交通灯控制器"></span>
           
         </div>
 
@@ -225,8 +225,8 @@ WIDGET = {
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-01-23 19:01" pubdate>
-          2023年1月23日 晚上
+        <time datetime="2023-04-18 21:15" pubdate>
+          2023年4月18日 晚上
         </time>
       </span>
     
@@ -237,7 +237,7 @@ WIDGET = {
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          527 字
+          1.4k 字
         
       </span>
     
@@ -269,6 +269,103 @@ WIDGET = {
   <div class="row nomargin-x">
     <div class="side-col d-none d-lg-block col-lg-2">
       
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="vhdl"
+        id="heading-39410d2bbfb5a34d055b7864199514b7" role="tab" data-toggle="collapse" href="#collapse-39410d2bbfb5a34d055b7864199514b7"
+        aria-expanded="true"
+      >
+        vhdl
+        <span class="list-group-count">(6)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-39410d2bbfb5a34d055b7864199514b7"
+           role="tabpanel" aria-labelledby="heading-39410d2bbfb5a34d055b7864199514b7">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2023/03/10/vhdl/cai-deng-kong-zhi-qi/" title="彩灯控制器"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">彩灯控制器</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2023/03/11/vhdl/shu-ma-guan-kong-zhi-qi/" title="数码管控制器"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">数码管控制器</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2023/03/17/vhdl/si-ren-qiang-da-qi/" title="四人抢答器"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">四人抢答器</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2023/03/22/vhdl/dian-zi-qin-shi-yan/" title="电子琴实验"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">电子琴实验</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2023/04/16/vhdl/led16x16-han-zi-tu-xing-dian-zhen-shi-yan/" title="LED16×16汉字 图形点阵实验"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">LED16×16汉字 图形点阵实验</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2023/04/18/vhdl/jiao-tong-deng-kong-zhi-qi/" title="交通灯控制器"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">交通灯控制器</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
 
     </div>
 
@@ -277,76 +374,29 @@ WIDGET = {
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">三种套接字编程</h1>
+            <h1 style="display: none">交通灯控制器</h1>
             
             
               <div class="markdown-body">
                 
-                <ol>
-<li><p>流式套接字依托<code>TCP</code>协议提供面向连接的、可靠的数据传输服务，该服务将保证数据能够实现无差错、无重复发送，并按顺序接收。基于流的特点，使用流式套接字传输的数据形态是没有记录边界的有序数据流。</p>
-</li>
-<li><p>数据报套接字编程推荐用在可靠的本地环境中运行以及广播或多播应用程序；</p>
-</li>
-<li><p>原始套接字提供普通<code>TCP</code>和<code>UDP</code>套接字不提供的以下三种能力</p>
-</li>
+                <h2 id="一、实验目的"><a href="#一、实验目的" class="headerlink" title="一、实验目的"></a>一、实验目的</h2><ol>
+<li>掌握交通灯控制器的工作原理；         </li>
+<li>学习较复杂的数字系统设计方法;</li>
+<li>进一步学习掌握状态机的设计方法。</li>
 </ol>
-<ul>
-<li>读写<code>ICMPv4</code>、<code>IGMPv4</code>和<code>ICMPv6</code>等分组。</li>
-<li>读写内核不处理其协议字段的<code>IPv4</code>数据报。</li>
-<li>控制<code>IPv4</code>头部</li>
-</ul>
-<p>流式套接字:</p>
+<h2 id="二、实验内容及要求"><a href="#二、实验内容及要求" class="headerlink" title="二、实验内容及要求"></a>二、实验内容及要求</h2><ol>
+<li>设计位于十字路口的交通灯，在<code>A</code>方向和<code>B</code>方向各有红、黄和绿<code>3</code>盏灯，二个路口的红绿灯交叉循环显示，当一个路口红灯时，另一个路口才能绿灯，绿灯变成红灯前，需先亮一会黄灯。二个路口的显示时间可以一样，也可以不一样。</li>
+<li>用发光二极管当做交通灯，并要求颜色一致。</li>
+</ol>
+<h2 id="三、实验连线"><a href="#三、实验连线" class="headerlink" title="三、实验连线"></a>三、实验连线</h2><ol>
+<li>下载前将适配板上的<code>JP3</code>用二十芯排线与实验板左上侧<code>JC02</code>相连接。</li>
+<li>同<a href="https://casual-qian.github.io/2023/03/10/vhdl/cai-deng-kong-zhi-qi/">彩灯控制实验</a>。</li>
+</ol>
+<h2 id="四、实验现象"><a href="#四、实验现象" class="headerlink" title="四、实验现象"></a>四、实验现象</h2><p>在数码管和发光管上看到结果。</p>
+<h2 id="我的vhdl代码"><a href="#我的vhdl代码" class="headerlink" title="我的vhdl代码"></a>我的vhdl代码</h2><figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><code class="hljs vhdl"><span class="hljs-keyword">library</span> ieee;<br><span class="hljs-keyword">use</span> ieee.std_logic_1164.<span class="hljs-keyword">all</span>;<br><span class="hljs-keyword">use</span> ieee.std_logic_unsigned.<span class="hljs-keyword">all</span>;<br><span class="hljs-keyword">entity</span> traffic <span class="hljs-keyword">is</span><br><span class="hljs-keyword">port</span> (	 clk: <span class="hljs-keyword">in</span> <span class="hljs-built_in">std_logic</span>;<br>		dataout: <span class="hljs-keyword">out</span> <span class="hljs-built_in">std_logic_vector</span>(<span class="hljs-number">11</span> <span class="hljs-keyword">downto</span> <span class="hljs-number">0</span>));<br><span class="hljs-keyword">end</span> traffic;<br><span class="hljs-keyword">architecture</span> q1 <span class="hljs-keyword">of</span> traffic <span class="hljs-keyword">is</span><br>	<span class="hljs-keyword">type</span> state_type <span class="hljs-keyword">is</span>(s1,s2,s3,s4);<br><span class="hljs-keyword">signal</span> state:state_type;<br><span class="hljs-keyword">signal</span> ti:<span class="hljs-built_in">integer</span> <span class="hljs-keyword">range</span> <span class="hljs-number">0</span> <span class="hljs-keyword">to</span> <span class="hljs-number">5</span>:=<span class="hljs-number">0</span>;<br><span class="hljs-keyword">begin</span><br><span class="hljs-keyword">process</span>(clk)<br>	<span class="hljs-keyword">begin</span><br>		<span class="hljs-keyword">if</span> (clk<span class="hljs-symbol">&#x27;event</span> <span class="hljs-keyword">and</span> clk=<span class="hljs-string">&#x27;1&#x27;</span>) <span class="hljs-keyword">then</span> <br>		<span class="hljs-keyword">case</span> state <span class="hljs-keyword">is</span><br>			<span class="hljs-keyword">when</span> s1=&gt;<span class="hljs-keyword">if</span> ti=<span class="hljs-number">5</span> <span class="hljs-keyword">then</span> <br>				ti&lt;=<span class="hljs-number">0</span>;<br>				state&lt;=s2;<br>			<span class="hljs-keyword">else</span> state&lt;=s1;<br>				ti&lt;=ti+<span class="hljs-number">1</span>;<br>			<span class="hljs-keyword">end</span> <span class="hljs-keyword">if</span>;<br>			<span class="hljs-keyword">when</span> s2=&gt;<span class="hljs-keyword">if</span> ti=<span class="hljs-number">3</span> <span class="hljs-keyword">then</span> <br>				ti&lt;=<span class="hljs-number">0</span>;<br>				state&lt;=s3;<br>			<span class="hljs-keyword">else</span> state&lt;=s2;<br>				ti&lt;=ti+<span class="hljs-number">1</span>;<br>			<span class="hljs-keyword">end</span> <span class="hljs-keyword">if</span>;<br>			<span class="hljs-keyword">when</span> s3=&gt;<span class="hljs-keyword">if</span> ti=<span class="hljs-number">5</span> <span class="hljs-keyword">then</span> <br>				ti&lt;=<span class="hljs-number">0</span>;<br>				state&lt;=s4;<br>			<span class="hljs-keyword">else</span> state&lt;=s3;<br>				ti&lt;=ti+<span class="hljs-number">1</span>;<br>			<span class="hljs-keyword">end</span> <span class="hljs-keyword">if</span>;<br>			<span class="hljs-keyword">when</span> s4=&gt;<span class="hljs-keyword">if</span> ti=<span class="hljs-number">3</span> <span class="hljs-keyword">then</span> <br>				ti&lt;=<span class="hljs-number">0</span>;<br>				state&lt;=s4;<br>			<span class="hljs-keyword">else</span> state&lt;=s1;<br>				ti&lt;=ti+<span class="hljs-number">1</span>;<br>			<span class="hljs-keyword">end</span> <span class="hljs-keyword">if</span>;<br>			<span class="hljs-keyword">when</span> <span class="hljs-keyword">others</span>=&gt;state&lt;=s1;<br>		<span class="hljs-keyword">end</span> <span class="hljs-keyword">case</span>;<br>		<span class="hljs-keyword">end</span> <span class="hljs-keyword">if</span>;<br><span class="hljs-keyword">end</span> <span class="hljs-keyword">process</span>;<br><span class="hljs-keyword">process</span>(state)<br><span class="hljs-keyword">begin</span> <br>	<span class="hljs-keyword">case</span> state <span class="hljs-keyword">is</span><br>		<span class="hljs-keyword">when</span> s1=&gt;dataout&lt;=<span class="hljs-string">&quot;100001100001&quot;</span>;<br>		<span class="hljs-keyword">when</span> s2=&gt;dataout&lt;=<span class="hljs-string">&quot;100010100010&quot;</span>;<br>		<span class="hljs-keyword">when</span> s3=&gt;dataout&lt;=<span class="hljs-string">&quot;001100001100&quot;</span>;<br>		<span class="hljs-keyword">when</span> s4=&gt;dataout&lt;=<span class="hljs-string">&quot;010100010100&quot;</span>;<br>	<span class="hljs-keyword">end</span> <span class="hljs-keyword">case</span>;<br><span class="hljs-keyword">end</span> <span class="hljs-keyword">process</span>;<br><span class="hljs-keyword">end</span> q1;<br></code></pre></td></tr></table></figure>
 
+<p>引脚连接如下：<br>dataout11-0：64 60 59 54 55 58 53 52 51 46 49 50<br>clk：89</p>
 
-	<div class="row">
-    <embed src="/pdf/windows网络编程/流式套接字编程.pdf" width="100%" height="550" type="application/pdf">
-	</div>
-
-
-
-
-<p>数据报套接字:</p>
-
-
-	<div class="row">
-    <embed src="/pdf/windows网络编程/数据报套接字编程.pdf" width="100%" height="550" type="application/pdf">
-	</div>
-
-
-
-
-<p>原始套接字:</p>
-
-
-	<div class="row">
-    <embed src="/pdf/windows网络编程/原始套接字.pdf" width="100%" height="550" type="application/pdf">
-	</div>
-
-
-
-
-<p><strong>注：PDF仅用于本人复习及查找，请勿大量外传。</strong></p>
-
-        <div id="aplayer-nXyFiqYb" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
-            <pre class="aplayer-lrc-content"></pre>
-        </div>
-        <script>
-          var ap = new APlayer({
-            element: document.getElementById("aplayer-nXyFiqYb"),
-            narrow: false,
-            autoplay: false,
-            showlrc: false,
-            music: {
-              title: "说好的幸福呢",
-              author: "周杰伦",
-              url: "/music/周杰伦-说好的幸福呢.flac",
-              pic: "/music/图片/魔杰座.jpg",
-              lrc: ""
-            }
-          });
-          window.aplayers || (window.aplayers = []);
-          window.aplayers.push(ap);
-        </script>
                 
               </div>
             
@@ -364,7 +414,7 @@ WIDGET = {
     
       <span class="category-chain">
         
-  <a href="/categories/Windows%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" class="category-chain-item">Windows网络编程</a>
+  <a href="/categories/vhdl/" class="category-chain-item">vhdl</a>
   
   
 
@@ -386,18 +436,12 @@ WIDGET = {
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/01/23/hui-bian-yu-yan/chu-fa-yu-hui-bian-cheng-xu-kong-zhi-jie-gou/" title="除法与汇编程序控制结构">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">除法与汇编程序控制结构</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/01/20/ruan-jian-gong-cheng/yin-er-ye-ye-beta-chong-ci/" title="银耳椰椰——Beta冲刺">
-                        <span class="hidden-mobile">银耳椰椰——Beta冲刺</span>
+                      <a href="/2023/04/16/vhdl/led16x16-han-zi-tu-xing-dian-zhen-shi-yan/" title="LED16×16汉字 图形点阵实验">
+                        <span class="hidden-mobile">LED16×16汉字 图形点阵实验</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
