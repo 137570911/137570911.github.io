@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://casual-qian.github.io/img/MySQL/MySQL%E5%9B%BE%E7%89%87.png">
 <meta property="article:published_time" content="2022-11-10T03:33:00.000Z">
-<meta property="article:modified_time" content="2022-11-16T02:59:40.961Z">
+<meta property="article:modified_time" content="2023-06-26T14:27:22.522Z">
 <meta property="article:author" content="casual_qian">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://casual-qian.github.io/img/MySQL/MySQL%E5%9B%BE%E7%89%87.png">
@@ -304,7 +304,7 @@ WIDGET = {
 </ul>
 <p>总而言之，使用视图的大部分情况是为了<strong>保障数据安全性，提高查询效率</strong>。</p>
 <p>**** 创建视图</p>
-<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">CREATE</span> [<span class="hljs-keyword">OR REPLACE</span>] [ALGORITHM = &#123;UNDEFINED | MERGE | TEMPTABLE&#125;]<br>    <span class="hljs-keyword">VIEW</span> view_name [(column_list)]<br>    <span class="hljs-keyword">AS</span> select_statement<br>   [<span class="hljs-keyword">WITH</span> [CASCADED | <span class="hljs-keyword">LOCAL</span>] <span class="hljs-keyword">CHECK</span> <span class="hljs-keyword">OPTION</span>]<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mysql">CREATE [OR REPLACE] [ALGORITHM = &#123;UNDEFINED | MERGE | TEMPTABLE&#125;]<br>    VIEW view_name [(column_list)]<br>    AS select_statement<br>   [WITH [CASCADED | LOCAL] CHECK OPTION]<br></code></pre></td></tr></table></figure>
 
 <p>参数说明：</p>
 <ul>
@@ -388,7 +388,7 @@ WIDGET = {
 <p>在<code>student</code>表上创建视图<code>stu_view</code>，查询<code>math</code>、<code>chinese</code>字段并定义一个<code>math+chinese</code>成绩之和字段，值为两者之和；</p>
 <p>在<code>student</code>表和<code>stu_info</code>表上，创建<code>stu_classes</code>视图，查询出<code>stu_id</code>、姓名和班级，查询条件为两表中的<code>stu_id</code>字段相同。</p>
 <h3 id="测试说明"><a href="#测试说明" class="headerlink" title="测试说明"></a>测试说明</h3><p>平台会对你编写的代码进行测试，预期输出会查询你创建的两个视图，具体内容请查看右侧测试集。</p>
-<h3 id="我的代码"><a href="#我的代码" class="headerlink" title="我的代码"></a>我的代码</h3><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs clean">use School;<br><br>#请在此处添加实现代码<br>########## Begin ##########<br><br>#<span class="hljs-number">1.</span>创建单表视图<br>create view stu_view <span class="hljs-keyword">as</span> select math,chinese,math+chinese <span class="hljs-keyword">from</span> student;<br><br>#<span class="hljs-number">2.</span>创建多表视图<br>create view stu_classes <span class="hljs-keyword">as</span> select student.stu_id,name,classes <br><span class="hljs-keyword">from</span> student,stu_info <br><span class="hljs-keyword">where</span> student.stu_id=stu_info.stu_id;<br><br>########## End ##########<br></code></pre></td></tr></table></figure>
+<h3 id="我的代码"><a href="#我的代码" class="headerlink" title="我的代码"></a>我的代码</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs mysql">use School;<br><br>#请在此处添加实现代码<br>########## Begin ##########<br><br>#1.创建单表视图<br>create view stu_view as select math,chinese,math+chinese from student;<br><br>#2.创建多表视图<br>create view stu_classes as select student.stu_id,name,classes <br>from student,stu_info <br>where student.stu_id=stu_info.stu_id;<br><br>########## End ##########<br></code></pre></td></tr></table></figure>
                 
               </div>
             
